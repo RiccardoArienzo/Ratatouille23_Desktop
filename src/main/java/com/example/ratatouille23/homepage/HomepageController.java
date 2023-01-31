@@ -1,5 +1,6 @@
-package com.example.ratatouille23;
+package com.example.ratatouille23.homepage;
 
+import com.example.ratatouille23.personalizzaMenu.PersonalizzaMenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -17,10 +18,8 @@ public class HomepageController {
 
 
 
-
-
     public void apriSchermataHome(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("homepage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/homepage/homepage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -28,7 +27,7 @@ public class HomepageController {
     }
 
     public void clickPulsantePersonalizzaMenu(ActionEvent e) throws IOException{
-        FXMLLoader loaderPersonalizzaMenuContr = new FXMLLoader(getClass().getResource("personalizza-menu.fxml"));
+        FXMLLoader loaderPersonalizzaMenuContr = new FXMLLoader(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
         root = loaderPersonalizzaMenuContr.load();
         PersonalizzaMenuController persMenuController = loaderPersonalizzaMenuContr.getController();
         persMenuController.apriSchermataMenu(e);

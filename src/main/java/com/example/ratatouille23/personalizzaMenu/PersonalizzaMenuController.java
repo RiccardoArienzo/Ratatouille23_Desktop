@@ -1,6 +1,6 @@
-package com.example.ratatouille23;
+package com.example.ratatouille23.personalizzaMenu;
 
-import com.example.ratatouille23.HomepageController;
+import com.example.ratatouille23.homepage.HomepageController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,19 +34,19 @@ public class PersonalizzaMenuController {
     }
 
     public HomepageController loadHomePageController() throws IOException {
-        FXMLLoader loaderHomepageController = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        FXMLLoader loaderHomepageController = new FXMLLoader(getClass().getResource("/homepage/homepage.fxml"));
         root = loaderHomepageController.load();
         return loaderHomepageController.getController();
     }
     public void apriSchermataMenu(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("personalizza-menu.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
-    public void clickPulsanteIndietro(ActionEvent e) throws IOException{
+    public void tornaAllaHome(ActionEvent e) throws IOException{
         homepageController.apriSchermataHome(e);
     }
 
@@ -54,7 +54,6 @@ public class PersonalizzaMenuController {
         AnchorPane newPanelContent = new AnchorPane();
         newPanelContent.getChildren().add(new Label("Hello World"));
         TitledPane pane = new TitledPane("World Pane", newPanelContent);
-        System.out.println(listaCategorie);
         listaCategorie.getPanes().add(pane);
     }
 

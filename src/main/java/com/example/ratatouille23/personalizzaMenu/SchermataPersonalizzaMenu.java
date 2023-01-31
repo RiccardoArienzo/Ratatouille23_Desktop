@@ -1,5 +1,6 @@
-package com.example.ratatouille23;
+package com.example.ratatouille23.personalizzaMenu;
 
+import com.example.ratatouille23.homepage.Homepage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomePage extends Application {
+public class SchermataPersonalizzaMenu extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -15,9 +16,9 @@ public class HomePage extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomePage.class.getResource("homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Homepage.class.getResource("/personalizzaMenu/personalizza-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("A capocchj");
         stage.setScene(scene);
         stage.show();
 
