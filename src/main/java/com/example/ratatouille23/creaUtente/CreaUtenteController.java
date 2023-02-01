@@ -16,22 +16,11 @@ public class CreaUtenteController {
     private Scene scene;
     private Parent root;
 
-    private HomepageController homepageController;
-    {
-        try {
-            homepageController = loadHomePageController();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public HomepageController loadHomePageController() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/homepage/homepage.fxml"));
-        root = loader.load();
-        return loader.getController();
-    }
 
     public void tornaAllaHome(ActionEvent e) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/homepage/homepage.fxml"));
+        root = loader.load();
+        HomepageController homepageController = loader.getController();
         homepageController.apriSchermataHome(e);
     }
 

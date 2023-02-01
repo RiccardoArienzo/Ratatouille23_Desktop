@@ -33,11 +33,15 @@ public class PersonalizzaMenuController {
         }
     }
 
+
     public HomepageController loadHomePageController() throws IOException {
         FXMLLoader loaderHomepageController = new FXMLLoader(getClass().getResource("/homepage/homepage.fxml"));
         root = loaderHomepageController.load();
         return loaderHomepageController.getController();
     }
+
+
+
     public void apriSchermataMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
