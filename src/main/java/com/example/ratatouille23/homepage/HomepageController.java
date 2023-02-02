@@ -19,6 +19,29 @@ public class HomepageController {
     private Scene scene;
     private Parent root;
 
+    private Parent root2;
+
+    private PersonalizzaMenuController menuController ;
+
+    public HomepageController(){
+        FXMLLoader loaderPMC = new FXMLLoader(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
+        try {
+            root = loaderPMC.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        menuController = loaderPMC.getController();
+    }
+
+
+/*
+    FXMLLoader loaderCUC = new FXMLLoader(getClass().getResource("/creaUtente/crea-utente.fxml"));
+    root2 = loaderCUC.load();
+    creautenteController = loaderCUC.getController();
+    private CreaUtenteController creautenteController;
+
+ */
+
 
     public void apriSchermataHome(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/homepage/homepage.fxml"));
@@ -28,13 +51,14 @@ public class HomepageController {
         stage.show();
     }
 
-    public void pulsantePersonalizzaMenuCliccato(){
-        apriSchermataPersonalizzaMenu();
+
+    public void clickPulsantePersonalizzaMenu(ActionEvent event){
+        try {
+            menuController.apriSchermataPersonalizzaMenu(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-
-    public void clickPulsanteCreaUtente(ActionEvent e) throws IOException{
-
-    }
 
 }

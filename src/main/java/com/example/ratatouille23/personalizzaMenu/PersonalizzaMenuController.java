@@ -25,24 +25,10 @@ public class PersonalizzaMenuController {
     private Parent root;
 
     private HomepageController homepageController;
-    {
-        try {
-            homepageController = loadHomePageController();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    public HomepageController loadHomePageController() throws IOException {
-        FXMLLoader loaderHomepageController = new FXMLLoader(getClass().getResource("/homepage/homepage.fxml"));
-        root = loaderHomepageController.load();
-        return loaderHomepageController.getController();
-    }
 
 
 
-    public void apriSchermataMenu(ActionEvent event) throws IOException {
+    public void apriSchermataPersonalizzaMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -50,9 +36,6 @@ public class PersonalizzaMenuController {
         stage.show();
     }
 
-    public void tornaAllaHome(ActionEvent e) throws IOException{
-        homepageController.apriSchermataHome(e);
-    }
 
     public void clickPulsantePiu(ActionEvent e){
         AnchorPane newPanelContent = new AnchorPane();
@@ -61,4 +44,15 @@ public class PersonalizzaMenuController {
         listaCategorie.getPanes().add(pane);
     }
 
+
+    public void clickPulsanteIndietro(ActionEvent event){
+        try{
+            FXMLLoader loaderHPC = new FXMLLoader(getClass().getResource("/homepage/homepage.fxml"));
+            root = loaderHPC.load();
+            homepageController = loaderHPC.getController();
+            homepageController.apriSchermataHome(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
