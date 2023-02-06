@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.creaUtente.CreaUtenteController">
    <children>
       <Label layoutX="264.0" layoutY="14.0" text="Crea utente" />
       <Button layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#clickPulsanteIndietro" text="&lt;---" />
+      <TextField fx:id="nomeUtenteTextField" layoutX="41.0" layoutY="90.0" />
+      <TextField fx:id="emailTextField" layoutX="41.0" layoutY="141.0" />
+      <ComboBox fx:id="tipoDipendenteComboBox" layoutX="37.0" layoutY="215.0" prefWidth="150.0" promptText="Tipo dipendente" />
+      <Button fx:id="pulsanteConferma" layoutX="261.0" layoutY="328.0" mnemonicParsing="false" text="Conferma" />
    </children>
 </AnchorPane>

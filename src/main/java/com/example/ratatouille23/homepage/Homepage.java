@@ -34,6 +34,7 @@ public class Homepage extends Application {
         stage.setScene(scene);
         stage.show();
 
+
     }
 
     public void apriSchermataHome(ActionEvent event) throws IOException {

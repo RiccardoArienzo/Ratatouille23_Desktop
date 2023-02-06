@@ -9,4 +9,6 @@ module com.example.ratatouille23 {
     opens com.example.ratatouille23.homepage to javafx.fxml;
     exports com.example.ratatouille23.personalizzaMenu;
     opens com.example.ratatouille23.personalizzaMenu to javafx.fxml;
+    exports com.example.ratatouille23.creaUtente;
+    opens com.example.ratatouille23.creaUtente to javafx.fxml;
 }
