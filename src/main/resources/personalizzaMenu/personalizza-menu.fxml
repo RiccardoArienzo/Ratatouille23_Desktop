@@ -9,8 +9,8 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.personalizzaMenu.PersonalizzaMenuController">
    <children>
       <Label layoutX="242.0" layoutY="28.0" text="Personalizza Menu" />
-      <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#clickPulsanteIndietro" text="&lt;---" />
-      <Button layoutX="434.0" layoutY="24.0" mnemonicParsing="false" onAction="#clickPulsantePiu" text="+" />
+      <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#clickPulsanteIndietroPersonalizzaMenu" text="&lt;---" />
+      <Button layoutX="434.0" layoutY="24.0" mnemonicParsing="false" onAction="#clickPulsantePiu" text="+ Aggiungi Categoria" />
       <Accordion fx:id="listaCategorie" layoutX="199.0" layoutY="83.0">
         <panes>
           <TitledPane animated="false" text="untitled 1">
@@ -20,5 +20,7 @@
           </TitledPane>
         </panes>
       </Accordion>
+      <Button layoutX="434.0" layoutY="71.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" onAction="#clickPulsanteAggiungiPiatto" text="+ Aggiungi piatto" />
+      <Button layoutX="479.0" layoutY="119.0" mnemonicParsing="false" text="- Elimina" />
    </children>
 </AnchorPane>

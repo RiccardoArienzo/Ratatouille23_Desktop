@@ -1,6 +1,7 @@
 package com.example.ratatouille23.homepage;
 
 import com.example.ratatouille23.creaUtente.SchermataCreaUtente;
+import com.example.ratatouille23.inserisciAvvisi.SchermataInserisciAvvisi;
 import com.example.ratatouille23.personalizzaMenu.SchermataPersonalizzaMenu;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
@@ -14,6 +15,7 @@ public class HomepageController {
 
     private SchermataPersonalizzaMenu personalizzaMenu = new SchermataPersonalizzaMenu();
     private SchermataCreaUtente creaUtente = new SchermataCreaUtente();
+    private SchermataInserisciAvvisi inserisciAvvisi = new SchermataInserisciAvvisi();
 
 
 
@@ -28,6 +30,14 @@ public class HomepageController {
     public void clickPulsanteCreaUtente(ActionEvent event){
         try {
             creaUtente.apriSchermataCreaUtente(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clickPulsanteInserisciAvvisi(ActionEvent event){
+        try {
+            inserisciAvvisi.apriSchermataInserisciAvvisi(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

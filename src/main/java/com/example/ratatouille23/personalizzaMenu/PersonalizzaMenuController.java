@@ -27,6 +27,11 @@ public class PersonalizzaMenuController {
 
     private Homepage home = new Homepage();
 
+    private SchermataPersonalizzaMenu personalizzaMenu = new SchermataPersonalizzaMenu();
+
+    private SchermataNuovoPiatto nuovoPiatto = new SchermataNuovoPiatto();
+
+
 
 
     public void clickPulsantePiu(ActionEvent e){
@@ -36,12 +41,28 @@ public class PersonalizzaMenuController {
         listaCategorie.getPanes().add(pane);
     }
 
+    public void clickPulsanteAggiungiPiatto(ActionEvent event){
+        try {
+            nuovoPiatto.apriSchermataNuovoPiatto(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    public void clickPulsanteIndietro(ActionEvent event){
+    public void clickPulsanteIndietroPersonalizzaMenu(ActionEvent event){
         try {
             home.apriSchermataHome(event);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
+    public void clickPulsanteIndietroNuovoPiatto(ActionEvent event){
+        try {
+            personalizzaMenu.apriSchermataPersonalizzaMenu(event);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

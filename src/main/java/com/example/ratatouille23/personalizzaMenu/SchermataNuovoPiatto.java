@@ -7,37 +7,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Accordion;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class SchermataPersonalizzaMenu extends Application {
+public class SchermataNuovoPiatto extends Application {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-
-
-
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Homepage.class.getResource("/personalizzaMenu/personalizza-menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("A capocchj");
         stage.setScene(scene);
         stage.show();
-
     }
 
-    public void apriSchermataPersonalizzaMenu(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
+    public void apriSchermataNuovoPiatto(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/personalizzaMenu/nuovo-piatto.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
