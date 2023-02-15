@@ -19,6 +19,9 @@ public class HomepageController {
 
 
 
+
+
+
     public void clickPulsantePersonalizzaMenu(ActionEvent event){
         try {
             personalizzaMenu.apriSchermataPersonalizzaMenu(event);

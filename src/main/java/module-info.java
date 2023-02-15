@@ -1,7 +1,9 @@
 module com.example.ratatouille23 {
     requires javafx.controls;
     requires javafx.fxml;
-
+    requires software.amazon.awssdk.services.cognitoidentityprovider;
+    requires software.amazon.awssdk.regions;
+    requires software.amazon.awssdk.awscore;
 
     opens com.example.ratatouille23 to javafx.fxml;
     exports com.example.ratatouille23;
@@ -13,4 +15,6 @@ module com.example.ratatouille23 {
     opens com.example.ratatouille23.creaUtente to javafx.fxml;
     opens com.example.ratatouille23.inserisciAvvisi to javafx.fxml;
     exports com.example.ratatouille23.inserisciAvvisi;
+    opens com.example.ratatouille23.Login to javafx.fxml;
+    exports com.example.ratatouille23.Login;
 }

@@ -1,5 +1,6 @@
-package com.example.ratatouille23.homepage;
+package com.example.ratatouille23.Login;
 
+import com.example.ratatouille23.homepage.Homepage;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Homepage extends Application {
+public class SchermataLogin extends Application {
 
     private Stage stage;
     private Scene scene;
@@ -22,22 +23,18 @@ public class Homepage extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Homepage.class.getResource("/homepage/homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Homepage.class.getResource("/Login/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-
-
     }
 
-    public void apriSchermataHome(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/homepage/homepage.fxml"));
+    public void apriSchermataReimpostaPassword(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/Login/reimposta-password.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
 }

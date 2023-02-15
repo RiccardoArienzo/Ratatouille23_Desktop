@@ -4,11 +4,10 @@ import com.example.ratatouille23.homepage.Homepage;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class InserisciAvvisiController {
 
@@ -38,8 +37,14 @@ public class InserisciAvvisiController {
             if (verificaCampiVuoti()) {
                 home.apriSchermataHome(event);
             } else {
-                // prova
-                System.out.println("Non puoi tornare indietro");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Conferma");
+                alert.setHeaderText("Sei sicuro di voler tornare indietro?");
+                alert.setContentText("I dati inseriti non verranno salvati.");
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                    home.apriSchermataHome(event);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

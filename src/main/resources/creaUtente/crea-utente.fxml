@@ -14,6 +14,6 @@
       <TextField fx:id="nomeUtenteTextField" layoutX="41.0" layoutY="90.0" />
       <TextField fx:id="emailTextField" layoutX="41.0" layoutY="141.0" />
       <ComboBox fx:id="tipoDipendenteComboBox" layoutX="37.0" layoutY="215.0" prefWidth="150.0" promptText="Tipo dipendente" />
-      <Button fx:id="pulsanteConferma" layoutX="261.0" layoutY="328.0" mnemonicParsing="false" text="Conferma" />
+      <Button fx:id="pulsanteRegistraUtente" layoutX="261.0" layoutY="328.0" mnemonicParsing="false" onAction="#clickPulsanteRegistraUtente" text="Registra Utente" />
    </children>
 </AnchorPane>
