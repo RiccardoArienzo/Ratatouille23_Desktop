@@ -12,8 +12,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
+import software.amazon.awssdk.services.cognitoidentityprovider.model.*;
+
 public class ReimpostaPasswordController {
 
+
+    @FXML
+
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     TextField vecchiaPasswordTextField;
@@ -24,9 +36,6 @@ public class ReimpostaPasswordController {
     @FXML
     Button pulsanteConferma;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
 
     private Homepage home = new Homepage();
 
@@ -38,18 +47,28 @@ public class ReimpostaPasswordController {
                         nuovaPasswordTextField.textProperty()
                 )
         );
+
     }
 
-    public void clickPulsanteConfermaNuovaPassword(ActionEvent event){
-        // if vecchia pass corrisponde allora tras
-        //TODO
+    public void clickPulsanteConfermaNuovaPassword(ActionEvent event) {
+
+    }
+
+    public static void changeTempPassword(CognitoIdentityProviderClient identityProviderClient, String clientId, String username, String newPassword, String poolId){
         try {
-            home.apriSchermataHome(event);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            AdminSetUserPasswordRequest passwordRequest = AdminSetUserPasswordRequest.builder()
+                    .username(username)
+                    .userPoolId(poolId)
+                    .password(newPassword)
+                    .permanent(true)
+                    .build();
+
+            identityProviderClient.adminSetUserPassword(passwordRequest);
+            System.out.println("The password was successfully changed");
+
+        } catch(CognitoIdentityProviderException e) {
+            System.err.println(e.awsErrorDetails().errorMessage());
+            System.exit(1);
         }
-        //else dialog errore
     }
-
-
 }

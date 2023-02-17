@@ -1,5 +1,6 @@
 package com.example.ratatouille23.creaUtente;
 
+import com.example.ratatouille23.Utils.CognitoSettings;
 import com.example.ratatouille23.homepage.Homepage;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -30,10 +31,9 @@ public class CreaUtenteController {
 
     private Homepage homepage = new Homepage();
 
+    private CognitoSettings cs = new CognitoSettings();
+
     public void initialize(){
-
-        //tipoDipendenteComboBox.getItems().addAll("Supervisore", "Addetto alla cucina", "Addetto alla sala" );
-
         // Creazione di un'istanza del client CognitoIdentityProvider
         CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder().region(Region.EU_CENTRAL_1).build();
 
