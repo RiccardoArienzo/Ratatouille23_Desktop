@@ -40,4 +40,8 @@ public class Homepage extends Application {
         stage.show();
     }
 
-}
+    public void onPulsantePersonalizzaMenuClicked(ActionEvent event) {
+
+    }
+
+    }
