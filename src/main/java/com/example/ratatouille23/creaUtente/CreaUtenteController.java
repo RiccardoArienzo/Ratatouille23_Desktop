@@ -31,8 +31,6 @@ public class CreaUtenteController {
 
     private Homepage homepage = new Homepage();
 
-    private CognitoSettings cs = new CognitoSettings();
-
     public void initialize(){
         // Creazione di un'istanza del client CognitoIdentityProvider
         CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder().region(Region.EU_CENTRAL_1).build();

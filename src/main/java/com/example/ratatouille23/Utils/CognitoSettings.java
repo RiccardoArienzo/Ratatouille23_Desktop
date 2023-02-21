@@ -1,32 +1,34 @@
 package com.example.ratatouille23.Utils;
 
+import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 
-public class CognitoSettings {
+public abstract class CognitoSettings {
 
-    String userPoolId = "eu-central-1_aseBjh2cw";
-    String appClientID = "6k82cmv89ilsocdetlfcn2l99m";
-    String accessKey = "AKIATOOJQDOZYIMLO6P6";
-    String secretAccessKey = "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";
-    Region cognitoRegion = Region.EU_CENTRAL_1;
+    static final String userPoolId = "eu-central-1_aseBjh2cw";
+    static final String appClientID = "6k82cmv89ilsocdetlfcn2l99m";
+    static final String accessKey = "AKIATOOJQDOZYIMLO6P6";
+    static final String secretAccessKey = "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";
+    static final Region cognitoRegion = Region.EU_CENTRAL_1;
 
 
-    public String getUserPoolID(){
+    public static String getUserPoolID(){
         return userPoolId;
     }
-    public String getAppClientId(){
+    public static String getAppClientId(){
         return appClientID;
     }
 
-    public String getAccessKey(){
+    public static String getAccessKey(){
         return accessKey;
     }
 
-    public String getSecretAccessKey(){
+    public static String getSecretAccessKey(){
         return secretAccessKey;
     }
 
-    public Region getRegion(){
+    public static Region getRegion(){
         return cognitoRegion;
     }
 }

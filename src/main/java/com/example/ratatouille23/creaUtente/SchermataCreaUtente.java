@@ -30,11 +30,14 @@ public class SchermataCreaUtente extends Application {
         stage.show();
     }
 
-    public void apriSchermataCreaUtente(ActionEvent event) throws IOException {
+    public Node apriSchermataCreaUtente(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/creaUtente/crea-utente.fxml"));
+        /*
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+         */
+        return root;
     }
 }
