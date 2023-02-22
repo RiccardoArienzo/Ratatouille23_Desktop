@@ -62,7 +62,7 @@
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </right>
    <center>
-      <AnchorPane prefHeight="690.0" prefWidth="594.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="200.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
          <styleClass>
             <String fx:value="shadow" />
             <String fx:value="nav-2" />

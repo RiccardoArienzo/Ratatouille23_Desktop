@@ -36,11 +36,8 @@ public class SchermataPersonalizzaMenu extends Application {
 
     }
 
-    public void apriSchermataPersonalizzaMenu(ActionEvent event) throws IOException {
+    public Node apriSchermataPersonalizzaMenu(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        return root;
     }
 }

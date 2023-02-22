@@ -30,11 +30,8 @@ public class SchermataInserisciAvvisi extends Application {
         stage.show();
     }
 
-    public void apriSchermataInserisciAvvisi(ActionEvent event) throws IOException {
+    public Node apriSchermataInserisciAvvisi(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/inserisciAvvisi/inserisci-avvisi.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        return root;
     }
 }

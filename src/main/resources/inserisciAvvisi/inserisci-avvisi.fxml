@@ -1,18 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.inserisciAvvisi.InserisciAvvisiController">
-   <children>
-      <Button fx:id="pulsanteIndietro" layoutX="20.0" layoutY="346.0" mnemonicParsing="false" onAction="#clickPulsanteIndietroInserisciAvvisi" text="&lt;---" />
-      <TextField fx:id="oggettoAvviso" layoutX="87.0" layoutY="47.0" prefHeight="25.0" prefWidth="446.0" promptText="Oggetto:" />
-      <TextArea fx:id="corpoAvviso" layoutX="37.0" layoutY="100.0" prefHeight="200.0" prefWidth="527.0" />
-      <Label layoutX="245.0" layoutY="14.0" text="Inserisci Avviso" />
-      <Button fx:id="pulsanteInvia" layoutX="271.0" layoutY="346.0" mnemonicParsing="false" text="Invia" />
-   </children>
-</AnchorPane>
+<BorderPane prefHeight="690.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.inserisciAvvisi.InserisciAvvisiController">
+   <center>
+      <AnchorPane stylesheets="@../homepage/homepage.css" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="oggettoAvviso" layoutX="8.0" layoutY="34.0" prefHeight="26.0" prefWidth="578.0" promptText="Oggetto:" styleClass="textfield" stylesheets="@../homepage/homepage.css" />
+            <TextArea fx:id="corpoAvviso" layoutX="12.0" layoutY="96.0" prefHeight="190.0" prefWidth="570.0" promptText="Inserire avviso" styleClass="textfield" stylesheets="@../homepage/homepage.css" />
+            <Button fx:id="pulsanteInvia" layoutX="204.0" layoutY="330.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="186.0" stylesheets="@../homepage/homepage.css" text="Invia avviso" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="signout" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <font>
+                  <Font name="Tahoma" size="18.0" />
+               </font>
+            </Button>
+         </children>
+         <styleClass>
+            <String fx:value="white-bg" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
+   </center>
+   <top>
+      <AnchorPane prefHeight="125.0" prefWidth="594.0" stylesheets="@../homepage/homepage.css" BorderPane.alignment="CENTER">
+         <styleClass>
+            <String fx:value="nav-1" />
+            <String fx:value="shadow" />
+         </styleClass>
+         <children>
+            <Label layoutX="141.0" layoutY="29.0" text="Inserisci Avvisi" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="53.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" layoutX="14.0" layoutY="91.0" size="80" />
+            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="94.0" layoutY="39.0" size="30" />
+         </children>
+      </AnchorPane>
+   </top>
+</BorderPane>

@@ -54,3 +54,29 @@
     -fx-background-color: #fff;
     -fx-background-radius: 6px;
 }
+
+.accordion-style{
+    -fx-border-color: #3796a7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.titled-pane {
+    -fx-background-color: #3796a7;
+}
+
+
+
+.titled-pane .title {
+    -fx-background-color: #3796a7;
+    -fx-font-size: 14pt;
+    -fx-text-fill: #ffffff;
+}
+
+.titled-pane > .content {
+    -fx-padding: 10px;
+}
+
+.anchor-border {
+  -fx-background-radius: 8px;
+}

@@ -43,25 +43,16 @@ public class HomepageController {
     }
 
     public void clickPulsantePersonalizzaMenu(ActionEvent event){
-
-        /*
         try {
-            personalizzaMenu.apriSchermataPersonalizzaMenu(event);
+            borderPane.getChildren().remove(borderPane.getCenter());
+            borderPane.setCenter(personalizzaMenu.apriSchermataPersonalizzaMenu(event));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-         */
 
     }
 
     public void clickPulsanteCreaUtente(ActionEvent event){
-        /*
-        try {
-            creaUtente.apriSchermataCreaUtente(event);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-         */
         try {
             borderPane.getChildren().remove(borderPane.getCenter());
             borderPane.setCenter(creaUtente.apriSchermataCreaUtente(event));
@@ -72,7 +63,8 @@ public class HomepageController {
 
     public void clickPulsanteInserisciAvvisi(ActionEvent event){
         try {
-            inserisciAvvisi.apriSchermataInserisciAvvisi(event);
+            borderPane.getChildren().remove(borderPane.getCenter());
+            borderPane.setCenter(inserisciAvvisi.apriSchermataInserisciAvvisi(event));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
