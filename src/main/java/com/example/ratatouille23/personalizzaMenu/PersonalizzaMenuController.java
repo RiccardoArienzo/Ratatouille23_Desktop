@@ -1,46 +1,22 @@
 package com.example.ratatouille23.personalizzaMenu;
 
-import com.example.ratatouille23.homepage.Homepage;
-import com.example.ratatouille23.homepage.HomepageController;
-import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Accordion;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TitledPane;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Optional;
 
 public class PersonalizzaMenuController {
 
-    @FXML
-    Accordion listaCategorie;
+    PersonalizzaMenuView personalizzaMenu;
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    private Homepage home = new Homepage();
-
-    private SchermataPersonalizzaMenu personalizzaMenu = new SchermataPersonalizzaMenu();
-
-    private SchermataNuovoPiatto nuovoPiatto = new SchermataNuovoPiatto();
+    PersonalizzaMenuController(PersonalizzaMenuView personalizzamenu){
+        this.personalizzaMenu = personalizzamenu;
+    }
 
 
-
-
-    public void clickPulsantePiu(ActionEvent e) {
+    public void onPulsanteAggiungiCategoriaClicked() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Crea nuova categoria");
         dialog.setHeaderText("Inserisci il nome della nuova categoria");
@@ -49,28 +25,32 @@ public class PersonalizzaMenuController {
             AnchorPane newPanelContent = new AnchorPane();
             newPanelContent.getChildren().add(new Label("Hello World"));
             TitledPane pane = new TitledPane(name, newPanelContent);
-            listaCategorie.getPanes().add(pane);
+            personalizzaMenu.listaCategorie.getPanes().add(pane);
+
+            //TODO aggiungere qui il codice che crea una categoria e la manda al db
 
         });
     }
 
+    public void onPulsanteAggiungiPiattoClicked() {
 
-    public void clickPulsanteAggiungiPiatto(ActionEvent event){
-        try {
-            nuovoPiatto.apriSchermataNuovoPiatto(event);
+        /*
+            try {
+            Dialog aggiungiPiattoDialog = new Dialog<>();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/personalizzaMenu/nuovo-piatto.fxml"));
+            aggiungiPiattoDialog.getDialogPane().setContent(loader.load());
+
+            aggiungiPiattoDialog.setTitle("Aggiungi piatto");
+            aggiungiPiattoDialog.setResizable(false);
+
+            aggiungiPiattoDialog.showAndWait();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void clickPulsanteIndietroPersonalizzaMenu(ActionEvent event){
-        try {
-            home.apriSchermataHome(event);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+         */
     }
-
 
 
 }

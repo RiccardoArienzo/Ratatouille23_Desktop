@@ -4,6 +4,8 @@ import com.example.ratatouille23.Model.Piatto;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -11,7 +13,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 
-public class NuovoPiattoController {
+public class NuovoPiattoView {
 
     @FXML
     TextField nomePiattoTextField;
@@ -33,10 +35,6 @@ public class NuovoPiattoController {
 
 
 
-
-    SchermataPersonalizzaMenu personalizzaMenu = new SchermataPersonalizzaMenu();
-    SchermataNuovoPiatto schermataNuovoPiatto = new SchermataNuovoPiatto();
-
     public void initialize(){
 
         pulsanteConferma.disableProperty().bind(
@@ -57,11 +55,10 @@ public class NuovoPiattoController {
         // codice per inviarlo al backend
     }
 
-    public void clickPulsanteIndietroNuovoPiatto(ActionEvent event){
-        try {
-            personalizzaMenu.apriSchermataPersonalizzaMenu(event);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+    public Node caricaNodoNuovoPiatto() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/personalizzaMenu/nuovo-piatto.fxml"));
+        return loader.load();
     }
+
 }

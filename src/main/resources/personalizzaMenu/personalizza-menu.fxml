@@ -6,60 +6,57 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="300.0" styleClass="white-bg" stylesheets="@../homepage/homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.personalizzaMenu.PersonalizzaMenuController">
-   <center>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="300.0" stylesheets="@../homepage/homepage.css">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="500.0" styleClass="white-bg" stylesheets="@../homepage/homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.personalizzaMenu.PersonalizzaMenuView">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="129.0" prefWidth="500.0" spacing="60.0">
          <children>
-            <Button layoutX="37.0" layoutY="455.0" mnemonicParsing="false" onAction="#clickPulsantePiu" styleClass="signout" stylesheets="@../homepage/homepage.css" text="+ Aggiungi Categoria" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#clickPulsantePiu" styleClass="signout" stylesheets="@../homepage/homepage.css" text="+ Aggiungi Categoria" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="13.0" />
-               </font></Button>
-            <Button layoutX="8.0" layoutY="503.0" mnemonicParsing="false" onAction="#clickPulsanteAggiungiPiatto" prefHeight="25.0" prefWidth="148.0" text="+ Aggiungi piatto" />
-            <Button layoutX="209.0" layoutY="503.0" mnemonicParsing="false" text="- Elimina" />
-            <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="13.0" maxHeight="-Infinity" prefHeight="413.0" prefWidth="277.0" styleClass="anchor-border" stylesheets="@../homepage/homepage.css">
-              <content>
-                <AnchorPane maxHeight="1000.0" minHeight="0.0" minWidth="0.0" prefWidth="274.0" styleClass="shadow" stylesheets="@../homepage/homepage.css">
-                     <children>
-                        <Accordion prefWidth="274.0">
-                          <panes>
-                            <TitledPane animated="false" styleClass="nav-1" text="untitled 1" textFill="WHITE">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                              </content>
-                                 <font>
-                                    <Font name="Tahoma" size="13.0" />
-                                 </font>
-                            </TitledPane>
-                          </panes>
-                        </Accordion>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </ScrollPane>
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#clickPulsanteAggiungiPiatto" text="+ Aggiungi piatto" />
+            <Button mnemonicParsing="false" text="- Elimina" />
          </children>
-         <styleClass>
-            <String fx:value="white-bg" />
-            <String fx:value="shadow" />
-         </styleClass>
-      </AnchorPane>
-   </center>
+      </HBox>
+   </bottom>
    <top>
-      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="121.0" prefWidth="300.0" stylesheets="@../homepage/homepage.css">
+      <HBox alignment="CENTER" prefHeight="130.0" prefWidth="500.0" stylesheets="@../homepage/homepage.css" BorderPane.alignment="CENTER">
          <styleClass>
             <String fx:value="nav-1" />
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <Label layoutX="16.0" layoutY="44.0" text="PERSONALIZZA MENU" textFill="WHITE">
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" text="PERSONALIZZA MENU" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Tahoma" size="26.0" />
+                  <Font name="Tahoma" size="29.0" />
                </font>
             </Label>
          </children>
-      </AnchorPane>
+      </HBox>
    </top>
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Accordion fx:id="listaCategorie">
+                    <panes>
+                        <TitledPane animated="true" text="untitled">
+                           <content>
+                              <VBox prefHeight="118.0" prefWidth="462.0" />
+                           </content>
+                        </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
 </BorderPane>
