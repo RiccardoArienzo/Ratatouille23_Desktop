@@ -6,14 +6,10 @@ module com.example.ratatouille23 {
     requires software.amazon.awssdk.awscore;
     requires software.amazon.awssdk.auth;
 
-    exports com.example.ratatouille23.homepage;
-    opens com.example.ratatouille23.homepage to javafx.fxml;
-    exports com.example.ratatouille23.personalizzaMenu;
-    opens com.example.ratatouille23.personalizzaMenu to javafx.fxml;
-    exports com.example.ratatouille23.creaUtente;
-    opens com.example.ratatouille23.creaUtente to javafx.fxml;
-    opens com.example.ratatouille23.inserisciAvvisi to javafx.fxml;
-    exports com.example.ratatouille23.inserisciAvvisi;
-    opens com.example.ratatouille23.Login to javafx.fxml;
-    exports com.example.ratatouille23.Login;
+    exports com.example.ratatouille23.Controller;
+    opens com.example.ratatouille23.Controller to javafx.fxml;
+    exports com.example.ratatouille23.View;
+    opens com.example.ratatouille23.View to javafx.fxml;
+    exports com.example.ratatouille23;
+    opens com.example.ratatouille23 to javafx.fxml;
 }

@@ -1,6 +1,7 @@
-package com.example.ratatouille23.homepage;
+package com.example.ratatouille23;
 
-import com.example.ratatouille23.homepage.HomepageView;
+import com.example.ratatouille23.Controller.HomepageController;
+import com.example.ratatouille23.View.HomepageView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

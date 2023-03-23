@@ -1,17 +1,13 @@
-package com.example.ratatouille23.homepage;
+package com.example.ratatouille23.Controller;
 
-import com.example.ratatouille23.View;
-import com.example.ratatouille23.creaUtente.CreaUtenteView;
-import com.example.ratatouille23.inserisciAvvisi.InserisciAvvisiView;
-import com.example.ratatouille23.personalizzaMenu.NuovoPiattoView;
-import com.example.ratatouille23.personalizzaMenu.PersonalizzaMenuView;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.BorderPane;
+import com.example.ratatouille23.View.CreaUtenteView;
+import com.example.ratatouille23.View.HomepageView;
+import com.example.ratatouille23.View.InserisciAvvisiView;
+import com.example.ratatouille23.View.NuovoPiattoView;
+import com.example.ratatouille23.View.PersonalizzaMenuView;
+import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
-import java.util.Optional;
 
 public class HomepageController {
 
@@ -27,14 +23,15 @@ public class HomepageController {
     //**************************
 
     // Costruttori
-    HomepageController(HomepageView home, PersonalizzaMenuView personalizzamenu, NuovoPiattoView nuovopiatto,
-                       CreaUtenteView creautente, InserisciAvvisiView inserisciavvisi){
-        this.homepage = home;
-        this.personalizzaMenu = personalizzamenu;
-        this.nuovoPiatto = nuovopiatto;
-        this.creaUtente = creautente;
-        this.inserisciAvvisi = inserisciavvisi;
-    }
+
+    public HomepageController(HomepageView view){
+        this.homepage = view;
+
+        loadPersonalizzaMenu();
+        loadCreaUtente();
+        loadNuovoPiatto();
+        loadInserisciAvvisi();
+    };
 
 
     //**************************
@@ -43,10 +40,13 @@ public class HomepageController {
 
 
     public void onPersonalizzaMenuClicked() {
+        homepage.updateCenterView(personalizzaMenu.getNode());
+        nodoCorrente = "personalizzaMenu";
+       /*
         try {
             if (nodoCorrente == "creaUtente"){
                 if(creaUtente.verificaCampiVuoti()){
-                    setBorderPaneCenter(personalizzaMenu.caricaNodoPersonalizzaMenu());
+                    homepage.updateCenterView(personalizzaMenu.caricaNodoPersonalizzaMenu());
                     nodoCorrente = "personalizzaMenu";
                 } else {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -55,23 +55,25 @@ public class HomepageController {
                     alert.setContentText("I dati inseriti non verranno salvati.");
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == ButtonType.OK) {
-                        setBorderPaneCenter(personalizzaMenu.caricaNodoPersonalizzaMenu());
+                        homepage.updateCenterView(personalizzaMenu.caricaNodoPersonalizzaMenu());
                         nodoCorrente = "personalizzaMenu";                    }
                 }
             } else {
-                setBorderPaneCenter(personalizzaMenu.caricaNodoPersonalizzaMenu());
+                homepage.updateCenterView(personalizzaMenu.caricaNodoPersonalizzaMenu());
                 nodoCorrente = "personalizzaMenu";
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        */
     }
 
 
 
     public void onCreaUtenteClicked() {
         try {
-            setBorderPaneCenter(creaUtente.caricaNodoCreaUtente());
+            homepage.updateCenterView(creaUtente.loadNode());
             nodoCorrente = "creaUtente";
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -81,9 +83,16 @@ public class HomepageController {
 
     public void onInserisciAvvisiClicked() {
         try {
+            homepage.updateCenterView(inserisciAvvisi.loadNode());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        nodoCorrente = "personalizzaMenu";
+        /*
+        try {
             if (nodoCorrente == "creaUtente"){
                 if(creaUtente.verificaCampiVuoti()){
-                    setBorderPaneCenter(personalizzaMenu.caricaNodoPersonalizzaMenu());
+                    homepage.updateCenterView(personalizzaMenu.caricaNodoPersonalizzaMenu());
                     nodoCorrente = "inserisciAvvisi";
                 } else {
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -92,16 +101,18 @@ public class HomepageController {
                     alert.setContentText("I dati inseriti non verranno salvati.");
                     Optional<ButtonType> result = alert.showAndWait();
                     if (result.get() == ButtonType.OK) {
-                        setBorderPaneCenter(personalizzaMenu.caricaNodoPersonalizzaMenu());
+                        homepage.updateCenterView(personalizzaMenu.caricaNodoPersonalizzaMenu());
                         nodoCorrente = "inserisciAvvisi";                    }
                 }
             } else {
-                setBorderPaneCenter(personalizzaMenu.caricaNodoPersonalizzaMenu());
+                homepage.updateCenterView(personalizzaMenu.caricaNodoPersonalizzaMenu());
                 nodoCorrente = "inserisciAvvisi";
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+         */
     }
     
 
@@ -134,16 +145,47 @@ public class HomepageController {
 
     //**************************
 
-    // Metodi di utility
+    // Metodi di loading
 
-    public void setBorderPaneCenter(Node node){
-        homepage.borderPane.getChildren().remove(homepage.borderPane.getCenter());
-        homepage.borderPane.setCenter(node);
+    public void loadPersonalizzaMenu(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/personalizzaMenu/personalizza-menu.fxml"));
+            loader.load();
+            this.personalizzaMenu = loader.getController();
+            this.personalizzaMenu.setNode(loader.getRoot());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-    public void setBorderPaneRight(Node node){
-       homepage.borderPane.getChildren().remove(homepage.borderPane.getRight());
-        homepage.borderPane.setCenter(node);
+    public void loadCreaUtente(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/creaUtente/crea-utente.fxml"));
+            loader.load();
+            this.creaUtente = loader.getController();
+            this.creaUtente.setNode(loader.getRoot());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void loadInserisciAvvisi(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/inserisciAvvisi/inserisci-avvisi.fxml"));
+            loader.load();
+            this.inserisciAvvisi = loader.getController();
+            this.inserisciAvvisi.setNode(loader.getRoot());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void loadNuovoPiatto(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/personalizzaMenu/nuovo-piatto.fxml"));
+            loader.load();
+            this.nuovoPiatto= loader.getController();
+            this.nuovoPiatto.setNode(loader.getRoot());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

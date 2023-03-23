@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="690.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.inserisciAvvisi.InserisciAvvisiController">
+<BorderPane prefHeight="690.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.Controller.InserisciAvvisiController">
    <center>
       <AnchorPane stylesheets="@../homepage/homepage.css" BorderPane.alignment="CENTER">
          <children>

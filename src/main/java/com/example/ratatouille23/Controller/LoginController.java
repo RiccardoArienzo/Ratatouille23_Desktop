@@ -1,7 +1,9 @@
-package com.example.ratatouille23.Login;
+package com.example.ratatouille23.Controller;
 
+import com.example.ratatouille23.View.LoginView;
+import com.example.ratatouille23.View.ReimpostaPasswordView;
 import com.example.ratatouille23.Model.Utente;
-import com.example.ratatouille23.homepage.HomepageView;
+import com.example.ratatouille23.View.HomepageView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.CognitoIdentityProviderException;
@@ -15,14 +17,11 @@ public class LoginController {
     private HomepageView homepage;
     private ReimpostaPasswordView reimpostaPassword;
 
-    public LoginController(LoginView loginView, HomepageView homepage) {
-        this.loginView = loginView;
-        this.homepage = homepage;
-    }
+    public LoginController() {}
 
     public void onPulsanteLoginClicked() {
         try {
-            if (Utente.Login(loginView.userNameTextField.getText(), loginView.passwordTextField.getText()) == null) {
+            if (Utente.Login(loginView.getUsernameText(), loginView.getPasswordText()) == null) {
                 homepage.apriSchermataHome();
             } else {
                 reimpostaPassword.apriSchermataReimpostaPassword();

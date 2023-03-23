@@ -1,5 +1,6 @@
-package com.example.ratatouille23.personalizzaMenu;
+package com.example.ratatouille23.Controller;
 
+import com.example.ratatouille23.View.PersonalizzaMenuView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TitledPane;
@@ -11,10 +12,9 @@ public class PersonalizzaMenuController {
 
     PersonalizzaMenuView personalizzaMenu;
 
-    PersonalizzaMenuController(PersonalizzaMenuView personalizzamenu){
-        this.personalizzaMenu = personalizzamenu;
-    }
-
+    public PersonalizzaMenuController(PersonalizzaMenuView view){
+        this.personalizzaMenu = view;
+    };
 
     public void onPulsanteAggiungiCategoriaClicked() {
         TextInputDialog dialog = new TextInputDialog();
@@ -25,7 +25,7 @@ public class PersonalizzaMenuController {
             AnchorPane newPanelContent = new AnchorPane();
             newPanelContent.getChildren().add(new Label("Hello World"));
             TitledPane pane = new TitledPane(name, newPanelContent);
-            personalizzaMenu.listaCategorie.getPanes().add(pane);
+            //personalizzaMenu.listaCategorie.getPanes().add(pane);
 
             //TODO aggiungere qui il codice che crea una categoria e la manda al db
 
@@ -52,5 +52,7 @@ public class PersonalizzaMenuController {
          */
     }
 
-
+    public void setPersonalizzaMenu(PersonalizzaMenuView personalizzaMenu) {
+        this.personalizzaMenu = personalizzaMenu;
+    }
 }

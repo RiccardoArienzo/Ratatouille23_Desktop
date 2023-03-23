@@ -1,7 +1,8 @@
-package com.example.ratatouille23.Login;
+package com.example.ratatouille23.Controller;
 
+import com.example.ratatouille23.View.ReimpostaPasswordView;
 import com.example.ratatouille23.Model.Utente;
-import com.example.ratatouille23.homepage.HomepageView;
+import com.example.ratatouille23.View.HomepageView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -19,7 +20,7 @@ public class ReimpostaPasswordController {
     }
 
     public boolean verificaPasswordUguali() {
-        if (reimpostaPassword.vecchiaPasswordTextField.getText().equals(reimpostaPassword.nuovaPasswordTextField.getText())){
+        if (reimpostaPassword.getOldPasswordText().equals(reimpostaPassword.getNewPasswordText())){
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -36,7 +37,7 @@ public class ReimpostaPasswordController {
     public void onPulsanteConfermaNuovaPasswordClicked() {
         try {
             if (verificaPasswordUguali()) {
-                Utente.ReimpostaPasswordPrimoAccesso(reimpostaPassword.nuovaPasswordTextField.getText());
+                Utente.ReimpostaPasswordPrimoAccesso(reimpostaPassword.getNewPasswordText());
                 homepage.apriSchermataHome();
             }
         } catch (IOException e) {

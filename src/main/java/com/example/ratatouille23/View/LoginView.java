@@ -1,7 +1,7 @@
-package com.example.ratatouille23.Login;
+package com.example.ratatouille23.View;
 
-import com.example.ratatouille23.Model.Utente;
-import com.example.ratatouille23.homepage.HomepageView;
+import com.example.ratatouille23.Controller.LoginController;
+import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,43 +9,41 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import software.amazon.awssdk.services.cognitoidentityprovider.model.CognitoIdentityProviderException;
 
 import java.io.IOException;
-import java.util.Optional;
 
-public class LoginView {
+public class LoginView implements ViewInterface {
 
-
-    @FXML
-    TextField userNameTextField;
 
     @FXML
-    TextField passwordTextField;
-
+    private TextField userNameTextField;
     @FXML
-    Button pulsanteLogin;
+    private TextField passwordTextField;
+    @FXML
+    private Button btnLogin;
 
 
     private Stage stage;
     private Scene scene;
     private Parent root;
 
+    private Node node;
+
 
     // Schermate
     private HomepageView homepage;
     private ReimpostaPasswordView reimpostaPassword;
-
     private LoginController loginController;
 
 
     public void initialize() {
-        pulsanteLogin.disableProperty().bind(
+
+        this.loginController = new LoginController();
+
+        btnLogin.disableProperty().bind(
                 Bindings.createBooleanBinding(
                         () -> userNameTextField.getText().isEmpty() || passwordTextField.getText().isEmpty(),
                         userNameTextField.textProperty(),
@@ -53,6 +51,21 @@ public class LoginView {
                 )
         );
 
+    }
+
+    // Metodi di ViewInterface
+    @Override
+    public Node loadNode() throws IOException {
+        return FXMLLoader.load(getClass().getResource("/Login/reimposta-password.fxml"));
+    }
+    @Override
+    public Node getNode(){
+        return this.node;
+    }
+
+    @Override
+    public void setNode(Node node){
+        this.node = node;
     }
 
 
@@ -67,4 +80,14 @@ public class LoginView {
         stage.setScene(scene);
         stage.show();
     }
+
+    public String getUsernameText() {
+        return userNameTextField.getText();
+    }
+
+    public String getPasswordText(){
+        return passwordTextField.getText();
+    }
+
+
 }

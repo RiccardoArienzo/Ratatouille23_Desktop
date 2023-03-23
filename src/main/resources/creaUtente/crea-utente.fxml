@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="690.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.creaUtente.CreaUtenteController">
+<BorderPane prefHeight="690.0" prefWidth="594.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.Controller.CreaUtenteController">
    <center>
       <AnchorPane prefHeight="690.0" prefWidth="594.0" stylesheets="@../homepage/homepage.css">
          <children>
             <TextField fx:id="nomeUtenteTextField" layoutX="177.0" layoutY="65.0" prefHeight="40.0" prefWidth="240.0" promptText="Nome utente" styleClass="textfield" stylesheets="@../homepage/homepage.css" AnchorPane.topAnchor="65.0" />
             <TextField fx:id="emailTextField" layoutX="177.0" layoutY="145.0" prefHeight="40.0" prefWidth="240.0" promptText="Email" styleClass="textfield" stylesheets="@../homepage/homepage.css" />
             <ComboBox fx:id="tipoDipendenteComboBox" layoutX="177.0" layoutY="225.0" prefHeight="40.0" prefWidth="240.0" promptText="Tipo dipendente" styleClass="textfield" stylesheets="@../homepage/homepage.css" />
-            <Button fx:id="pulsanteRegistraUtente" layoutX="220.0" layoutY="331.0" mnemonicParsing="false" onAction="#clickPulsanteRegistraUtente" prefHeight="44.0" prefWidth="149.0" stylesheets="@../homepage/homepage.css" text="Registra Utente" textFill="WHITE">
+            <Button fx:id="pulsanteRegistraUtente" layoutX="220.0" layoutY="331.0" mnemonicParsing="false" onAction="#clickBtnRegistraUtente" prefHeight="44.0" prefWidth="149.0" stylesheets="@../homepage/homepage.css" text="Registra Utente" textFill="WHITE">
                <styleClass>
                   <String fx:value="signout" />
                   <String fx:value="shadow" />

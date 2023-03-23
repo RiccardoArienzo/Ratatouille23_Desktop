@@ -1,5 +1,7 @@
-package com.example.ratatouille23.inserisciAvvisi;
+package com.example.ratatouille23.View;
 
+import com.example.ratatouille23.Controller.InserisciAvvisiController;
+import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,22 +10,31 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.util.Optional;
 
-public class InserisciAvvisiView {
+public class InserisciAvvisiView implements ViewInterface {
 
 
     @FXML
-    TextArea corpoAvviso;
+    private TextArea corpoAvviso;
     @FXML
-    Button pulsanteInvia;
+    private Button btnInvia;
     @FXML
-    TextField oggettoAvviso;
+    private TextField oggettoAvviso;
+
+    private Node node;
+    private InserisciAvvisiController inserisciAvvisiController;
+
+    // Costruttori
+
+    public InserisciAvvisiView() {}
 
 
+    // Metodi
 
     public void initialize(){
-        pulsanteInvia.disableProperty().bind(
+
+        this.inserisciAvvisiController = new InserisciAvvisiController(this);
+        btnInvia.disableProperty().bind(
                 Bindings.createBooleanBinding(
                         () -> oggettoAvviso.getText().isEmpty()  || corpoAvviso.getText().isEmpty(),
                         oggettoAvviso.textProperty(),
@@ -31,6 +42,26 @@ public class InserisciAvvisiView {
                 )
         );
     }
+
+    // Metodi di ViewInterface
+    @Override
+    public Node loadNode() throws IOException {
+        return FXMLLoader.load(getClass().getResource("/inserisciAvvisi/inserisci-avvisi.fxml"));
+    }
+
+
+    @Override
+    public Node getNode(){
+        return this.node;
+    }
+
+    @Override
+    public void setNode(Node node){
+        this.node = node;
+    }
+
+
+    // Event handler
 
     public void clickPulsanteIndietroInserisciAvvisi(ActionEvent event){
       /*  try {
@@ -61,7 +92,8 @@ public class InserisciAvvisiView {
         }
     }
 
-    public Node apriSchermataInserisciAvvisi(ActionEvent event) throws IOException {
-        return FXMLLoader.load(getClass().getResource("/inserisciAvvisi/inserisci-avvisi.fxml"));
+
+    public void setInserisciAvvisiController(InserisciAvvisiController inserisciAvvisiController) {
+        this.inserisciAvvisiController = inserisciAvvisiController;
     }
 }
