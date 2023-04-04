@@ -1,8 +1,8 @@
-package com.example.ratatouille23.Controller;
+package com.example.ratatouille23.Controller.Login;
 
-import com.example.ratatouille23.View.ReimpostaPasswordView;
+import com.example.ratatouille23.View.Login.ReimpostaPasswordView;
 import com.example.ratatouille23.Model.Utente;
-import com.example.ratatouille23.View.HomepageView;
+import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -12,9 +12,9 @@ import java.util.Optional;
 public class ReimpostaPasswordController {
 
     ReimpostaPasswordView reimpostaPassword;
-    HomepageView homepage;
+    HomepageAdminView homepage;
 
-    public ReimpostaPasswordController(ReimpostaPasswordView reimpostaPassword, HomepageView homepage) {
+    public ReimpostaPasswordController(ReimpostaPasswordView reimpostaPassword, HomepageAdminView homepage) {
         this.reimpostaPassword = reimpostaPassword;
         this.homepage = homepage;
     }

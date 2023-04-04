@@ -1,5 +1,6 @@
 package com.example.ratatouille23.Controller;
 
+import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import com.example.ratatouille23.View.PersonalizzaMenuView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
@@ -11,6 +12,7 @@ import java.util.Optional;
 public class PersonalizzaMenuController {
 
     PersonalizzaMenuView personalizzaMenu;
+    HomepageAdminView homepage;
 
     public PersonalizzaMenuController(PersonalizzaMenuView view){
         this.personalizzaMenu = view;
@@ -33,26 +35,12 @@ public class PersonalizzaMenuController {
     }
 
     public void onPulsanteAggiungiPiattoClicked() {
-
-        /*
-            try {
-            Dialog aggiungiPiattoDialog = new Dialog<>();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/personalizzaMenu/nuovo-piatto.fxml"));
-            aggiungiPiattoDialog.getDialogPane().setContent(loader.load());
-
-            aggiungiPiattoDialog.setTitle("Aggiungi piatto");
-            aggiungiPiattoDialog.setResizable(false);
-
-            aggiungiPiattoDialog.showAndWait();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        homepage.updateRightView(homepage.getHomepageController().getNuovoPiattoNode());
     }
 
-         */
-    }
 
-    public void setPersonalizzaMenu(PersonalizzaMenuView personalizzaMenu) {
-        this.personalizzaMenu = personalizzaMenu;
+
+    public void setHomepageView(HomepageAdminView home) {
+        this.homepage = home;
     }
 }

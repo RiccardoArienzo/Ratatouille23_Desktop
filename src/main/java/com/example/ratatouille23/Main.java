@@ -1,7 +1,5 @@
 package com.example.ratatouille23;
 
-import com.example.ratatouille23.Controller.HomepageController;
-import com.example.ratatouille23.View.HomepageView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,9 +15,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomepageView.class.getResource("/homepage/homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("Ratatouille23");
         stage.setScene(scene);
         stage.show();
     }

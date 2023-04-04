@@ -1,6 +1,7 @@
-package com.example.ratatouille23.View;
+package com.example.ratatouille23.View.Login;
 
-import com.example.ratatouille23.Controller.LoginController;
+import com.example.ratatouille23.Controller.Login.LoginController;
+import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -34,11 +35,11 @@ public class LoginView implements ViewInterface {
 
 
     // Schermate
-    private HomepageView homepage;
+    private HomepageAdminView homepage;
     private ReimpostaPasswordView reimpostaPassword;
     private LoginController loginController;
 
-
+    @FXML
     public void initialize() {
 
         this.loginController = new LoginController();
@@ -74,7 +75,7 @@ public class LoginView implements ViewInterface {
     }
 
     public void apriSchermataReimpostaPassword(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/Login/reimposta-password.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/reimposta-password.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

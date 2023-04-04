@@ -28,6 +28,8 @@ public class NuovoPiattoView implements ViewInterface {
     private TextArea allergeniPiattoTextArea;
     @FXML
     private Button btnConferma;
+    @FXML
+    private Button btnChiudiSchermata;
 
     private Node node;
     NuovoPiattoController nuovoPiattoController;
@@ -37,7 +39,10 @@ public class NuovoPiattoView implements ViewInterface {
 
     public NuovoPiattoView() {}
 
+    @FXML
     public void initialize(){
+
+        this.nuovoPiattoController = new NuovoPiattoController(this);
 
         btnConferma.disableProperty().bind(
                 Bindings.createBooleanBinding(
@@ -51,9 +56,18 @@ public class NuovoPiattoView implements ViewInterface {
         );
     }
 
+    // Event Handler
+
+    public void clickBtnConferma(){
+        nuovoPiattoController.onBtnConfermaClicked();
+    }
+    public void clickBtnChiudiSchermata(){
+        nuovoPiattoController.onBtnChiudiSchermataClicked();
+    }
+
     // Metodi di ViewInterface
     public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/personalizzaMenu/nuovo-piatto.fxml"));
+        return FXMLLoader.load(getClass().getResource("/nuovo-piatto.fxml"));
     }
 
 
@@ -69,7 +83,7 @@ public class NuovoPiattoView implements ViewInterface {
 
 
     // Event handler
-    private void clickPulsanteConferma(ActionEvent e){
+    private void clickBtnConferma(ActionEvent e){
 
     }
 
@@ -77,5 +91,29 @@ public class NuovoPiattoView implements ViewInterface {
 
     public void setNuovoPiattoController(NuovoPiattoController nuovoPiattoController) {
         this.nuovoPiattoController = nuovoPiattoController;
+    }
+
+    public TextField getNomePiattoTextField() {
+        return nomePiattoTextField;
+    }
+
+    public TextField getCostoPiattoTextField() {
+        return costoPiattoTextField;
+    }
+
+    public TextArea getDescrizionePiattoTextArea() {
+        return descrizionePiattoTextArea;
+    }
+
+    public ComboBox getCategoriaComboBox() {
+        return categoriaComboBox;
+    }
+
+    public TextArea getAllergeniPiattoTextArea() {
+        return allergeniPiattoTextArea;
+    }
+
+    public NuovoPiattoController getNuovoPiattoController() {
+        return nuovoPiattoController;
     }
 }

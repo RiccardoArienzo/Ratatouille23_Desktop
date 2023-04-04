@@ -1,9 +1,9 @@
-package com.example.ratatouille23.Controller;
+package com.example.ratatouille23.Controller.Login;
 
-import com.example.ratatouille23.View.LoginView;
-import com.example.ratatouille23.View.ReimpostaPasswordView;
+import com.example.ratatouille23.View.Login.LoginView;
+import com.example.ratatouille23.View.Login.ReimpostaPasswordView;
 import com.example.ratatouille23.Model.Utente;
-import com.example.ratatouille23.View.HomepageView;
+import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.CognitoIdentityProviderException;
@@ -14,7 +14,7 @@ import java.util.Optional;
 public class LoginController {
 
     private LoginView loginView;
-    private HomepageView homepage;
+    private HomepageAdminView homepage;
     private ReimpostaPasswordView reimpostaPassword;
 
     public LoginController() {}

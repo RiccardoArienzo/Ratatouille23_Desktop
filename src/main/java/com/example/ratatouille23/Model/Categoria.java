@@ -8,9 +8,9 @@ public class Categoria {
     private String nomeCategoria;
     private List<Piatto> listaPiatti;
 
-    public Categoria(String nome) {
+    public Categoria(String nome, List<Piatto> lista) {
         this.nomeCategoria = nome;
-        listaPiatti = new ArrayList<>();
+        listaPiatti = lista;
     }
 
     public String getNome() {

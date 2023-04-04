@@ -2,11 +2,11 @@ package com.example.ratatouille23.Model;
 
 public class Piatto {
     private String nomePiatto;
-    private float costoPiatto;
+    private String costoPiatto;
     private String allergeni;
     private String descrizione;
 
-    public Piatto(String nomePiatto, float costoPiatto, String allergeni, String descrizione) {
+    public Piatto(String nomePiatto, String costoPiatto, String allergeni, String descrizione) {
         this.nomePiatto = nomePiatto;
         this.costoPiatto = costoPiatto;
         this.allergeni = allergeni;
@@ -21,11 +21,11 @@ public class Piatto {
         this.nomePiatto = nomePiatto;
     }
 
-    public float getCostoPiatto() {
+    public String getCostoPiatto() {
         return costoPiatto;
     }
 
-    public void setCostoPiatto(float costoPiatto) {
+    public void setCostoPiatto(String costoPiatto) {
         this.costoPiatto = costoPiatto;
     }
 

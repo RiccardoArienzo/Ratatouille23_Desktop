@@ -1,19 +1,13 @@
-package com.example.ratatouille23.View;
-import com.example.ratatouille23.Controller.CreaUtenteController;
+package com.example.ratatouille23.View.Admin;
+import com.example.ratatouille23.Controller.Amministratore.CreaUtenteController;
 import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
-import software.amazon.awssdk.services.cognitoidentityprovider.model.ListGroupsResponse;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.cognitoidentityprovider.model.*;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class CreaUtenteView implements ViewInterface {
@@ -33,6 +27,7 @@ public class CreaUtenteView implements ViewInterface {
     public CreaUtenteView(){}
 
 
+    @FXML
     public void initialize() {
         this.creaUtenteController = new CreaUtenteController(this);
 
@@ -44,12 +39,14 @@ public class CreaUtenteView implements ViewInterface {
                         tipoDipendenteComboBox.valueProperty()
                 )
         );
+
+        creaUtenteController.fillGroupsCombobox();
     }
 
     // Metodi di ViewInterface
     @Override
     public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/creaUtente/crea-utente.fxml"));
+        return FXMLLoader.load(getClass().getResource("/crea-utente.fxml"));
     }
 
     @Override

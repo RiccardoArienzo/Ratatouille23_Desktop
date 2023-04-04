@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="500.0" styleClass="white-bg" stylesheets="@../homepage/homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.PersonalizzaMenuView">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="470.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.PersonalizzaMenuView">
    <bottom>
       <HBox alignment="CENTER" prefHeight="129.0" prefWidth="500.0" spacing="60.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#clickPulsantePiu" styleClass="signout" stylesheets="@../homepage/homepage.css" text="+ Aggiungi Categoria" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#clickBtnAggiungiCategoria" styleClass="signout" stylesheets="@homepage.css" text="+ Aggiungi Categoria" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#clickPulsanteAggiungiPiatto" text="+ Aggiungi piatto" />
+            <Button mnemonicParsing="false" onAction="#clickBtnAggiungiPiatto" text="+ Aggiungi piatto" />
             <Button mnemonicParsing="false" text="- Elimina" />
          </children>
       </HBox>
    </bottom>
    <top>
-      <HBox alignment="CENTER" prefHeight="130.0" prefWidth="500.0" stylesheets="@../homepage/homepage.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="500.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
          <styleClass>
             <String fx:value="nav-1" />
             <String fx:value="shadow" />
@@ -43,7 +43,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="white-bg" stylesheets="@homepage.css">
                <children>
                   <Accordion fx:id="listaCategorie">
                     <panes>
@@ -59,4 +59,8 @@
          </content>
       </ScrollPane>
    </center>
+   <styleClass>
+      <String fx:value="white-bg" />
+      <String fx:value="shadow" />
+   </styleClass>
 </BorderPane>

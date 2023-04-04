@@ -1,6 +1,6 @@
-package com.example.ratatouille23.Controller;
+package com.example.ratatouille23.Controller.Amministratore;
 
-import com.example.ratatouille23.View.CreaUtenteView;
+import com.example.ratatouille23.View.Admin.CreaUtenteView;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.*;

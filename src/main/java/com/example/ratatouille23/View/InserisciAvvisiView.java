@@ -31,6 +31,7 @@ public class InserisciAvvisiView implements ViewInterface {
 
     // Metodi
 
+    @FXML
     public void initialize(){
 
         this.inserisciAvvisiController = new InserisciAvvisiController(this);
@@ -46,7 +47,7 @@ public class InserisciAvvisiView implements ViewInterface {
     // Metodi di ViewInterface
     @Override
     public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/inserisciAvvisi/inserisci-avvisi.fxml"));
+        return FXMLLoader.load(getClass().getResource("/inserisci-avvisi.fxml"));
     }
 
 
@@ -62,27 +63,6 @@ public class InserisciAvvisiView implements ViewInterface {
 
 
     // Event handler
-
-    public void clickPulsanteIndietroInserisciAvvisi(ActionEvent event){
-      /*  try {
-            if (verificaCampiVuoti()) {
-                home.apriSchermataHome(event);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setTitle("Conferma");
-                alert.setHeaderText("Sei sicuro di voler tornare indietro?");
-                alert.setContentText("I dati inseriti non verranno salvati.");
-                Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK){
-                    home.apriSchermataHome(event);
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        */
-    }
-
 
     public boolean verificaCampiVuoti(){
         if (corpoAvviso.getText().isEmpty() && oggettoAvviso.getText().isEmpty()){

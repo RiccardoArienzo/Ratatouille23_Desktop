@@ -1,6 +1,6 @@
-package com.example.ratatouille23.View;
+package com.example.ratatouille23.View.Admin;
 
-import com.example.ratatouille23.Controller.HomepageController;
+import com.example.ratatouille23.Controller.Amministratore.HomepageAdminController;
 import com.example.ratatouille23.Model.Utente;
 import com.example.ratatouille23.ViewInterface;
 import javafx.fxml.FXML;
@@ -10,16 +10,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomepageView implements ViewInterface {
+public class HomepageAdminView implements ViewInterface {
 
     @FXML
     private BorderPane borderPane;
     @FXML
     private Label labelUsername;
+    @FXML
+    private Label labelAvvisiDisponibili;
 
     private Stage stage;
     private Scene scene;
@@ -27,24 +30,23 @@ public class HomepageView implements ViewInterface {
 
     private Node node;
 
-    private String nomeNodo = "HomePage";
-
-    private HomepageController homepageController;
+    private HomepageAdminController homepageController;
 
     // *********************
 
-    public HomepageView(){};
+    public HomepageAdminView(){};
 
     @FXML
     public void initialize(){
         labelUsername.setText(Utente.getUsername());
-        this.homepageController = new HomepageController(this);
+        this.homepageController = new HomepageAdminController(this);
+
     }
 
     // Metodi di View Interface
     @Override
     public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/homepage/homepage.fxml"));
+        return FXMLLoader.load(getClass().getResource("/homepage-admin.fxml"));
     }
 
     @Override
@@ -72,9 +74,13 @@ public class HomepageView implements ViewInterface {
     public void clickPulsanteInserisciAvvisi(){
         homepageController.onInserisciAvvisiClicked();
     }
+    
+    public void clickBtnGestisciAvvisi() {
+        homepageController.onGestisciAvvisiClicked();
+    }
 
     public void apriSchermataHome() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/homepage/homepage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/homepage-admin.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -90,14 +96,23 @@ public class HomepageView implements ViewInterface {
 
      public void updateRightView(Node node){
         borderPane.getChildren().remove(borderPane.getRight());
-        borderPane.setCenter(node);
+        borderPane.setRight(node);
      }
 
+     public void removeRightView(){
+        borderPane.getChildren().remove(borderPane.getRight());
+        VBox placeholder = new VBox();
+        placeholder.setPrefSize(440,700);
+        borderPane.setRight(placeholder);
+     }
 
-    // Setter
+     // Getter e Setter
 
-    @FXML
-    public void setHomepageController(HomepageController homepageController) {
-        this.homepageController = homepageController;
+    public HomepageAdminController getHomepageController(){
+        return this.homepageController;
+    }
+
+    public Label getLabelAvvisiDisponibili() {
+        return labelAvvisiDisponibili;
     }
 }

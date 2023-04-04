@@ -1,6 +1,7 @@
-package com.example.ratatouille23.View;
+package com.example.ratatouille23.View.Login;
 
-import com.example.ratatouille23.Controller.ReimpostaPasswordController;
+import com.example.ratatouille23.Controller.Login.ReimpostaPasswordController;
+import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
@@ -32,10 +33,11 @@ public class ReimpostaPasswordView implements ViewInterface {
     private Button btnConferma;
 
 
-    private HomepageView homepage;
+    private HomepageAdminView homepage;
 
     private ReimpostaPasswordController reimpostaPasswordController;
 
+    @FXML
     public void initialize() {
         btnConferma.disableProperty().bind(
                 Bindings.createBooleanBinding(
@@ -50,7 +52,7 @@ public class ReimpostaPasswordView implements ViewInterface {
     // Metodi di View Interface
     @Override
     public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/Login/reimposta-password.fxml"));
+        return FXMLLoader.load(getClass().getResource("/reimposta-password.fxml"));
     }
 
     @Override
@@ -71,7 +73,7 @@ public class ReimpostaPasswordView implements ViewInterface {
 
 
     public void apriSchermataReimpostaPassword() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/Login/reimposta-password.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/reimposta-password.fxml"));
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
