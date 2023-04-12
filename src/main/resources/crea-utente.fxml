@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane prefHeight="690.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.Admin.CreaUtenteView">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="588.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.Admin.CreaUtenteView">
+   <center>
+      <VBox alignment="CENTER" prefHeight="463.0" prefWidth="465.0" spacing="65.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="usernameTextField" prefHeight="44.0" prefWidth="504.0" promptText="Nome utente" styleClass="textfield" stylesheets="@homepage.css" />
+            <TextField fx:id="emailTextField" prefHeight="42.0" prefWidth="200.0" promptText="Email" styleClass="textfield" stylesheets="@homepage.css" />
+            <ComboBox fx:id="tipoDipendenteComboBox" prefHeight="40.0" prefWidth="266.0" promptText="Tipo dipendente" styleClass="textfield" stylesheets="@homepage.css" />
+         </children>
+      </VBox>
+   </center>
    <top>
-      <AnchorPane prefHeight="125.0" prefWidth="594.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="500.0" spacing="30.0" BorderPane.alignment="CENTER">
          <styleClass>
             <String fx:value="nav-1" />
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="30.0" layoutY="84.0" size="80" />
-            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="82.0" layoutY="38.0" size="30" />
-            <Label layoutX="154.0" layoutY="29.0" stylesheets="@homepage.css" text="CREA UTENTE" textFill="WHITE">
+            <FontIcon iconColor="WHITE" iconLiteral="mdi-account-plus" iconSize="75" styleClass="shadow" />
+            <Label styleClass="shadow" text="CREA UTENTE   " textFill="WHITE">
                <font>
-                  <Font name="Tahoma Bold" size="40.0" />
+                  <Font name="Tahoma" size="45.0" />
                </font>
             </Label>
          </children>
-      </AnchorPane>
+      </HBox>
    </top>
-   <center>
-      <VBox alignment="CENTER" prefHeight="463.0" prefWidth="465.0" spacing="40.0" BorderPane.alignment="CENTER">
+   <styleClass>
+      <String fx:value="shadow" />
+      <String fx:value="white-bg" />
+   </styleClass>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="usernameTextField" prefHeight="40.0" prefWidth="423.0" promptText="Nome utente" styleClass="textfield" stylesheets="@homepage.css" />
-            <TextField fx:id="emailTextField" prefHeight="42.0" prefWidth="349.0" promptText="Email" styleClass="textfield" stylesheets="@homepage.css" />
-            <ComboBox fx:id="tipoDipendenteComboBox" prefHeight="40.0" prefWidth="266.0" promptText="Tipo dipendente" styleClass="textfield" stylesheets="@homepage.css" />
             <Button fx:id="btnRegistraUtente" mnemonicParsing="false" onAction="#clickBtnRegistraUtente" prefHeight="44.0" prefWidth="149.0" stylesheets="@homepage.css" text="Registra Utente" textFill="WHITE">
                <styleClass>
                   <String fx:value="signout" />
@@ -45,6 +54,12 @@
                </font>
             </Button>
          </children>
-      </VBox>
-   </center>
+      </HBox>
+   </bottom>
+   <left>
+      <HBox prefHeight="390.0" prefWidth="23.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <HBox prefHeight="390.0" prefWidth="17.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane prefHeight="690.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.Controller.InserisciAvvisiController">
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="588.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.InserisciAvvisiView">
+   <center>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="465.0" spacing="40.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="oggettoAvviso" alignment="TOP_LEFT" prefHeight="60.0" prefWidth="442.0" promptText="Oggetto:" styleClass="textfield" stylesheets="@homepage.css" />
+            <TextArea fx:id="corpoAvviso" prefHeight="339.0" prefWidth="490.0" promptText="Inserire avviso" styleClass="textfield" stylesheets="@homepage.css" />
+         </children>
+      </VBox>
+   </center>
    <top>
-      <AnchorPane prefHeight="125.0" prefWidth="594.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="500.0" spacing="30.0" BorderPane.alignment="CENTER">
          <styleClass>
             <String fx:value="nav-1" />
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <Label layoutX="141.0" layoutY="37.0" text="Inserisci Avvisi" textFill="WHITE">
+            <FontIcon iconColor="WHITE" iconLiteral="mdi-pencil-box-outline" iconSize="75" styleClass="shadow" />
+            <Label styleClass="shadow" text="INSERISCI AVVISO" textFill="WHITE">
                <font>
-                  <Font name="Tahoma Bold" size="40.0" />
+                  <Font name="Tahoma" size="45.0" />
                </font>
             </Label>
-            <FontAwesomeIconView fill="WHITE" glyphName="ENVELOPE" layoutX="14.0" layoutY="91.0" size="80" />
-            <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="94.0" layoutY="39.0" size="30" />
          </children>
-      </AnchorPane>
+      </HBox>
    </top>
-   <center>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="40.0" BorderPane.alignment="CENTER">
+   <styleClass>
+      <String fx:value="shadow" />
+      <String fx:value="white-bg" />
+   </styleClass>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="oggettoAvviso" prefHeight="38.0" prefWidth="442.0" promptText="Oggetto:" styleClass="textfield" stylesheets="@homepage.css" />
-            <TextArea fx:id="corpoAvviso" prefHeight="346.0" prefWidth="445.0" promptText="Inserire avviso" styleClass="textfield" stylesheets="@homepage.css" />
-            <Button fx:id="pulsanteInvia" mnemonicParsing="false" prefHeight="46.0" prefWidth="186.0" stylesheets="@homepage.css" text="Invia avviso" textFill="WHITE">
+            <Button fx:id="btnInvia" mnemonicParsing="false" prefHeight="46.0" prefWidth="186.0" stylesheets="@homepage.css" text="Invia avviso" textFill="WHITE">
                <styleClass>
                   <String fx:value="signout" />
                   <String fx:value="shadow" />
@@ -44,6 +53,6 @@
                </font>
             </Button>
          </children>
-      </VBox>
-   </center>
+      </HBox>
+   </bottom>
 </BorderPane>

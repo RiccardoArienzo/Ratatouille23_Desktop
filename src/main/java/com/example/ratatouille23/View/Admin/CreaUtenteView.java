@@ -44,10 +44,6 @@ public class CreaUtenteView implements ViewInterface {
     }
 
     // Metodi di ViewInterface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/crea-utente.fxml"));
-    }
 
     @Override
     public Node getNode(){

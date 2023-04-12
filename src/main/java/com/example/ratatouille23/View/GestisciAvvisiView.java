@@ -97,10 +97,6 @@ public class GestisciAvvisiView implements ViewInterface {
     }
 
     // Metodi di View Interface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/gestisci-avvisi.fxml"));
-    }
 
     @Override
     public Node getNode(){

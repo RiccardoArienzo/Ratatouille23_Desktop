@@ -61,15 +61,9 @@ public class NuovoPiattoView implements ViewInterface {
     public void clickBtnConferma(){
         nuovoPiattoController.onBtnConfermaClicked();
     }
-    public void clickBtnChiudiSchermata(){
-        nuovoPiattoController.onBtnChiudiSchermataClicked();
-    }
+
 
     // Metodi di ViewInterface
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/nuovo-piatto.fxml"));
-    }
-
 
     @Override
     public Node getNode(){
@@ -89,9 +83,6 @@ public class NuovoPiattoView implements ViewInterface {
 
 
 
-    public void setNuovoPiattoController(NuovoPiattoController nuovoPiattoController) {
-        this.nuovoPiattoController = nuovoPiattoController;
-    }
 
     public TextField getNomePiattoTextField() {
         return nomePiattoTextField;
@@ -116,4 +107,5 @@ public class NuovoPiattoView implements ViewInterface {
     public NuovoPiattoController getNuovoPiattoController() {
         return nuovoPiattoController;
     }
+
 }

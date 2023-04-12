@@ -33,8 +33,8 @@ public class InserisciAvvisiView implements ViewInterface {
 
     @FXML
     public void initialize(){
-
         this.inserisciAvvisiController = new InserisciAvvisiController(this);
+
         btnInvia.disableProperty().bind(
                 Bindings.createBooleanBinding(
                         () -> oggettoAvviso.getText().isEmpty()  || corpoAvviso.getText().isEmpty(),
@@ -45,11 +45,6 @@ public class InserisciAvvisiView implements ViewInterface {
     }
 
     // Metodi di ViewInterface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/inserisci-avvisi.fxml"));
-    }
-
 
     @Override
     public Node getNode(){

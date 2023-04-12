@@ -1,6 +1,8 @@
 package com.example.ratatouille23.View.Admin;
 
 import com.example.ratatouille23.Controller.Amministratore.HomepageAdminController;
+import com.example.ratatouille23.Homepage;
+import com.example.ratatouille23.HomepageController;
 import com.example.ratatouille23.Model.Utente;
 import com.example.ratatouille23.ViewInterface;
 import javafx.fxml.FXML;
@@ -15,7 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomepageAdminView implements ViewInterface {
+public class HomepageAdminView extends Homepage implements ViewInterface {
 
     @FXML
     private BorderPane borderPane;
@@ -40,14 +42,9 @@ public class HomepageAdminView implements ViewInterface {
     public void initialize(){
         labelUsername.setText(Utente.getUsername());
         this.homepageController = new HomepageAdminController(this);
-
     }
 
     // Metodi di View Interface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/homepage-admin.fxml"));
-    }
 
     @Override
     public Node getNode(){
@@ -74,10 +71,9 @@ public class HomepageAdminView implements ViewInterface {
     public void clickPulsanteInserisciAvvisi(){
         homepageController.onInserisciAvvisiClicked();
     }
-    
-    public void clickBtnGestisciAvvisi() {
-        homepageController.onGestisciAvvisiClicked();
-    }
+
+    public void clickBtnGestisciAvvisi() {homepageController.onGestisciAvvisiClicked();}
+
 
     public void apriSchermataHome() throws IOException {
         root = FXMLLoader.load(getClass().getResource("/homepage-admin.fxml"));
@@ -86,31 +82,8 @@ public class HomepageAdminView implements ViewInterface {
         stage.show();
     }
 
-    // Utility
-
-
-     public void updateCenterView(Node node){
-        borderPane.getChildren().remove(borderPane.getCenter());
-        borderPane.setCenter(node);
-     }
-
-     public void updateRightView(Node node){
-        borderPane.getChildren().remove(borderPane.getRight());
-        borderPane.setRight(node);
-     }
-
-     public void removeRightView(){
-        borderPane.getChildren().remove(borderPane.getRight());
-        VBox placeholder = new VBox();
-        placeholder.setPrefSize(440,700);
-        borderPane.setRight(placeholder);
-     }
 
      // Getter e Setter
-
-    public HomepageAdminController getHomepageController(){
-        return this.homepageController;
-    }
 
     public Label getLabelAvvisiDisponibili() {
         return labelAvvisiDisponibili;

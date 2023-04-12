@@ -199,11 +199,6 @@ public class RegistraOrdinazioniView implements ViewInterface {
 
     // Metodi di ViewInterface
     @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/registra-ordinazioni.fxml"));
-    }
-
-    @Override
     public Node getNode(){
         return this.node;
     }

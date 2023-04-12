@@ -10,18 +10,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="410.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.NuovoPiattoView">
    <top>
-      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="500.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="500.0" spacing="15.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
          <styleClass>
             <String fx:value="nav-1" />
             <String fx:value="shadow" />
          </styleClass>
          <children>
-            <Label text="NUOVO PIATTO" textFill="WHITE">
+            <FontIcon iconColor="WHITE" iconLiteral="mdi-food" iconSize="75" styleClass="shadow" />
+            <Label styleClass="shadow" text="NUOVO PIATTO" textFill="WHITE">
                <font>
-                  <Font name="Tahoma" size="37.0" />
+                  <Font name="Tahoma" size="40.0" />
                </font>
             </Label>
          </children>
@@ -30,10 +32,6 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="124.0" prefWidth="500.0" spacing="60.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnChiudiSchermata" mnemonicParsing="false" onAction="#clickBtnChiudiSchermata" prefHeight="30.0" prefWidth="138.0" styleClass="nav-btn" stylesheets="@homepage.css" text="Chiudi schermata" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma" size="13.0" />
-               </font></Button>
             <Button fx:id="btnConferma" mnemonicParsing="false" prefHeight="25.0" prefWidth="122.0" styleClass="nav-1" stylesheets="@homepage.css" text="Conferma" />
          </children>
       </HBox>

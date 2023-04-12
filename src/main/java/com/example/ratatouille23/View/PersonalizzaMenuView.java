@@ -30,8 +30,6 @@ public class PersonalizzaMenuView implements ViewInterface {
     private Node node;
     private PersonalizzaMenuController personalizzaMenuController;
 
-    public PersonalizzaMenuView(){};
-
 
     @FXML
     public void initialize(){
@@ -153,10 +151,7 @@ public class PersonalizzaMenuView implements ViewInterface {
     }
 
     // Metodi di View Interface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/personalizza-menu.fxml"));
-    }
+
     @Override
     public Node getNode(){
         return this.node;
@@ -171,11 +166,6 @@ public class PersonalizzaMenuView implements ViewInterface {
         personalizzaMenuController.onPulsanteAggiungiCategoriaClicked();
     }
 
-
-
-    public void clickBtnAggiungiPiatto() {
-        personalizzaMenuController.onPulsanteAggiungiPiattoClicked();
-    }
 
     public PersonalizzaMenuController getPersonalizzaMenuController() {
         return personalizzaMenuController;

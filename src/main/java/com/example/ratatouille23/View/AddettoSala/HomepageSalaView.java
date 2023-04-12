@@ -1,6 +1,7 @@
 package com.example.ratatouille23.View.AddettoSala;
 
 import com.example.ratatouille23.Controller.AddettoSala.HomepageSalaController;
+import com.example.ratatouille23.Homepage;
 import com.example.ratatouille23.Model.Utente;
 import com.example.ratatouille23.ViewInterface;
 import javafx.fxml.FXML;
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomepageSalaView implements ViewInterface {
+public class HomepageSalaView extends Homepage implements ViewInterface {
 
     @FXML
     private BorderPane borderPane;
@@ -59,10 +60,6 @@ public class HomepageSalaView implements ViewInterface {
     }
 
     // Metodi di View Interface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/homepage-sala.fxml"));
-    }
 
     @Override
     public Node getNode(){
@@ -74,18 +71,4 @@ public class HomepageSalaView implements ViewInterface {
         this.node = node;
     }
 
-
-    // Utility
-
-    public void updateCenterView(Node node){
-        borderPane.getChildren().remove(borderPane.getCenter());
-        borderPane.setCenter(node);
-    }
-
-    public void removeRightView(){
-        borderPane.getChildren().remove(borderPane.getRight());
-        VBox placeholder = new VBox();
-        placeholder.setPrefSize(440,700);
-        borderPane.setRight(placeholder);
-    }
 }

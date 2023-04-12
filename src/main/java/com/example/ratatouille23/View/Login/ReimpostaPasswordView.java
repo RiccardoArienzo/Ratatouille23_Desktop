@@ -50,10 +50,6 @@ public class ReimpostaPasswordView implements ViewInterface {
     }
 
     // Metodi di View Interface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/reimposta-password.fxml"));
-    }
 
     @Override
     public Node getNode(){

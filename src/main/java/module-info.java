@@ -34,6 +34,7 @@ module com.example.ratatouille23 {
     opens com.example.ratatouille23.Controller.Login to javafx.fxml;
     exports com.example.ratatouille23.View.Login;
     opens com.example.ratatouille23.View.Login to javafx.fxml;
-
+    exports com.example.ratatouille23.View.Supervisore;
+    opens com.example.ratatouille23.View.Supervisore to javafx.fxml;
 
 }

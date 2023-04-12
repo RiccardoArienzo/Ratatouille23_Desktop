@@ -126,18 +126,13 @@ public class GestisciOrdinazioniView implements ViewInterface {
             titledPane.setContent(accordion);
             listaOrdinazioni.getPanes().add(titledPane);
         }
-
-
     }
 
 
 
 
     // Metodi di ViewInterface
-    @Override
-    public Node loadNode() throws IOException {
-        return FXMLLoader.load(getClass().getResource("/gestisci-ordinazioni.fxml"));
-    }
+
 
     @Override
     public Node getNode(){

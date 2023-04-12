@@ -1,18 +1,23 @@
 package com.example.ratatouille23.Controller;
 
+import com.example.ratatouille23.Controller.Supervisore.HomepageSupervisoreController;
+import com.example.ratatouille23.Homepage;
 import com.example.ratatouille23.View.Admin.HomepageAdminView;
+import com.example.ratatouille23.View.NuovoPiattoView;
 import com.example.ratatouille23.View.PersonalizzaMenuView;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class PersonalizzaMenuController {
 
-    PersonalizzaMenuView personalizzaMenu;
-    HomepageAdminView homepage;
+    private PersonalizzaMenuView personalizzaMenu;
+
 
     public PersonalizzaMenuController(PersonalizzaMenuView view){
         this.personalizzaMenu = view;
@@ -34,13 +39,4 @@ public class PersonalizzaMenuController {
         });
     }
 
-    public void onPulsanteAggiungiPiattoClicked() {
-        homepage.updateRightView(homepage.getHomepageController().getNuovoPiattoNode());
-    }
-
-
-
-    public void setHomepageView(HomepageAdminView home) {
-        this.homepage = home;
-    }
 }
