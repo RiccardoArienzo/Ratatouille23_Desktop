@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="588.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.GestisciAvvisiView">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="129.0" prefWidth="500.0" spacing="60.0">
+         <children>
+            <Button fx:id="btnVisualizzaAvvisiNascosti" mnemonicParsing="false" onAction="#clickBtnVisualizzaAvvisiNascosti" prefHeight="46.0" prefWidth="186.0" stylesheets="@homepage.css" text="Visualizza avvisi nascosti" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="14.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="signout" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+   <top>
+      <HBox alignment="CENTER" prefHeight="95.0" prefWidth="500.0" spacing="30.0" stylesheets="@homepage.css" BorderPane.alignment="CENTER">
+         <styleClass>
+            <String fx:value="nav-1" />
+            <String fx:value="shadow" />
+         </styleClass>
+         <children>
+            <FontIcon iconColor="WHITE" iconLiteral="mdi-email" iconSize="75" styleClass="shadow" />
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" styleClass="shadow" text="GESTISCI AVVISI" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="45.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="white-bg" stylesheets="@homepage.css">
+               <children>
+                  <Accordion fx:id="listaAvvisi" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <styleClass>
+      <String fx:value="white-bg" />
+      <String fx:value="shadow" />
+   </styleClass>
+</BorderPane>

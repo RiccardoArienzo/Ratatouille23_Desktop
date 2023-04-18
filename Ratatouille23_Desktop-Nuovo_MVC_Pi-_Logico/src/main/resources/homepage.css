@@ -1,0 +1,127 @@
+
+.nav-1{
+    -fx-background-color: linear-gradient(to bottom right, #25bcbf, #3796a7);
+    -fx-background-radius: 5px;
+
+}
+
+.nav-2{
+    -fx-background-color: #fff;
+    -fx-background-radius: 5px;
+}
+
+.shadow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8,0,0,0);
+}
+
+.nav-btn{
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+    -fx-font-family: Arial;
+    -fx-cursor:hand;
+    -fx-text-fill: #000;
+    -fx-border-color: #ddd;
+    -fx-border-width: 2px;
+}
+
+.nav-btn:hover{
+    -fx-background-color: #3796a7;
+    -fx-text-fill: #fff;
+    -fx-border-width: 0px;
+}
+
+.signout{
+    -fx-background-color: #3796a7;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+.signout:hover{
+    -fx-background-color: #25bcbf;
+}
+
+
+.button-orders{
+    -fx-background-color: linear-gradient(to bottom right, #25bcbf, #3796a7);
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-border-color: #c6f6f7;
+    -fx-border-width: .5px;
+}
+.button-orders:hover{
+    -fx-background-color: #25bcbf;
+}
+
+.button-orders:selected{
+    -fx-background-color: #0f3738;
+    -fx-text-color: #6a7575;
+}
+
+
+.button-cancel{
+    -fx-background-color: #a9abab;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-border-color: #c6f6f7;
+    -fx-border-width: .5px;
+}
+.button-cancel:hover{
+    -fx-background-color: #e1e3e3;
+}
+
+
+.circular-button{
+    -fx-background-radius: 100;
+    -fx-cursor: hand;
+    -fx-background-color: #e3e8e8;
+    -fx-border-color: #1b1c1c;
+    -fx-border-width: .5px;
+    -fx-border-radius: 100;
+}
+
+.circular-button:hover{
+    -fx-background-color: #878a8a;
+}
+
+
+.textfield{
+    -fx-background-color: #eee;
+    -fx-font-family: Tahoma;
+    -fx-border-color: #25bcbf;
+    -fx-border-width: .5px;
+}
+.textfield:focused{
+    -fx-border-width: 1.5px;
+    -fx-background-color: #f5f5f5;
+}
+
+.white-bg{
+    -fx-background-color: #fff;
+    -fx-background-radius: 6px;
+}
+
+.accordion-style{
+    -fx-border-color: #3796a7;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.titled-pane {
+    -fx-background-color: #3796a7;
+}
+
+
+
+.titled-pane .title {
+    -fx-background-color: #3796a7;
+     -fx-background-color: linear-gradient(to bottom right, #25bcbf, #3796a7);
+    -fx-font-size: 14pt;
+    -fx-text-fill: white;
+}
+
+.titled-pane > .content {
+    -fx-padding: 10px;
+}
+
+.anchor-border {
+  -fx-background-radius: 8px;
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="borderPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.AddettoCucina.HomepageCucinaView">
+   <left>
+      <AnchorPane prefHeight="700.0" prefWidth="306.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="18.0" layoutY="279.0" prefHeight="421.0" prefWidth="277.0" stylesheets="@homepage.css">
+               <styleClass>
+                  <String fx:value="nav-2" />
+                  <String fx:value="shadow" />
+               </styleClass>
+               <children>
+                  <Button fx:id="btnGestisciAvvisi" layoutX="19.0" layoutY="21.0" mnemonicParsing="false" onAction="#clickBtnGestisciAvvisi" prefHeight="40.0" prefWidth="240.0" styleClass="nav-btn" stylesheets="@homepage.css" text="Gestisci Avvisi     ">
+                     <graphic>
+                        <FontIcon iconLiteral="mdi-email" iconSize="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnGestisciOrdinazioni" layoutX="20.0" layoutY="89.0" mnemonicParsing="false" onAction="#clickBtnGestisciOrdinazioni" prefHeight="40.0" prefWidth="240.0" styleClass="nav-btn" stylesheets="@homepage.css" text="Gestisci Ordinazioni    ">
+                     <graphic>
+                        <FontIcon iconLiteral="mdi-food" iconSize="20" />
+                     </graphic>
+                  </Button>
+                  <Button layoutX="23.0" layoutY="372.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="41.0" styleClass="signout" stylesheets="@homepage.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SIGN_OUT" size="2em" wrappingWidth="20.861303329467773" />
+                     </graphic>
+                  </Button>
+                  <Label layoutX="75.0" layoutY="372.0" text="Log out">
+                     <font>
+                        <Font name="Al Nile" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="18.0" prefHeight="253.0" prefWidth="277.0" stylesheets="@homepage.css">
+               <children>
+                  <Label fx:id="labelAvvisiDisponibili" layoutX="24.0" layoutY="204.0" prefHeight="20.0" prefWidth="230.0" text="! Ci sono degli avvisi non letti ! " textAlignment="CENTER" textFill="#e51919">
+                     <font>
+                        <Font name="Tahoma" size="16.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="116.0" layoutY="63.0" size="60" />
+                  <Label layoutX="78.0" layoutY="90.0" text="Benvenuto," textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelUsername" layoutX="87.0" layoutY="124.0" text="UTENTE" textFill="WHITE">
+                     <font>
+                        <Font name="Al Nile" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="nav-1" />
+               </styleClass>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </left>
+   <top>
+      <AnchorPane prefHeight="41.0" prefWidth="1100.0" BorderPane.alignment="CENTER" />
+   </top>
+   <right>
+      <VBox prefHeight="700.0" prefWidth="370.0" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <VBox prefHeight="700.0" prefWidth="470.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
