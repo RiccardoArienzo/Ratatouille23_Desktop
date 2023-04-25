@@ -5,13 +5,16 @@ import java.util.Map;
 
 public class Ordinazione {
 
-    String idTavolo;
+    private String idTavolo;
 
-    Map<Piatto, InfoOrdine> infoPiatto;
+    private boolean evasa;
+
+    private Map<Piatto, InfoOrdine> infoPiatto;
 
     public Ordinazione(String idTavolo){
         this.idTavolo = idTavolo;
-        infoPiatto = new HashMap<>();
+        this.infoPiatto = new HashMap<>();
+        this.evasa = false;
     }
 
     public void aggiungiPiatto(Piatto piatto, int quantita) {
@@ -43,6 +46,10 @@ public class Ordinazione {
 
     public Map<Piatto, InfoOrdine> getPiattiOrdinazione() {
         return infoPiatto;
+    }
+
+    public boolean getStato() {
+        return evasa;
     }
 
     // Inner classes

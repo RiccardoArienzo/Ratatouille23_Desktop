@@ -11,7 +11,7 @@ public interface CategoriaDAO {
 
     public Optional<Categoria> getCategoriaByID(Long idCategoria);
 
-    public List<Categoria> getCategoriaByName(String nomeCategoria);
+    public Categoria getCategoriaByName(String nomeCategoria);
 
     public void addCategoria(Categoria categoria);
 
