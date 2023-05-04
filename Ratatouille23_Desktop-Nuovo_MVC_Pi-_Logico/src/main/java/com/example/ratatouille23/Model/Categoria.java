@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Categoria {
 
+    private Long idCategoria;
     private String nomeCategoria;
     private List<Piatto> listaPiatti;
 
@@ -32,5 +33,9 @@ public class Categoria {
     @Override
     public String toString() {
         return nomeCategoria;
+    }
+
+    public Long getIdCategoria() {
+        return idCategoria;
     }
 }

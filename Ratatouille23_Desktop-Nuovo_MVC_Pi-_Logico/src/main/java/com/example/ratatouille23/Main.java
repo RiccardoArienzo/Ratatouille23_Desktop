@@ -15,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/homepage-sala.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/homepage-admin.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Ratatouille23");
         stage.setScene(scene);

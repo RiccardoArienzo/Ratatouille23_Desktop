@@ -1,20 +1,25 @@
 package com.example.ratatouille23.Model;
 
 public class Piatto {
+
     private String nome;
     private String costo;
     private String allergeni;
     private String descrizione;
 
-    private Categoria categoria;
+//    private Categoria categoria;
 
 
-    public Piatto(String nomePiatto, String costoPiatto, String allergeni, Categoria categoria, String descrizione) {
+    public Piatto(String nomePiatto, String costoPiatto, String allergeni, String descrizione) {
         this.nome = nomePiatto;
         this.costo = costoPiatto;
         this.allergeni = allergeni;
-        this.categoria = categoria;
+//        this.categoria = categoria;
         this.descrizione = descrizione;
+    }
+
+    public Piatto() {
+
     }
 
     public String getNomePiatto() {
@@ -49,7 +54,9 @@ public class Piatto {
         this.descrizione = descrizione;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
-    }
+
+
+//    public Categoria getCategoria() {
+//        return categoria;
+//    }
 }

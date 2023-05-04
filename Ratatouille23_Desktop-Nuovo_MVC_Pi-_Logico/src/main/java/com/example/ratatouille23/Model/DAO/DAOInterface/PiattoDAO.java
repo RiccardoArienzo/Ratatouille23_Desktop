@@ -1,5 +1,6 @@
 package com.example.ratatouille23.Model.DAO.DAOInterface;
 
+import com.example.ratatouille23.Model.DTO.PiattoDTO;
 import com.example.ratatouille23.Model.Piatto;
 
 import java.util.List;
@@ -7,8 +8,9 @@ import java.util.Optional;
 
 public interface PiattoDAO {
 
-    public void addPiatto(Piatto piatto);
+//    public void addPiatto(Piatto piatto, Long idCategoria);
 
+    public void addPiatto(PiattoDTO piatto);
     public List<Piatto> getPiatti();
 
     public Optional<Piatto> getPiattoByID(Long idPiatto);

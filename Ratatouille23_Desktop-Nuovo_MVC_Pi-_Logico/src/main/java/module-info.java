@@ -18,6 +18,7 @@ module com.example.ratatouille23 {
 
     requires gson;
     requires java.sql;
+    requires com.fasterxml.jackson.databind;
 
     exports com.example.ratatouille23.Controller;
     opens com.example.ratatouille23.Controller to javafx.fxml;
@@ -42,5 +43,6 @@ module com.example.ratatouille23 {
     exports com.example.ratatouille23.View.Supervisore;
     opens com.example.ratatouille23.View.Supervisore to javafx.fxml;
     opens com.example.ratatouille23.Model to gson;
+
 
 }

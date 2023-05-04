@@ -6,6 +6,7 @@ import com.example.ratatouille23.Model.DAO.DAOImplUnirest.CategoriaDAOImplUnires
 import com.example.ratatouille23.Model.DAO.DAOImplUnirest.PiattoDAOImplUnirest;
 import com.example.ratatouille23.Model.DAO.DAOInterface.CategoriaDAO;
 import com.example.ratatouille23.Model.DAO.DAOInterface.PiattoDAO;
+import com.example.ratatouille23.Model.DTO.PiattoDTO;
 import com.example.ratatouille23.Model.Piatto;
 import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import com.example.ratatouille23.View.NuovoPiattoView;
@@ -43,14 +44,34 @@ public class NuovoPiattoController {
     // Event Handler
 
     public void onBtnConfermaClicked() {
-        Piatto piatto = new Piatto(nuovoPiatto.getNomePiattoTextField().getText(),
-                                    nuovoPiatto.getCostoPiattoTextField().getText(),
-                nuovoPiatto.getAllergeniPiattoTextArea().getText(),
-                (Categoria) nuovoPiatto.getCategoriaComboBox().getValue(),
-                nuovoPiatto.getDescrizionePiattoTextArea().getText());
 
-        piattoDAO.addPiatto(piatto);
-        System.out.println(piatto.getCategoria());
+        PiattoDTO piattoDTO = new PiattoDTO();
+        piattoDTO.setNome(nuovoPiatto.getNomePiattoTextField().getText());
+        piattoDTO.setCosto(nuovoPiatto.getCostoPiattoTextField().getText());
+        piattoDTO.setAllergeni(nuovoPiatto.getAllergeniPiattoTextArea().getText());
+        piattoDTO.setDescrizione(nuovoPiatto.getDescrizionePiattoTextArea().getText());
+        Categoria cat = (Categoria) nuovoPiatto.getCategoriaComboBox().getValue();
+        piattoDTO.setNomeCategoria(cat.getNome());
+
+        System.out.println(cat.getNome());
+        System.out.println(piattoDTO.getNomeCategoria());
+
+        piattoDAO.addPiatto(piattoDTO);
+
+
+//        Piatto piatto = new Piatto(nuovoPiatto.getNomePiattoTextField().getText(),
+//                                    nuovoPiatto.getCostoPiattoTextField().getText(),
+//                nuovoPiatto.getAllergeniPiattoTextArea().getText(),
+//                (Categoria) nuovoPiatto.getCategoriaComboBox().getValue(),
+//                nuovoPiatto.getDescrizionePiattoTextArea().getText());
+//        Categoria cat = (Categoria) nuovoPiatto.getCategoriaComboBox().getValue();
+//        piatto.setIdCategoria(cat.getIdCategoria());
+
+
+//        System.out.println(cat.getIdCategoria());
+//                piattoDAO.addPiatto(piatto, cat.getIdCategoria());
+//        piattoDAO.addPiatto(piatto, nuovoPia);
+//        System.out.println(piatto.getCategoria());
 
     }
 
