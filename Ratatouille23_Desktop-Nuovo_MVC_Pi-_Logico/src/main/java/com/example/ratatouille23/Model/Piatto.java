@@ -54,6 +54,10 @@ public class Piatto {
         this.descrizione = descrizione;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
 
 
 //    public Categoria getCategoria() {

@@ -67,8 +67,22 @@ public class InserisciAvvisiView implements ViewInterface {
         }
     }
 
+    public void clickBtnInvia(){
+        inserisciAvvisiController.onBtnInviaClicked();
+    }
+
 
     public void setInserisciAvvisiController(InserisciAvvisiController inserisciAvvisiController) {
         this.inserisciAvvisiController = inserisciAvvisiController;
     }
+
+    public TextArea getCorpoAvviso() {
+        return corpoAvviso;
+    }
+
+
+    public TextField getOggettoAvviso() {
+        return oggettoAvviso;
+    }
+
 }

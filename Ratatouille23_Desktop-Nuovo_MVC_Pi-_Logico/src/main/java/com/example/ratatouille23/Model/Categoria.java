@@ -14,6 +14,11 @@ public class Categoria {
         listaPiatti = new ArrayList<Piatto>();
     }
 
+    public Categoria(String nome, ArrayList<Piatto> listaPiatti){
+        this.nomeCategoria = nome;
+        this.listaPiatti = listaPiatti;
+    }
+
     public String getNome() {
         return nomeCategoria;
     }
@@ -38,4 +43,6 @@ public class Categoria {
     public Long getIdCategoria() {
         return idCategoria;
     }
+
+
 }

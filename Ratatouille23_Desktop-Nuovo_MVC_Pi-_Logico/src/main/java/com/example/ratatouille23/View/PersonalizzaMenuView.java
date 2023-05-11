@@ -38,9 +38,6 @@ public class PersonalizzaMenuView implements ViewInterface {
         this.personalizzaMenuController = new PersonalizzaMenuController(this);
         popolaMenuAccordion();
 
-
-
-
     }
 
     public void popolaMenuAccordion(){

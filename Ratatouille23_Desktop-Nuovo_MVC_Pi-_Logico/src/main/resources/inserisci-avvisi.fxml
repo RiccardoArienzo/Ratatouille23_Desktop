@@ -43,7 +43,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="60.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnInvia" mnemonicParsing="false" prefHeight="46.0" prefWidth="186.0" stylesheets="@homepage.css" text="Invia avviso" textFill="WHITE">
+            <Button fx:id="btnInvia" mnemonicParsing="false" onAction="#clickBtnInvia" prefHeight="46.0" prefWidth="186.0" stylesheets="@homepage.css" text="Invia avviso" textFill="WHITE">
                <styleClass>
                   <String fx:value="signout" />
                   <String fx:value="shadow" />

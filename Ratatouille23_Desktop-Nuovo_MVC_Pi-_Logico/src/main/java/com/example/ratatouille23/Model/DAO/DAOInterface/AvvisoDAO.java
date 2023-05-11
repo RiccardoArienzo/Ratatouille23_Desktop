@@ -1,6 +1,7 @@
 package com.example.ratatouille23.Model.DAO.DAOInterface;
 
 import com.example.ratatouille23.Model.Avviso;
+import com.example.ratatouille23.Model.DTO.AvvisoDTO;
 import com.example.ratatouille23.Model.Utente;
 
 import java.util.List;
@@ -12,5 +13,5 @@ public interface AvvisoDAO {
 
     public Optional<Avviso> getAvvisiNonLettiPerUtente(Utente utente);
 
-    public void addAvviso(Avviso avviso);
+    public void addAvviso(AvvisoDTO avviso);
 }

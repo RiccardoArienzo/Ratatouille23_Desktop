@@ -30,20 +30,16 @@ public class GestisciAvvisiView implements ViewInterface {
 
     @FXML
     public void initialize() {
+
         this.gestisciAvvisiController = new GestisciAvvisiController(this);
+        popolaAvvisiAccordion();
 
-        Avviso avv1 = new Avviso("Salvatore Corrado", "Basta pagare tasse",
-                "Da oggi, le tasse non verranno più pagate. Basta.", LocalDate.of(2023,03,13), LocalTime.of(12,24));
+    }
 
-        Avviso avv2 = new Avviso("Flavio Arienzo", "Comprare droga",
-                "Necessito di un bel pezzo di fumo.", LocalDate.of(2023,03,13), LocalTime.of(12,24));
+    public void popolaAvvisiAccordion(){
+        ArrayList<Avviso> listaAvv = (ArrayList<Avviso>) gestisciAvvisiController.ottieniAvviso();
 
-        ArrayList<Avviso> avvisi = new ArrayList<>();
-
-        avvisi.add(avv1);
-        avvisi.add(avv2);
-
-        for (Avviso avv : avvisi){
+        for (Avviso avv : listaAvv) {
             TitledPane tp = new TitledPane();
             tp.setText(avv.getOggettoAvviso());
 
@@ -88,7 +84,6 @@ public class GestisciAvvisiView implements ViewInterface {
             listaAvvisi.getPanes().add(tp);
         }
     }
-
 
     // Event Handler
 

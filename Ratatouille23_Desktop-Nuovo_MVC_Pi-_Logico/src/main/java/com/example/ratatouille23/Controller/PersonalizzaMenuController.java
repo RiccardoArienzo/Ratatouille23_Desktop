@@ -9,10 +9,13 @@ import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import com.example.ratatouille23.View.NuovoPiattoView;
 import com.example.ratatouille23.View.PersonalizzaMenuView;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
@@ -48,6 +51,36 @@ public class PersonalizzaMenuController {
 
         });
     }
+
+    public void onPulsanteEliminaCategoriaClicked() {
+        // Carica il file fxml per la nuova finestra
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/elimina-categoria.fxml"));
+
+        // Crea un nuovo stage per la finestra
+        Stage newStage = new Stage();
+        newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
+        try {
+            newStage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        newStage.show();
+    }
+    public void onPulsanteEliminaPiattoClicked() {
+        // Carica il file fxml per la nuova finestra
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/elimina-piatto.fxml"));
+
+// Crea un nuovo stage per la finestra
+        Stage newStage = new Stage();
+        newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
+        try {
+            newStage.setScene(new Scene(loader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        newStage.show();
+    }
+
 
     public List<Categoria> ottieniCategorie() {
        return categoriaDAO.getCategorie();

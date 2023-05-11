@@ -83,7 +83,14 @@ public class PiattoDAOImplUnirest implements PiattoDAO {
     }
 
     @Override
-    public void deletePiatto(Long idPiatto) {
+    public int deletePiatto(Piatto piatto) {
+
+        try {
+            HttpResponse<JsonNode> apiResponse = Unirest.delete("http://localhost:8080/api/v1/piatto//delete/piatto").asJson();
+            return apiResponse.getStatus();
+        } catch (UnirestException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

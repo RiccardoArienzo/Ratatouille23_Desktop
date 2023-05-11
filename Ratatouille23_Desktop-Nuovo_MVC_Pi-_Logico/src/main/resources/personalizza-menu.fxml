@@ -13,14 +13,18 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="470.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.PersonalizzaMenuView">
    <bottom>
-      <HBox alignment="CENTER" prefHeight="129.0" prefWidth="500.0" spacing="60.0">
+      <HBox alignment="CENTER" prefHeight="129.0" prefWidth="500.0" spacing="30.0">
          <children>
             <Button mnemonicParsing="false" onAction="#clickBtnAggiungiCategoria" styleClass="signout" stylesheets="@homepage.css" text="+ Aggiungi Categoria" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="- Elimina" />
+            <Button fx:id="btnEliminaCategoria" mnemonicParsing="false" onAction="#clickBtnEliminaCategoria" styleClass="signout" text="- Elimina categoria" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma" size="13.0" />
+               </font></Button>
+            <Button fx:id="btnEliminaPiatto" mnemonicParsing="false" onAction="#clickBtnEliminaPiatto" styleClass="signout" text="- Elimina piatto" textFill="WHITE" />
          </children>
       </HBox>
    </bottom>

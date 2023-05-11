@@ -1,10 +1,9 @@
-package com.example.ratatouille23.Model;
+package com.example.ratatouille23.Model.DTO;
 
 import java.time.Instant;
 
-import java.util.Date;
 
-public class Avviso {
+public class AvvisoDTO {
 
     private String mittente;
     private String oggettoAvviso;
@@ -12,18 +11,18 @@ public class Avviso {
     private Instant dataInvio;
     private Instant orarioInvio;
 
-
-    public Avviso(String mittente,
-                  String oggettoAvviso,
-                  String bodyAvviso,
-                  Instant dataInvio,
-                  Instant orarioInvio) {
-
+    public AvvisoDTO(String mittente, String oggettoAvviso, String bodyAvviso, Instant dataInvio, Instant orarioInvio) {
         this.mittente = mittente;
         this.oggettoAvviso = oggettoAvviso;
         this.bodyAvviso = bodyAvviso;
         this.dataInvio = dataInvio;
         this.orarioInvio = orarioInvio;
+    }
+
+    public AvvisoDTO() {
+
+
+
     }
 
     public String getMittente() {
@@ -64,17 +63,6 @@ public class Avviso {
 
     public void setOrarioInvio(Instant orarioInvio) {
         this.orarioInvio = orarioInvio;
-    }
-
-    @Override
-    public String toString() {
-        return "Avviso{" +
-                "mittente='" + mittente + '\'' +
-                ", oggettoAvviso='" + oggettoAvviso + '\'' +
-                ", bodyAvviso='" + bodyAvviso + '\'' +
-                ", dataInvio=" + dataInvio +
-                ", orarioInvio=" + orarioInvio +
-                '}';
     }
 
 }

@@ -17,5 +17,5 @@ public interface PiattoDAO {
 
     public Optional<Piatto> getPiattoByName(String nome);
 
-    public void deletePiatto(Long idPiatto);
+    public int deletePiatto(Piatto piatto);
 }

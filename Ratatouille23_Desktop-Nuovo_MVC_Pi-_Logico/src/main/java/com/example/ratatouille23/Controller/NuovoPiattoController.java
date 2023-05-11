@@ -1,29 +1,15 @@
 package com.example.ratatouille23.Controller;
 
-import com.example.ratatouille23.Homepage;
 import com.example.ratatouille23.Model.Categoria;
 import com.example.ratatouille23.Model.DAO.DAOImplUnirest.CategoriaDAOImplUnirest;
 import com.example.ratatouille23.Model.DAO.DAOImplUnirest.PiattoDAOImplUnirest;
 import com.example.ratatouille23.Model.DAO.DAOInterface.CategoriaDAO;
 import com.example.ratatouille23.Model.DAO.DAOInterface.PiattoDAO;
 import com.example.ratatouille23.Model.DTO.PiattoDTO;
-import com.example.ratatouille23.Model.Piatto;
-import com.example.ratatouille23.View.Admin.HomepageAdminView;
 import com.example.ratatouille23.View.NuovoPiattoView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
-
-
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class NuovoPiattoController {
 
