@@ -1,17 +1,15 @@
 package com.example.ratatouille23.Model.DTO;
 
-import java.time.Instant;
-
 
 public class AvvisoDTO {
 
     private String mittente;
     private String oggettoAvviso;
     private String bodyAvviso;
-    private Instant dataInvio;
-    private Instant orarioInvio;
+    private String dataInvio;
+    private String orarioInvio;
 
-    public AvvisoDTO(String mittente, String oggettoAvviso, String bodyAvviso, Instant dataInvio, Instant orarioInvio) {
+    public AvvisoDTO(String mittente, String oggettoAvviso, String bodyAvviso, String dataInvio, String orarioInvio) {
         this.mittente = mittente;
         this.oggettoAvviso = oggettoAvviso;
         this.bodyAvviso = bodyAvviso;
@@ -49,19 +47,19 @@ public class AvvisoDTO {
         this.bodyAvviso = bodyAvviso;
     }
 
-    public Instant getDataInvio() {
+    public String getDataInvio() {
         return dataInvio;
     }
 
-    public void setDataInvio(Instant dataInvio) {
+    public void setDataInvio(String dataInvio) {
         this.dataInvio = dataInvio;
     }
 
-    public Instant getOrarioInvio() {
+    public String getOrarioInvio() {
         return orarioInvio;
     }
 
-    public void setOrarioInvio(Instant orarioInvio) {
+    public void setOrarioInvio(String orarioInvio) {
         this.orarioInvio = orarioInvio;
     }
 

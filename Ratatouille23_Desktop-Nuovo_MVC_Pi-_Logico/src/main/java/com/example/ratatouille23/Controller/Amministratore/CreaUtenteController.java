@@ -1,5 +1,6 @@
 package com.example.ratatouille23.Controller.Amministratore;
 
+import com.example.ratatouille23.Model.Utente;
 import com.example.ratatouille23.View.Admin.CreaUtenteView;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
@@ -63,6 +64,7 @@ public class CreaUtenteController {
                 .build();
 
         AdminAddUserToGroupResponse addUserToGroupResult = cognitoClient.adminAddUserToGroup(addUserToGroupRequest);
+
         //TODO aggiungere un dialog che conferma se la registrazione sia andata a buon fine o eventualmente che errore c'è stato
         //System.out.println("Registration successful. Confirmation code: " + rispostaCreazioneUtente.user());
     }

@@ -7,6 +7,8 @@ import com.example.ratatouille23.Model.Utente;
 import com.example.ratatouille23.View.InserisciAvvisiView;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 public class InserisciAvvisiController {
@@ -21,14 +23,14 @@ public class InserisciAvvisiController {
 
     public void onBtnInviaClicked() {
 
-        Instant dataInvio = Instant.now(); // O eventualmente Instant.ofEpochSecond(...)
-        Instant orarioInvio = Instant.now(); // O eventualmente Instant.ofEpochMilli(...)
+//        Instant dataInvio = Instant.now(); // O eventualmente Instant.ofEpochSecond(...)
+//        Instant orarioInvio = Instant.now(); // O eventualmente Instant.ofEpochMilli(...)
 
         AvvisoDTO avvisoDTO = new AvvisoDTO();
         avvisoDTO.setBodyAvviso(inserisciAvvisi.getCorpoAvviso().getText());
         avvisoDTO.setOggettoAvviso(inserisciAvvisi.getOggettoAvviso().getText());
-        avvisoDTO.setDataInvio(dataInvio);
-        avvisoDTO.setOrarioInvio(orarioInvio);
+        avvisoDTO.setDataInvio(LocalDate.now().toString());
+        avvisoDTO.setOrarioInvio(LocalTime.now().toString());
         avvisoDTO.setMittente(Utente.getUsername());
 
         avvisoDAO.addAvviso(avvisoDTO);

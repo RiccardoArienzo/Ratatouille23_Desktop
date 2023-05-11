@@ -5,7 +5,7 @@ module com.example.ratatouille23 {
     requires software.amazon.awssdk.regions;
     requires software.amazon.awssdk.awscore;
     requires software.amazon.awssdk.auth;
-    requires javafx.base;
+//    requires javafx.base;
     requires javafx.graphics;
     requires org.kordamp.ikonli.core;
     requires org.kordamp.ikonli.javafx;
@@ -46,7 +46,7 @@ module com.example.ratatouille23 {
     exports com.example.ratatouille23.View.Supervisore;
     opens com.example.ratatouille23.View.Supervisore to javafx.fxml;
     opens com.example.ratatouille23.Model to com.google.gson;
-    opens java.base to com.google.gson;
+//    opens java.base to com.google.gson;
 
 
 }

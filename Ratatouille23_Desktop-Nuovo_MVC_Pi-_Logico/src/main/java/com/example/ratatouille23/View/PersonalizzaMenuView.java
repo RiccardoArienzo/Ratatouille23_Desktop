@@ -4,6 +4,7 @@ import com.example.ratatouille23.Controller.PersonalizzaMenuController;
 import com.example.ratatouille23.Model.Categoria;
 import com.example.ratatouille23.Model.Piatto;
 import com.example.ratatouille23.ViewInterface;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -130,6 +131,12 @@ public class PersonalizzaMenuView implements ViewInterface {
 
     public PersonalizzaMenuController getPersonalizzaMenuController() {
         return personalizzaMenuController;
+    }
+
+    public void clickBtnEliminaCategoria() {
+    }
+
+    public void clickBtnEliminaPiatto() {
     }
 }
 

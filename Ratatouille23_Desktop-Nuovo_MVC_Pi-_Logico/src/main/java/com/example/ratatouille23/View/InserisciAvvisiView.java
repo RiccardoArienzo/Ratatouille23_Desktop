@@ -67,6 +67,7 @@ public class InserisciAvvisiView implements ViewInterface {
         }
     }
 
+
     public void clickBtnInvia(){
         inserisciAvvisiController.onBtnInviaClicked();
     }

@@ -1,6 +1,5 @@
 package com.example.ratatouille23.Model;
 
-import java.time.Instant;
 
 import java.util.Date;
 
@@ -9,15 +8,15 @@ public class Avviso {
     private String mittente;
     private String oggettoAvviso;
     private String bodyAvviso;
-    private Instant dataInvio;
-    private Instant orarioInvio;
+    private String dataInvio;
+    private String orarioInvio;
 
 
     public Avviso(String mittente,
                   String oggettoAvviso,
                   String bodyAvviso,
-                  Instant dataInvio,
-                  Instant orarioInvio) {
+                  String dataInvio,
+                  String orarioInvio) {
 
         this.mittente = mittente;
         this.oggettoAvviso = oggettoAvviso;
@@ -50,19 +49,19 @@ public class Avviso {
         this.bodyAvviso = bodyAvviso;
     }
 
-    public Instant getDataInvio() {
+    public String getDataInvio() {
         return dataInvio;
     }
 
-    public void setDataInvio(Instant dataInvio) {
+    public void setDataInvio(String dataInvio) {
         this.dataInvio = dataInvio;
     }
 
-    public Instant getOrarioInvio() {
+    public String getOrarioInvio() {
         return orarioInvio;
     }
 
-    public void setOrarioInvio(Instant orarioInvio) {
+    public void setOrarioInvio(String orarioInvio) {
         this.orarioInvio = orarioInvio;
     }
 
