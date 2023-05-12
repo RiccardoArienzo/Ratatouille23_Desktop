@@ -134,6 +134,7 @@ public class PersonalizzaMenuView implements ViewInterface {
     }
 
     public void clickBtnEliminaCategoria() {
+
     }
 
     public void clickBtnEliminaPiatto() {

@@ -9,6 +9,8 @@ public class AvvisoDTO {
     private String dataInvio;
     private String orarioInvio;
 
+    // private String isLetto;
+
     public AvvisoDTO(String mittente, String oggettoAvviso, String bodyAvviso, String dataInvio, String orarioInvio) {
         this.mittente = mittente;
         this.oggettoAvviso = oggettoAvviso;

@@ -1,5 +1,8 @@
 package com.example.ratatouille23.Controller.Amministratore;
 
+import com.example.ratatouille23.Model.DAO.DAOImplUnirest.UtenteDAOImplUnirest;
+import com.example.ratatouille23.Model.DAO.DAOInterface.UtenteDAO;
+import com.example.ratatouille23.Model.DTO.UtenteDTO;
 import com.example.ratatouille23.Model.Utente;
 import com.example.ratatouille23.View.Admin.CreaUtenteView;
 import software.amazon.awssdk.regions.Region;
@@ -11,16 +14,25 @@ import java.util.List;
 public class CreaUtenteController {
 
     CreaUtenteView creaUtente;
+    UtenteDAO utenteDAO;
 
     public CreaUtenteController(CreaUtenteView view){
         this.creaUtente = view;
+        utenteDAO = new UtenteDAOImplUnirest();
     }
 
 
     // Event Handler
 
     public void onBtnRegistraUtenteClicked(){
-        registraUtente();
+       UserType nuovoUtente = registraUtente();
+       if (nuovoUtente != null){
+           UtenteDTO utente = new UtenteDTO();
+           utente.setEmail(creaUtente.getEmailText());
+           utente.setGruppo(creaUtente.getTipoDipendenteComboBox().toString());
+           utente.setUsername(creaUtente.getUsernameText());
+           utenteDAO.addUtente(utente);
+       }
     }
 
     // Logic
@@ -33,7 +45,7 @@ public class CreaUtenteController {
         }
     }
 
-    public void registraUtente() {
+    public UserType registraUtente() {
 
         // Creazione di un'istanza del client CognitoIdentityProvider
         CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder().region(Region.EU_CENTRAL_1).build();
@@ -66,7 +78,8 @@ public class CreaUtenteController {
         AdminAddUserToGroupResponse addUserToGroupResult = cognitoClient.adminAddUserToGroup(addUserToGroupRequest);
 
         //TODO aggiungere un dialog che conferma se la registrazione sia andata a buon fine o eventualmente che errore c'è stato
-        //System.out.println("Registration successful. Confirmation code: " + rispostaCreazioneUtente.user());
+        System.out.println("Registration successful. Confirmation code: " + rispostaCreazioneUtente.user());
+        return rispostaCreazioneUtente.user();
     }
 
 

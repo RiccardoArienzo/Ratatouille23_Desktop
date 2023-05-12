@@ -11,6 +11,7 @@ public class Avviso {
     private String dataInvio;
     private String orarioInvio;
 
+    // private boolean isLetto;
 
     public Avviso(String mittente,
                   String oggettoAvviso,

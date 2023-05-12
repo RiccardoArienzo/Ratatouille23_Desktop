@@ -37,6 +37,20 @@ public class AvvisoDAOImplUnirest implements AvvisoDAO {
 
     }
 
+    @Override
+    public List<Avviso> getAvvisiNascosti() {
+        try {
+            HttpResponse<JsonNode> apiResponse = Unirest.get("http://localhost:8080/api/v1/avviso/getAvvisiNascosti").asJson();
+            Type avvisoListType = new TypeToken<ArrayList<Avviso>>(){}.getType();
+
+            ArrayList<Avviso> avvisi = new Gson().fromJson(apiResponse.getBody().toString(), avvisoListType);
+
+            return avvisi;
+        } catch (UnirestException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public Optional<Avviso> getAvvisiNonLettiPerUtente(Utente utente) {

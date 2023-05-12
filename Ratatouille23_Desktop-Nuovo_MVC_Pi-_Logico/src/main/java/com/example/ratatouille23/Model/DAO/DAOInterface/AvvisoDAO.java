@@ -11,6 +11,8 @@ public interface AvvisoDAO {
 
     public List<Avviso> getAvvisi();
 
+    public List<Avviso> getAvvisiNascosti();
+
     public Optional<Avviso> getAvvisiNonLettiPerUtente(Utente utente);
 
     public void addAvviso(AvvisoDTO avviso);

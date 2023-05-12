@@ -13,15 +13,24 @@ import java.util.Optional;
 
 public abstract class Utente {
 
+    static String email;
     static String username;
-    static String group;
+    static String gruppo;
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static void setEmail(String email) {
+        Utente.email = email;
+    }
 
     public static void setUsername(String username) {
         Utente.username = username;
     }
 
     public static void setGroup(String group) {
-        Utente.group = group;
+        Utente.gruppo = gruppo;
     }
 
     public static String getUsername() {
@@ -29,7 +38,7 @@ public abstract class Utente {
     }
 
     public static String getGroup() {
-        return group;
+        return gruppo;
     }
 
     public static String Login(String username, String password) {
