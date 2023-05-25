@@ -1,7 +1,7 @@
 package com.example.ratatouille23.Model.DAO.DAOImplUnirest;
 
-import com.example.ratatouille23.Model.Categoria;
 import com.example.ratatouille23.Model.DAO.DAOInterface.OrdinazioneDAO;
+import com.example.ratatouille23.Model.DTO.OrdinazioneDTO;
 import com.example.ratatouille23.Model.Ordinazione;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,14 +50,15 @@ public class OrdinazioneDAOImplUnirest implements OrdinazioneDAO {
     }
 
     @Override
-    public void sendOrdinazione(Ordinazione ordinazione) {
+    public void sendOrdinazione(OrdinazioneDTO ordinazione) {
 
         try {
             HttpResponse<JsonNode> response = Unirest.post("http://localhost:8080/api/v1/ordinazione/postOrdinazione")
                     .header("accept", "application/json")
-                    .field("tavolo", ordinazione.getIdTavolo())
-                    .field("evasa", ordinazione.getStato())
+                    .field("idTavolo", ordinazione.getIdTavolo())
+                    .field("infoPiatto", ordinazione.getInfoPiatto())
                     .asJson();
+            System.out.println("Stu sfaccimm è ugual a chest: " + ordinazione.getInfoPiatto());
         } catch (UnirestException e) {
             throw new RuntimeException(e);
         }

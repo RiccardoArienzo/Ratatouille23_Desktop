@@ -2,11 +2,14 @@ package com.example.ratatouille23.View.AddettoSala;
 
 import com.example.ratatouille23.Controller.AddettoSala.RegistraOrdinazioniController;
 import com.example.ratatouille23.Model.Categoria;
+import com.example.ratatouille23.Model.Ordinazione;
 import com.example.ratatouille23.Model.Piatto;
 import com.example.ratatouille23.ViewInterface;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -16,21 +19,32 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Optional;
 
 public class RegistraOrdinazioniView implements ViewInterface {
 
     @FXML
     private BorderPane borderPane;
-
     @FXML
     private Accordion listaPiatti;
     @FXML
     private VBox vboxButtonsCategorie;
+    @FXML
+    private VBox riepilogoVbox;
+    @FXML
+    private ComboBox tavoloComboBox;
+    @FXML
+    private Button btnConfermaOrdinazione;
+    @FXML
+    private Button btnCancellaOrdinazione;
 
     private Node node;
+
+    private Stage stage;
 
     private RegistraOrdinazioniController registraOrdinazioniController;
 
@@ -40,7 +54,29 @@ public class RegistraOrdinazioniView implements ViewInterface {
 
         this.registraOrdinazioniController = new RegistraOrdinazioniController(this);
 
+        btnConfermaOrdinazione.disableProperty().bind(
+                Bindings.createBooleanBinding(
+                        () -> riepilogoVbox.getChildren().isEmpty()  || tavoloComboBox.getValue() == null,
+                        riepilogoVbox.getChildren(),
+                        tavoloComboBox.valueProperty()
+                )
+        );
+
+
         popolaSchermataOrdinazioni();
+
+        // Popolamento della lista con valori da 1 a 10
+        for (int i = 1; i <= 10; i++) {
+            tavoloComboBox.getItems().add(String.valueOf(i));
+        }
+
+        // Impostiamo il listener per la combobox
+        tavoloComboBox.setOnAction(event -> {
+            String selectedValue = (String) tavoloComboBox.getValue();
+            registraOrdinazioniController.impostaTavolo(selectedValue);
+            updateRiepilogo();
+
+        });
     }
 
 
@@ -53,7 +89,7 @@ public class RegistraOrdinazioniView implements ViewInterface {
 
         for (Categoria cat : listaCat) {
             ToggleButton btnCategoria = new ToggleButton(cat.getNome());
-            btnCategoria.setPrefSize(195, 63);
+            btnCategoria.setPrefSize(200, 63);
             btnCategoria.setStyle("-fx-font-family: Tahoma; -fx-font-size: 23px; -fx-text-fill: white");
             btnCategoria.getStyleClass().add("button-orders");
             btnCategoria.setToggleGroup(toggleGroup);
@@ -66,11 +102,10 @@ public class RegistraOrdinazioniView implements ViewInterface {
 
                     listaPiatti.getPanes().clear();
 
-                    Categoria cat = registraOrdinazioniController.getCategoriaByNome(btnCategoria.getText());
+                    // Questo funziona solo se utilizzato in questo modo. Va implementato nella versione con backend.
+//                    ArrayList<Piatto> piatti = (ArrayList<Piatto>) registraOrdinazioniController.getCategoriaByNome(btnCategoria.getText()).getPiatti();
 
-                    ArrayList<Piatto> piatti = (ArrayList<Piatto>) cat.getPiatti();
-
-                    for (Piatto piatto : piatti) {
+                    for (Piatto piatto : cat.getPiatti()) {
                         TitledPane TPPiatto = new TitledPane();
                         TPPiatto.setText(piatto.getNomePiatto());
 
@@ -110,7 +145,7 @@ public class RegistraOrdinazioniView implements ViewInterface {
                         // Allergeni
                         TextFlow allergeniPiatto = new TextFlow();
 
-                        Text boldText4 = new Text("Nome: ");
+                        Text boldText4 = new Text("Allergeni: ");
                         boldText4.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
                         Text plainText4 = new Text(piatto.getAllergeni());
                         plainText4.setFont(Font.font("Tahoma", 16));
@@ -119,12 +154,12 @@ public class RegistraOrdinazioniView implements ViewInterface {
 
                         // quantità
                         Button minus = new Button("-");
-                        TextField quantity = new TextField("0");
+                        // TextField quantity = new TextField("0");
                         Button plus = new Button("+");
 
-                        quantity.getStyleClass().add("textfield");
-                        quantity.setPrefWidth(30);
-                        quantity.setPrefHeight(29);
+                        //  quantity.getStyleClass().add("textfield");
+                        // quantity.setPrefWidth(30);
+                        //  quantity.setPrefHeight(29);
                         minus.getStyleClass().add("circular-button");
                         plus.getStyleClass().add("circular-button");
 
@@ -132,24 +167,26 @@ public class RegistraOrdinazioniView implements ViewInterface {
                         minus.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent actionEvent) {
-                                int value = Integer.parseInt(quantity.getText());
-                                if (value > 0) {
-                                    quantity.setText(Integer.toString(value - 1));
-                                }
+                                //  int value = Integer.parseInt(quantity.getText());
+                                //  if (value > 0) {
+                                registraOrdinazioniController.decrementaQuantity(piatto);
+                                updateRiepilogo();
                             }
+                            // }
                         });
 
                         plus.setOnAction(new EventHandler<ActionEvent>() {
                             @Override
                             public void handle(ActionEvent actionEvent) {
-                                int value = Integer.parseInt(quantity.getText());
-                                quantity.setText(Integer.toString(value + 1));
+                                registraOrdinazioniController.incrementaQuantity(piatto);
+                                updateRiepilogo();
                             }
                         });
 
                         HBox chooseQuantity = new HBox();
-                        chooseQuantity.getChildren().addAll(minus, quantity, plus);
-                        chooseQuantity.setSpacing(5);
+                        chooseQuantity.getChildren().addAll(minus, plus);
+                        chooseQuantity.setAlignment(Pos.CENTER);
+                        chooseQuantity.setSpacing(8);
 
 
                         VBox content = new VBox();
@@ -158,10 +195,61 @@ public class RegistraOrdinazioniView implements ViewInterface {
                         TPPiatto.setContent(content);
                         listaPiatti.getPanes().add(TPPiatto);
                     }
+
+
                 }
             });
         }
 
+    }
+
+    public void updateRiepilogo(){
+
+        // Clear della Vbox per aggiornarla con i valori corretti
+        riepilogoVbox.getChildren().clear();
+
+        /*
+        Text tavoloText;
+
+        if (registraOrdinazioniController.getOrdinazione().getIdTavolo() == null){
+            tavoloText = new Text("Tavolo non selezionato");
+            tavoloText.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+        } else {
+            tavoloText = new Text("Tavolo " + registraOrdinazioniController.getOrdinazione().getIdTavolo());
+            tavoloText.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+        }
+
+        riepilogoVbox.getChildren().add(tavoloText);
+*/
+
+        for (HashMap.Entry<Piatto, Ordinazione.InfoOrdine> map : registraOrdinazioniController.getOrdinazione().getPiattiOrdinazione().entrySet()){
+
+            Text piatto = new Text(map.getKey().getNomePiatto() + ": " + "x" + map.getValue().getQuantity());
+            piatto.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 16));
+
+            riepilogoVbox.getChildren().add(piatto);
+
+        }
+    }
+
+
+    // Action Event
+
+    public void clickBtnConfermaOrdinazione(){
+        registraOrdinazioniController.onBtnConfermaOrdinazioneClicked();
+    }
+
+    public void clickBtnCancellaOrdinazione(){
+        registraOrdinazioniController.onBtnCancellaOrdinazioneClicked();
+    }
+
+
+    public ComboBox getTavoloComboBox() {
+        return tavoloComboBox;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     // Metodi di ViewInterface

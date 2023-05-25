@@ -3,13 +3,14 @@ package com.example.ratatouille23.Model.DTO;
 
 public class AvvisoDTO {
 
+    private Long idAvviso;
     private String mittente;
     private String oggettoAvviso;
     private String bodyAvviso;
     private String dataInvio;
     private String orarioInvio;
 
-    // private String isLetto;
+//     private boolean isLetto;
 
     public AvvisoDTO(String mittente, String oggettoAvviso, String bodyAvviso, String dataInvio, String orarioInvio) {
         this.mittente = mittente;
@@ -65,4 +66,19 @@ public class AvvisoDTO {
         this.orarioInvio = orarioInvio;
     }
 
+    public Long getIdAvviso() {
+        return idAvviso;
+    }
+
+    public void setIdAvviso(Long idAvviso) {
+        this.idAvviso = idAvviso;
+    }
+
+//    public boolean isLetto() {
+//        return isLetto;
+//    }
+//
+//    public void setLetto(boolean letto) {
+//        isLetto = letto;
+//    }
 }

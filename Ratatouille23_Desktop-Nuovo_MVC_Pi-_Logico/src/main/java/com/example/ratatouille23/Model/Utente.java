@@ -29,7 +29,7 @@ public abstract class Utente {
         Utente.username = username;
     }
 
-    public static void setGroup(String group) {
+    public static void setGroup(String gruppo) {
         Utente.gruppo = gruppo;
     }
 
@@ -105,6 +105,23 @@ public abstract class Utente {
                 } else {
                     System.out.println("User doesn't belong to any group.");
                 }
+
+                AdminGetUserRequest request = AdminGetUserRequest.builder().userPoolId(CognitoSettings.getUserPoolID()).username(username).build();
+                try {
+                    AdminGetUserResponse response = cognitoClient.adminGetUser(request);
+                    for(AttributeType attribute : response.userAttributes()){
+                        if(attribute.name().equals("email")){
+                            String email = attribute.value();
+                            System.out.println("Email: " + email);
+                            Utente.setEmail(email);
+                            break;
+                        }
+                    }
+                } catch (CognitoIdentityProviderException e){
+                    System.err.println(e.awsErrorDetails().errorMessage());
+                    System.exit(1);
+                }
+
 
                 System.out.println("Access Token Type : " + authResult.authenticationResult().tokenType());
                 System.out.println("Access Token : " + authResult.authenticationResult().accessToken());

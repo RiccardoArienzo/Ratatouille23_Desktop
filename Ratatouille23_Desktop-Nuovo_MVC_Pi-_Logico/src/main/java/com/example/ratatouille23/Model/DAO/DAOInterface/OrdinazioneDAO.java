@@ -1,5 +1,6 @@
 package com.example.ratatouille23.Model.DAO.DAOInterface;
 
+import com.example.ratatouille23.Model.DTO.OrdinazioneDTO;
 import com.example.ratatouille23.Model.Ordinazione;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface OrdinazioneDAO {
     public Optional<List<Ordinazione>> getOrdinazioniEvase();
 
 
-    public void sendOrdinazione(Ordinazione ordinazione);
+    public void sendOrdinazione(OrdinazioneDTO ordinazione);
 
 
     public void setOrdinazioneEvasa(Ordinazione ordinazione);

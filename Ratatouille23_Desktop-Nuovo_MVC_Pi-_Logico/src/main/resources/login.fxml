@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.Controller.Login.LoginController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.Login.LoginView">
     <children>
         <TextField fx:id="userNameTextField" layoutX="183.0" layoutY="186.0" prefHeight="40.0" prefWidth="226.0" promptText="Nome utente / Email" />
         <PasswordField fx:id="passwordTextField" layoutX="186.0" layoutY="253.0" prefHeight="40.0" prefWidth="222.0" promptText="Password" />
-        <Button fx:id="pulsanteLogin" layoutX="249.0" layoutY="320.0" mnemonicParsing="false" onAction="#clickPulsanteLogin" prefHeight="39.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@login.css" text="Login" />
+        <Button fx:id="btnLogin" layoutX="249.0" layoutY="320.0" mnemonicParsing="false" onAction="#clickBtnLogin" prefHeight="39.0" prefWidth="95.0" styleClass="login-btn" stylesheets="@login.css" text="Login" />
       <FontAwesomeIconView glyphName="USER" layoutX="136.0" layoutY="216.0" size="30" text="" />
       <AnchorPane prefHeight="162.0" prefWidth="600.0" styleClass="right-form" stylesheets="@login.css">
          <children>

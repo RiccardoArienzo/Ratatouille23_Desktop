@@ -7,7 +7,7 @@ public class UtenteDTO {
     private String gruppo;
 
 
-    public UtenteDTO(String username, String gruppo) {
+    public UtenteDTO(String username, String gruppo, String email) {
         this.username = username;
         this.gruppo = gruppo;
         this.email = email;
@@ -39,5 +39,13 @@ public class UtenteDTO {
 
     public void setGruppo(String gruppo) {
         this.gruppo = gruppo;
+    }
+
+    @Override
+    public String toString() {
+        return "email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", gruppo='" + gruppo + '\'' +
+                '}';
     }
 }

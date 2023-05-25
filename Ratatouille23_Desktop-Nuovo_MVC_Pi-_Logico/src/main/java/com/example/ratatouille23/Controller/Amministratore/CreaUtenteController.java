@@ -29,7 +29,7 @@ public class CreaUtenteController {
        if (nuovoUtente != null){
            UtenteDTO utente = new UtenteDTO();
            utente.setEmail(creaUtente.getEmailText());
-           utente.setGruppo(creaUtente.getTipoDipendenteComboBox().toString());
+           utente.setGruppo(creaUtente.getTipoDipendenteComboBox().getValue().toString());
            utente.setUsername(creaUtente.getUsernameText());
            utenteDAO.addUtente(utente);
        }

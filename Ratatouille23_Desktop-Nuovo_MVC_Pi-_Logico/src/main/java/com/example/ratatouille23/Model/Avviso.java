@@ -5,13 +5,17 @@ import java.util.Date;
 
 public class Avviso {
 
+    //TODO inserire id
+
+    private Long idAvviso;
+
     private String mittente;
     private String oggettoAvviso;
     private String bodyAvviso;
     private String dataInvio;
     private String orarioInvio;
 
-    // private boolean isLetto;
+     private boolean isLetto;
 
     public Avviso(String mittente,
                   String oggettoAvviso,
@@ -62,6 +66,14 @@ public class Avviso {
         return orarioInvio;
     }
 
+    public Long getIdAvviso() {
+        return idAvviso;
+    }
+
+    public void setIdAvviso(Long idAvviso) {
+        this.idAvviso = idAvviso;
+    }
+
     public void setOrarioInvio(String orarioInvio) {
         this.orarioInvio = orarioInvio;
     }
@@ -69,6 +81,7 @@ public class Avviso {
     @Override
     public String toString() {
         return "Avviso{" +
+                "idAvviso='" + idAvviso + '\'' +
                 "mittente='" + mittente + '\'' +
                 ", oggettoAvviso='" + oggettoAvviso + '\'' +
                 ", bodyAvviso='" + bodyAvviso + '\'' +
@@ -77,4 +90,7 @@ public class Avviso {
                 '}';
     }
 
+    public boolean getStato() {
+        return isLetto;
+    }
 }
