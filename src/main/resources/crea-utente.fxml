@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -13,12 +14,15 @@
 
 <BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="588.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.Admin.CreaUtenteView">
    <center>
-      <VBox alignment="CENTER" prefHeight="463.0" prefWidth="465.0" spacing="65.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="390.0" prefWidth="494.0" spacing="65.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="usernameTextField" prefHeight="44.0" prefWidth="504.0" promptText="Nome utente" styleClass="textfield" stylesheets="@homepage.css" />
+            <TextField fx:id="usernameTextField" prefHeight="44.0" prefWidth="528.0" promptText="Nome utente" styleClass="textfield" stylesheets="@homepage.css" />
             <TextField fx:id="emailTextField" prefHeight="42.0" prefWidth="200.0" promptText="Email" styleClass="textfield" stylesheets="@homepage.css" />
             <ComboBox fx:id="tipoDipendenteComboBox" prefHeight="40.0" prefWidth="266.0" promptText="Tipo dipendente" styleClass="textfield" stylesheets="@homepage.css" />
          </children>
+         <padding>
+            <Insets left="70.0" right="70.0" />
+         </padding>
       </VBox>
    </center>
    <top>

@@ -18,7 +18,6 @@ import java.io.IOException;
 
 public class ReimpostaPasswordView implements ViewInterface {
 
-    private Stage stage;
     private Scene scene;
     private Parent root;
     private Node node;
@@ -31,14 +30,13 @@ public class ReimpostaPasswordView implements ViewInterface {
 
     @FXML
     private Button btnConferma;
-
-
-    private HomepageAdminView homepage;
-
     private ReimpostaPasswordController reimpostaPasswordController;
 
     @FXML
     public void initialize() {
+
+        this.reimpostaPasswordController = new ReimpostaPasswordController(this);
+
         btnConferma.disableProperty().bind(
                 Bindings.createBooleanBinding(
                         () -> oldPasswordTextField.getText().isEmpty() || newPasswordTextField.getText().isEmpty(),
@@ -61,19 +59,10 @@ public class ReimpostaPasswordView implements ViewInterface {
         this.node = node;
     }
 
-    public void clickPulsanteConfermaNuovaPassword(ActionEvent event) {
-        reimpostaPasswordController.onPulsanteConfermaNuovaPasswordClicked();
+    public void clickBtnConfermaNuovaPassword() {
+        reimpostaPasswordController.onBtnConfermaNuovaPasswordClicked();
     }
 
-
-
-
-    public void apriSchermataReimpostaPassword() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/reimposta-password.fxml"));
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public String getNewPasswordText() {
         return newPasswordTextField.getText();

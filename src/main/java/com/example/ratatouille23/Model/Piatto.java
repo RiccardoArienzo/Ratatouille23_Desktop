@@ -1,6 +1,9 @@
 package com.example.ratatouille23.Model;
 
-public class Piatto {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Piatto implements Serializable {
     private String nomePiatto;
     private String costoPiatto;
     private String allergeni;
@@ -43,5 +46,22 @@ public class Piatto {
 
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
+    }
+
+    @Override
+    public String toString() {
+        return nomePiatto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Piatto piatto)) return false;
+        return Objects.equals(nomePiatto, piatto.nomePiatto) && Objects.equals(costoPiatto, piatto.costoPiatto) && Objects.equals(allergeni, piatto.allergeni) && Objects.equals(descrizione, piatto.descrizione);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nomePiatto, costoPiatto, allergeni, descrizione);
     }
 }

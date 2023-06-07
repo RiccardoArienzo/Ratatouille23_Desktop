@@ -92,6 +92,7 @@ public abstract class Utente {
                     String groupName = listGroupsResponse.groups().get(0).groupName();
                     System.out.println("User belongs to group: " + groupName);
 
+
                     Utente.setGroup(groupName);
                 } else {
                     System.out.println("User doesn't belong to any group.");
@@ -103,28 +104,20 @@ public abstract class Utente {
             }
     }
 
-    public static void ReimpostaPasswordPrimoAccesso(String password){
-                try {
+    public static void ReimpostaPasswordPrimoAccesso(String password) throws CognitoIdentityProviderException {
+        CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder()
+                .credentialsProvider(DefaultCredentialsProvider.create())
+                .region(CognitoSettings.getRegion())
+                .build();
 
-                    CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder()
-                            .credentialsProvider(DefaultCredentialsProvider.create())
-                            .region(CognitoSettings.getRegion())
-                            .build();
+        AdminSetUserPasswordRequest passwordRequest = AdminSetUserPasswordRequest.builder()
+                .username(Utente.getUsername())
+                .userPoolId(CognitoSettings.getUserPoolID())
+                .password(password)
+                .permanent(true)
+                .build();
 
-                    AdminSetUserPasswordRequest passwordRequest = AdminSetUserPasswordRequest.builder()
-                            .username(Utente.getUsername())
-                            .userPoolId(CognitoSettings.getUserPoolID())
-                            .password(password)
-                            .permanent(true)
-                            .build();
-
-                    cognitoClient.adminSetUserPassword(passwordRequest);
-                    System.out.println("The password was successfully changed");
-
-                } catch (CognitoIdentityProviderException e) {
-                    System.err.println(e.awsErrorDetails().errorMessage());
-                    System.exit(1);
-                }
-
+        cognitoClient.adminSetUserPassword(passwordRequest);
+        System.out.println("The password was successfully changed");
     }
 }

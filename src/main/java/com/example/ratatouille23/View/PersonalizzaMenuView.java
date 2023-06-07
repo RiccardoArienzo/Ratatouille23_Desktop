@@ -4,6 +4,7 @@ import com.example.ratatouille23.Controller.PersonalizzaMenuController;
 import com.example.ratatouille23.Model.Categoria;
 import com.example.ratatouille23.Model.Piatto;
 import com.example.ratatouille23.ViewInterface;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,12 +22,17 @@ public class PersonalizzaMenuView implements ViewInterface {
 
     @FXML
     private Accordion listaCategorie;
-
     @FXML
     private Button btnAggiungiCategoria;
-
     @FXML
     private Button btnAggiungiPiatto;
+    @FXML
+    private Button btnEliminaPiatto;
+    @FXML
+    private Button btnEliminaCategoria;
+
+    @FXML
+    private Button btnOrdinaCategorie;
     private Node node;
     private PersonalizzaMenuController personalizzaMenuController;
 
@@ -51,37 +57,24 @@ public class PersonalizzaMenuView implements ViewInterface {
         Piatto piatto4 = new Piatto("Abbasso l'università", "Dipende dall'ISEE",
                 "Salvatore Corrado, Flavio Arienzo, SDM, Starace e tutt a maronn ro carmn", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 
-        ArrayList<Piatto> lista = new ArrayList<Piatto>();
-        lista.add(piatto1);
-        lista.add(piatto2);
-        lista.add(piatto3);
-        lista.add(piatto4);
-        lista.add(piatto4);
-        lista.add(piatto3);
-        lista.add(piatto1);
+        ArrayList<Piatto> lista1 = new ArrayList<Piatto>();
+        ArrayList<Piatto> lista2 = new ArrayList<Piatto>();
+
+        lista1.add(piatto1);
+        lista1.add(piatto2);
+        lista2.add(piatto3);
+        lista2.add(piatto4);
 
 
 
-        Categoria cat1 = new Categoria("Antipasti", lista);
 
-        Categoria cat2= new Categoria("Primi piatti", lista);
+        Categoria cat1 = new Categoria("Antipasti", lista1);
+
+        Categoria cat2= new Categoria("Primi piatti", lista2);
 
         ArrayList<Categoria> listaCat = new ArrayList<Categoria>();
 
         listaCat.add(cat1);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
-        listaCat.add(cat2);
         listaCat.add(cat2);
 
 
@@ -166,10 +159,23 @@ public class PersonalizzaMenuView implements ViewInterface {
         personalizzaMenuController.onPulsanteAggiungiCategoriaClicked();
     }
 
+    public void clickBtnEliminaCategoria(){
+        personalizzaMenuController.onPulsanteEliminaCategoriaClicked();
+    }
+
+    public void clickBtnEliminaPiatto(){
+        personalizzaMenuController.onPulsanteEliminaPiattoClicked();
+    }
+
+    public void clickBtnOrdinaCategorie() {
+        personalizzaMenuController.onBtnOrdinaCategorieClicked();
+    }
 
     public PersonalizzaMenuController getPersonalizzaMenuController() {
         return personalizzaMenuController;
     }
+
+
 }
 
 

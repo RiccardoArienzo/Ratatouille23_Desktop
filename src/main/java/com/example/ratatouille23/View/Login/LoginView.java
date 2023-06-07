@@ -33,16 +33,12 @@ public class LoginView implements ViewInterface {
 
     private Node node;
 
-
-    // Schermate
-    private HomepageAdminView homepage;
-    private ReimpostaPasswordView reimpostaPassword;
     private LoginController loginController;
 
     @FXML
     public void initialize() {
 
-        this.loginController = new LoginController();
+        this.loginController = new LoginController(this);
 
         btnLogin.disableProperty().bind(
                 Bindings.createBooleanBinding(
@@ -67,16 +63,8 @@ public class LoginView implements ViewInterface {
     }
 
 
-    public void clickPulsanteLogin() {
+    public void clickBtnLogin() {
         loginController.onPulsanteLoginClicked();
-    }
-
-    public void apriSchermataReimpostaPassword(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/reimposta-password.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
     public String getUsernameText() {

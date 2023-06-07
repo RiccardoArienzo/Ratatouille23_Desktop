@@ -1,6 +1,6 @@
 package com.example.ratatouille23.View.AddettoCucina;
 
-import com.example.ratatouille23.Controller.AddettoCucina.GestisciOrdinazioniController;
+import com.example.ratatouille23.Controller.AddettoCucina.OrdinazioniEvaseController;
 import com.example.ratatouille23.Model.Ordinazione;
 import com.example.ratatouille23.Model.Piatto;
 import com.example.ratatouille23.ViewInterface;
@@ -9,7 +9,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Accordion;
+import javafx.scene.control.Button;
+import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -20,7 +22,8 @@ import javafx.scene.text.TextFlow;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class GestisciOrdinazioniView implements ViewInterface {
+public class OrdinazioniEvaseView implements ViewInterface {
+
 
     @FXML
     private BorderPane borderPane;
@@ -30,23 +33,23 @@ public class GestisciOrdinazioniView implements ViewInterface {
 
     private Node node;
 
-    private GestisciOrdinazioniController gestisciOrdinazioniController;
+    private OrdinazioniEvaseController ordinazioniEvaseController;
+
 
     @FXML
     public void initialize() {
 
-        this.gestisciOrdinazioniController = new GestisciOrdinazioniController(this);
+        this.ordinazioniEvaseController = new OrdinazioniEvaseController(this);
 
         popolaAccordion();
-
     }
 
-    // Metodi
+
+
+
+    // Methods
 
     public void popolaAccordion(){
-
-        listaOrdinazioni.getPanes().clear();
-
         // popolare l'accordion. questo codice va messo in controller
         Piatto piatto1 = new Piatto("Pasta e cazzi", "€ 12",
                 "Cazzi, coppole di minchia, palle, culi",
@@ -83,9 +86,13 @@ public class GestisciOrdinazioniView implements ViewInterface {
         ordini.add(ord1);
         ordini.add(ord2);
 
+
+        // In realtà, qui va fatto un ordinazioneDAO.getAllOrdinazioniEvase()
+
         for (Ordinazione ord : ordini) {
             TitledPane titledPane = new TitledPane();
             titledPane.setText("Tavolo " + ord.getIdTavolo()); // imposto il titolo del TitledPane con il numero tavolo
+
 
             Accordion accordion = new Accordion();
 
@@ -112,39 +119,6 @@ public class GestisciOrdinazioniView implements ViewInterface {
                 content.getChildren().add(stato);
                 content.setAlignment(Pos.CENTER);
 
-                if (map.getValue().getStato().equals(Ordinazione.StatoOrdine.DA_PREPARARE)){
-                    Button prepara = new Button();
-                    prepara.setText("Prepara ordinazione");
-                    content.getChildren().add(prepara);
-
-                    prepara.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent actionEvent) {
-                            gestisciOrdinazioniController.onBtnPreparaOrdinazioneClicked(ord);
-
-                            popolaAccordion();
-
-                        }
-                    });
-                } else if ((map.getValue().getStato().equals(Ordinazione.StatoOrdine.IN_PREPARAZIONE)) || (map.getValue().getStato().equals(Ordinazione.StatoOrdine.COMPLETATO))){
-
-                    TextFlow addetto = new TextFlow();
-
-                    Text boldAddetto = new Text("Presa in carico da: ");
-                    boldAddetto.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-
-                    Text plainAddetto = new Text("Utente X");
-                    plainAddetto.setFont(Font.font("Tahoma", 16));
-
-                    //La versione vera deve prendere l'utente che ha preso in carico la comanda
-                    //Text plainAddetto = new Text(map.getValue().getStato().toString());
-                    //plainStato.setFont(Font.font("Tahoma", 16));
-
-                    addetto.getChildren().addAll(boldAddetto, plainAddetto);
-                    content.getChildren().add(addetto);
-
-                }
-
                 TPPiatto.setContent(content);
                 accordion.getPanes().add(TPPiatto);
             }
@@ -152,14 +126,6 @@ public class GestisciOrdinazioniView implements ViewInterface {
             listaOrdinazioni.getPanes().add(titledPane);
         }
     }
-
-
-    // Action event
-
-    public void clickBtnOrdinazioniEvase(){
-        gestisciOrdinazioniController.onBtnOrdinazioniEvaseClicked();
-    }
-
 
 
     // Metodi di ViewInterface
@@ -174,5 +140,6 @@ public class GestisciOrdinazioniView implements ViewInterface {
     public void setNode(Node node){
         this.node = node;
     }
+
 
 }

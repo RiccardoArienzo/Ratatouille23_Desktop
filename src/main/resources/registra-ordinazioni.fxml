@@ -12,16 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane fx:id="borderPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="695.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.AddettoSala.RegistraOrdinazioniView">
+<BorderPane fx:id="borderPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="980.0" stylesheets="@homepage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ratatouille23.View.AddettoSala.RegistraOrdinazioniView">
    <bottom>
       <HBox alignment="CENTER" prefHeight="129.0" prefWidth="500.0" spacing="60.0">
          <children>
-            <Button mnemonicParsing="false" styleClass="button-cancel" stylesheets="@homepage.css" text="Cancella ordinazione">
+            <Button fx:id="btnCancellaOrdinazione" mnemonicParsing="false" onAction="#clickBtnCancellaOrdinazione" styleClass="button-cancel" stylesheets="@homepage.css" text="Cancella ordinazione">
                <font>
                   <Font name="Tahoma" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="btnVisualizzaAvvisiNascosti" mnemonicParsing="false" prefHeight="40.0" prefWidth="209.0" styleClass="button-orders" stylesheets="@homepage.css" text="Conferma ordinazione" textFill="WHITE">
+            <Button fx:id="btnConfermaOrdinazione" mnemonicParsing="false" onAction="#clickBtnConfermaOrdinazione" prefHeight="40.0" prefWidth="209.0" styleClass="button-orders" stylesheets="@homepage.css" text="Conferma ordinazione" textFill="WHITE">
                <font>
                   <Font name="Tahoma" size="17.0" />
                </font>
@@ -48,7 +48,7 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="white-bg" stylesheets="@homepage.css">
+            <VBox alignment="TOP_CENTER" prefHeight="359.0" prefWidth="548.0" styleClass="white-bg" stylesheets="@homepage.css">
                <children>
                   <Accordion fx:id="listaPiatti" />
                </children>
@@ -63,11 +63,36 @@
    <left>
       <ScrollPane hbarPolicy="NEVER" prefHeight="410.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="vboxButtonsCategorie" prefHeight="359.0" prefWidth="199.0" styleClass="white-bg" stylesheets="@homepage.css">
-               <children>
-                  <ComboBox prefHeight="25.0" prefWidth="303.0" promptText="Seleziona tavolo" styleClass="textfield" stylesheets="@homepage.css" />
-               </children></VBox>
+            <VBox fx:id="vboxButtonsCategorie" prefHeight="359.0" prefWidth="198.0" stylesheets="@homepage.css" />
          </content>
       </ScrollPane>
    </left>
+   <right>
+      <BorderPane prefHeight="361.0" prefWidth="244.0" BorderPane.alignment="CENTER">
+         <top>
+            <VBox alignment="TOP_CENTER" spacing="5.0" styleClass="white-bg" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="RIEPILOGO ORDINE">
+                     <font>
+                        <Font name="Tahoma Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="24.0" prefWidth="195.0" spacing="5.0">
+                     <children>
+                        <Label text="Tavolo:" />
+                        <ComboBox fx:id="tavoloComboBox" prefHeight="26.0" prefWidth="176.0" promptText="Seleziona tavolo" styleClass="textfield" stylesheets="@homepage.css" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox fx:id="riepilogoVbox" alignment="TOP_CENTER" prefHeight="312.0" prefWidth="242.0" />
+               </content>
+            </ScrollPane>
+         </center>
+      </BorderPane>
+   </right>
 </BorderPane>
