@@ -2,6 +2,7 @@ package com.example.ratatouille23.View.AddettoSala;
 
 import com.example.ratatouille23.Controller.AddettoSala.RegistraOrdinazioniController;
 import com.example.ratatouille23.Model.Categoria;
+import com.example.ratatouille23.Model.InfoOrdine;
 import com.example.ratatouille23.Model.Ordinazione;
 import com.example.ratatouille23.Model.Piatto;
 import com.example.ratatouille23.ViewInterface;
@@ -222,7 +223,17 @@ public class RegistraOrdinazioniView implements ViewInterface {
         riepilogoVbox.getChildren().add(tavoloText);
 */
 
-        for (HashMap.Entry<Piatto, Ordinazione.InfoOrdine> map : registraOrdinazioniController.getOrdinazione().getPiattiOrdinazione().entrySet()){
+//        for (HashMap.Entry<Piatto, Ordinazione.InfoOrdine> map : registraOrdinazioniController.getOrdinazione().getInfoPiatto().entrySet()){
+//
+//            Text piatto = new Text(map.getKey().getNomePiatto() + ": " + "x" + map.getValue().getQuantity());
+//            piatto.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 16));
+//
+//            riepilogoVbox.getChildren().add(piatto);
+//
+//        }
+
+
+        for (HashMap.Entry<Piatto, InfoOrdine> map : registraOrdinazioniController.getOrdinazione().getInfoPiatto().entrySet()){
 
             Text piatto = new Text(map.getKey().getNomePiatto() + ": " + "x" + map.getValue().getQuantity());
             piatto.setFont(Font.font("Tahoma", FontWeight.SEMI_BOLD, 16));
@@ -230,6 +241,7 @@ public class RegistraOrdinazioniView implements ViewInterface {
             riepilogoVbox.getChildren().add(piatto);
 
         }
+
     }
 
 

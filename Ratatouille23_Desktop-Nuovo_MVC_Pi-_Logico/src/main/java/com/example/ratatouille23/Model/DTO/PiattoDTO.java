@@ -1,6 +1,8 @@
 package com.example.ratatouille23.Model.DTO;
 
 public class PiattoDTO {
+
+    private Long idPiatto;
     private String nome;
     private String costo;
     private String descrizione;
@@ -8,7 +10,8 @@ public class PiattoDTO {
     private String nomeCategoria;
 
 
-    public PiattoDTO(String nome, String costo, String descrizione, String allergeni, String nomeCategoria) {
+    public PiattoDTO(Long idPiatto, String nome, String costo, String descrizione, String allergeni, String nomeCategoria) {
+        this.idPiatto = idPiatto;
         this.nome = nome;
         this.costo = costo;
         this.descrizione = descrizione;
@@ -16,9 +19,26 @@ public class PiattoDTO {
         this.nomeCategoria = nomeCategoria;
     }
 
+//    public PiattoDTO(Long idPiatto, String nome, String costo, String descrizione, String allergeni, String nomeCategoria) {
+//        this.idPiatto = idPiatto;
+//        this.nome = nome;
+//        this.costo = costo;
+//        this.descrizione = descrizione;
+//        this.allergeni = allergeni;
+//        this.nomeCategoria = nomeCategoria;
+//    }
+
     public PiattoDTO() {
 
     }
+
+//    public Long getIdPiatto(){
+//        return idPiatto;
+//    }
+//
+//    public void setIdPiatto(){
+//        this.idPiatto = idPiatto;
+//    }
 
     public String getNome() {
         return nome;
@@ -60,5 +80,11 @@ public class PiattoDTO {
         this.nomeCategoria = nomeCategoria;
     }
 
+    public Long getIdPiatto() {
+        return idPiatto;
+    }
 
+    public void setIdPiatto(Long idPiatto) {
+        this.idPiatto = idPiatto;
+    }
 }

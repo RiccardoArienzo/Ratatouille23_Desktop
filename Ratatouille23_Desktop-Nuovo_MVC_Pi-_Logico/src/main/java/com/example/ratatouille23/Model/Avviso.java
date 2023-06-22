@@ -21,14 +21,18 @@ public class Avviso {
                   String oggettoAvviso,
                   String bodyAvviso,
                   String dataInvio,
-                  String orarioInvio) {
+                  String orarioInvio,
+                  boolean isLetto) {
 
         this.mittente = mittente;
         this.oggettoAvviso = oggettoAvviso;
         this.bodyAvviso = bodyAvviso;
         this.dataInvio = dataInvio;
         this.orarioInvio = orarioInvio;
+        this.isLetto = isLetto;
     }
+
+
 
     public String getMittente() {
         return mittente;
@@ -92,5 +96,9 @@ public class Avviso {
 
     public boolean getStato() {
         return isLetto;
+    }
+
+    public void setLetto(boolean letto) {
+        isLetto = letto;
     }
 }

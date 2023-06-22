@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class Ordinazione {
 
+    private Long idOrdinazione;
+
     private String idTavolo;
 
     private boolean evasa;
@@ -30,7 +32,7 @@ public class Ordinazione {
             info.setQuantity(quantity+1);
             infoPiatto.put(piatto, info);
         } else {
-            InfoOrdine info = new InfoOrdine(1, StatoOrdine.DA_PREPARARE);
+            InfoOrdine info = new InfoOrdine(1, InfoOrdine.StatoOrdine.DA_PREPARARE);
             infoPiatto.put(piatto, info);
         }
     }
@@ -50,19 +52,19 @@ public class Ordinazione {
     }
 
     public void aggiungiPiatto(Piatto piatto, int quantita) {
-        InfoOrdine info = new InfoOrdine(quantita, StatoOrdine.DA_PREPARARE);
+        InfoOrdine info = new InfoOrdine(quantita, InfoOrdine.StatoOrdine.DA_PREPARARE);
         infoPiatto.put(piatto, info);
     }
 
     public void setStatoInPreparazione(Piatto piatto){
         InfoOrdine info = this.infoPiatto.get(piatto);
-        info.setStato(StatoOrdine.IN_PREPARAZIONE);
+        info.setStato(InfoOrdine.StatoOrdine.IN_PREPARAZIONE);
         this.infoPiatto.put(piatto, info);
     }
 
     public void setStatoCompletato(Piatto piatto){
         InfoOrdine info = this.infoPiatto.get(piatto);
-        info.setStato(StatoOrdine.COMPLETATO);
+        info.setStato(InfoOrdine.StatoOrdine.COMPLETATO);
         this.infoPiatto.put(piatto, info);
     }
 
@@ -76,20 +78,20 @@ public class Ordinazione {
         this.idTavolo = idTavolo;
     }
 
-    public Map<Piatto, InfoOrdine> getPiattiOrdinazione() {
-        return infoPiatto;
-    }
-
-    public boolean getStato() {
-        return evasa;
-    }
-
     public boolean isEvasa() {
         return evasa;
     }
 
     public void setEvasa(boolean evasa) {
         this.evasa = evasa;
+    }
+
+    public Long getIdOrdinazione() {
+        return idOrdinazione;
+    }
+
+    public void setIdOrdinazione(Long idOrdinazione) {
+        this.idOrdinazione = idOrdinazione;
     }
 
     public Map<Piatto, InfoOrdine> getInfoPiatto() {
@@ -102,54 +104,8 @@ public class Ordinazione {
 
     @Override
     public String toString() {
-        return "Tavolo: " + idTavolo +
-                "\n\n" + infoPiatto;
+        return "idTavolo: " + idTavolo +
+                ", infoPiatto: " + infoPiatto;
     }
 
-    // Inner classes
-
-    public class InfoOrdine{
-
-        private int quantity;
-        private StatoOrdine stato;
-
-        public InfoOrdine(int quantity, StatoOrdine stato) {
-            this.quantity = quantity;
-            this.stato = stato;
-        }
-
-        public InfoOrdine(int quantity){
-            this.quantity = quantity;
-            this.stato = StatoOrdine.DA_PREPARARE;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
-        }
-
-        public StatoOrdine getStato() {
-            return stato;
-        }
-
-        public void setStato(StatoOrdine stato) {
-            this.stato = stato;
-        }
-
-        @Override
-        public String toString() {
-            return  " x" + quantity + "\n";
-
-        }
-
-    }
-
-    public enum StatoOrdine{
-        DA_PREPARARE,
-        IN_PREPARAZIONE,
-        COMPLETATO;
-    }
 }

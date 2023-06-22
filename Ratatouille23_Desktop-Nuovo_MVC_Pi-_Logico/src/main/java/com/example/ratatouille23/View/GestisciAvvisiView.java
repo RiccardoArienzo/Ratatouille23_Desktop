@@ -6,6 +6,7 @@ import com.example.ratatouille23.Model.DAO.DAOInterface.AvvisoDAO;
 import com.example.ratatouille23.Model.DTO.AvvisoDTO;
 import com.example.ratatouille23.Model.DTO.UtenteDTO;
 import com.example.ratatouille23.Model.Utente;
+import com.example.ratatouille23.Model.UtenteAvviso;
 import com.example.ratatouille23.ViewInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -55,13 +56,24 @@ public class GestisciAvvisiView implements ViewInterface {
         utenteDTO.setEmail(Utente.getEmail());
         System.out.println("Utente in popolaAvvisi è uguale a questo: " + utenteDTO);
         ArrayList<Avviso> listaAvv = (ArrayList<Avviso>) gestisciAvvisiController.ottieniAvviso(utenteDTO);
+        ArrayList<UtenteAvviso> listaUtenteAvvisi = (ArrayList<UtenteAvviso>) gestisciAvvisiController.ottieniUtenteAvvisi(utenteDTO);
+
+        //TODO spostare nel primo for
+        UtenteAvviso utenteAvviso = new UtenteAvviso();
 
         for (Avviso avv : listaAvv) {
             TitledPane tp = new TitledPane();
             tp.setText(avv.getOggettoAvviso());
 
-            if (avv.getStato() == false) {
+            for(UtenteAvviso ua : listaUtenteAvvisi){
+                if(ua.getAvviso() == avv){
+                     utenteAvviso = ua;
+                    System.out.println("UtenteAvviso è uguale a :" + utenteAvviso);
+                }
+            }
 
+            if (utenteAvviso.isLetto() == false) {
+                System.out.println("Sono entrato nel nuovo if con valore: " + utenteAvviso.isLetto());
                 FontIcon newIcon = new FontIcon("mdi-exclamation");
                 newIcon.setIconSize(30);
                 newIcon.setIconColor(Color.RED);
@@ -85,8 +97,6 @@ public class GestisciAvvisiView implements ViewInterface {
 //                        avvisoDTO.setOrarioInvio(avv.getOrarioInvio());
 //                        System.out.println("L'avviso selezionato è il seguente: " + avvisoDTO.getIdAvviso());
 //                        gestisciAvvisiController.onAvvisoLetto(avvisoDTO);
-
-
 
                         // versione di prova
 

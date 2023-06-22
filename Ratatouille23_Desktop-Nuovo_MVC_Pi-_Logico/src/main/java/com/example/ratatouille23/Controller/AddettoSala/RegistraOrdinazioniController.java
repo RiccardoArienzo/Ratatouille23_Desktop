@@ -70,10 +70,19 @@ private OrdinazioneDAO ordinazioneDAO;
             // Invia l'ordinazione al server
             // poi cancella quella corrente
             //TODO Invocare il dao dell'ordinazione POST
-            OrdinazioneDTO ordinazioneDTO = new OrdinazioneDTO();
-            ordinazioneDTO.setIdTavolo(ordinazione.getIdTavolo());
-            ordinazioneDTO.setInfoPiatto(ordinazione.getInfoPiatto());
-            ordinazioneDAO.sendOrdinazione(ordinazioneDTO);
+
+//            OrdinazioneDTO ordinazioneDTO = new OrdinazioneDTO();
+//            ordinazioneDTO.setIdTavolo(ordinazione.getIdTavolo());
+//            ordinazioneDTO.setInfoOrdineCollection(ordinazione.getInfoPiatto().values());
+//            ordinazioneDTO.setPiattoSet(ordinazione.getInfoPiatto().keySet());
+
+//            System.out.println("I valori dei piatti sono: " + ordinazioneDTO.getPiattoSet() + "/n" +
+//                    "I valori degli InfoOrdine sono: " + ordinazioneDTO.getInfoOrdineCollection());
+//            ordinazioneDTO.setInfoPiatto(ordinazione.getInfoPiatto());
+
+//            ordinazioneDAO.sendOrdinazione(ordinazioneDTO);
+            ordinazioneDAO.sendOrdinazione(ordinazione);
+
             resetOrdinazione();
         }
     }

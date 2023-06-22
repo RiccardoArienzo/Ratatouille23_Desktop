@@ -45,9 +45,9 @@ module com.example.ratatouille23 {
     opens com.example.ratatouille23.View.Login to javafx.fxml;
     exports com.example.ratatouille23.View.Supervisore;
     opens com.example.ratatouille23.View.Supervisore to javafx.fxml;
-    opens com.example.ratatouille23.Model to com.google.gson;
-    opens com.example.ratatouille23.Model.DTO to com.google.gson;
-//    opens java.base to com.google.gson;
+    opens com.example.ratatouille23.Model to com.google.gson, com.fasterxml.jackson.databind;
+    opens com.example.ratatouille23.Model.DTO to com.google.gson, com.fasterxml.jackson.databind;
+    //    opens java.base to com.google.gson;
 
 
 }

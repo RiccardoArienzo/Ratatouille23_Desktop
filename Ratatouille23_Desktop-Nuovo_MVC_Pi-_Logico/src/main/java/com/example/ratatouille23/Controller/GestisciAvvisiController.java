@@ -6,6 +6,7 @@ import com.example.ratatouille23.Model.DAO.DAOImplUnirest.AvvisoDAOImplUnirest;
 import com.example.ratatouille23.Model.DAO.DAOInterface.AvvisoDAO;
 import com.example.ratatouille23.Model.DTO.AvvisoDTO;
 import com.example.ratatouille23.Model.DTO.UtenteDTO;
+import com.example.ratatouille23.Model.UtenteAvviso;
 import com.example.ratatouille23.View.GestisciAvvisiView;
 import com.example.ratatouille23.View.AddettoSala.HomepageSalaView;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,5 +73,9 @@ public class GestisciAvvisiController {
     public void nascondiAvviso(AvvisoDTO avv, UtenteDTO utenteDTO) {
 
         avvisoDAO.nascondiAvviso(avv, utenteDTO);
+    }
+
+    public List<UtenteAvviso> ottieniUtenteAvvisi(UtenteDTO utenteDTO) {
+       return avvisoDAO.getListUtenteAvviso(utenteDTO);
     }
 }

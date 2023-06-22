@@ -4,6 +4,7 @@ import com.example.ratatouille23.Model.Avviso;
 import com.example.ratatouille23.Model.DTO.AvvisoDTO;
 import com.example.ratatouille23.Model.DTO.UtenteDTO;
 import com.example.ratatouille23.Model.Utente;
+import com.example.ratatouille23.Model.UtenteAvviso;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,6 @@ public interface AvvisoDAO {
 
     public void nascondiAvviso(AvvisoDTO avviso, UtenteDTO utente);
 
+    public List<UtenteAvviso> getListUtenteAvviso(UtenteDTO utente);
 
-//    public void modificaStatoAvviso(AvvisoDTO avviso);
 }
