@@ -67,7 +67,6 @@ public class CategoriaDAOImplUnirest implements CategoriaDAO {
 
     @Override
     public void addCategoria(Categoria categoria) {
-
         try {
             HttpResponse<JsonNode> response = Unirest.post("http://localhost:8080/api/v1/categoria/addCategoria")
                     .header("accept", "application/json")
@@ -76,11 +75,35 @@ public class CategoriaDAOImplUnirest implements CategoriaDAO {
         } catch (UnirestException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
-    public void deleteCategoria(Categoria categoria) {
-
+    public int deleteCategoria(Long idCategoria) {
+        System.out.println("In questo momento l'id della piatto è: " + idCategoria);
+        try {
+            HttpResponse<JsonNode> apiResponse = Unirest.delete("http://localhost:8080/api/v1/categoria/delete")
+                    .header("accept", "application/json").
+                    field("idCategoria", idCategoria).asJson();
+            System.out.println("Ho effettuato una DELETE con il seguente stato: " + apiResponse.getStatus());
+            return apiResponse.getStatus();
+        } catch (UnirestException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    @Override
+    public void updatePosizioneCategoria(Long idCategoria, Long categoriaCounter) {
+        System.out.println("In questo momento, idCategoria = " + idCategoria + " e categoriaCounter = " + categoriaCounter);
+        try {
+            HttpResponse<JsonNode> response = Unirest.put("http://localhost:8080/api/v1/categoria/aggiornaContatoreCategoria")
+                    .header("accept", "application/json")
+                    .field("idCategoria", idCategoria)
+                    .field("categoriaCounter", categoriaCounter)
+                    .asJson();
+        } catch (UnirestException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
+

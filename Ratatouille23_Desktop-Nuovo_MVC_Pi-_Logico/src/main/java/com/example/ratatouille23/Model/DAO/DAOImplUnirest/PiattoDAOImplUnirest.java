@@ -83,14 +83,34 @@ public class PiattoDAOImplUnirest implements PiattoDAO {
     }
 
     @Override
-    public int deletePiatto(Piatto piatto) {
-
+    public int deletePiatto(Long idPiatto) {
+        System.out.println("In questo momento l'id del piatto è: " + idPiatto);
         try {
-            HttpResponse<JsonNode> apiResponse = Unirest.delete("http://localhost:8080/api/v1/piatto//delete/piatto").asJson();
+            HttpResponse<JsonNode> apiResponse = Unirest.delete("http://localhost:8080/api/v1/piatto/delete")
+              .header("accept", "application/json").
+                    field("idPiatto", idPiatto).asJson();
+            System.out.println("Ho effettuato una DELETE con il seguente stato: " + apiResponse.getStatus());
+
             return apiResponse.getStatus();
         } catch (UnirestException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+    // FORSE QUESTA CHIAMATA NON FUNZIONA PERCHE' NECESSITA DI PIATTO O PIATTODTO. PROVIAMO. INOLTRE PROVARE CON
+    // NAME PIUTTOSTO CHE CON ID
+    @Override
+    public void updatePosizionePiatto(Long idPiatto, Long piattoCounter) {
+        System.out.println("In questo momento, idPiatto = " + idPiatto + " e piattoCounter = " + piattoCounter);
+        try {
+            HttpResponse<JsonNode> response = Unirest.put("http://localhost:8080/api/v1/piatto/aggiornaContatorePiatto")
+                    .header("accept", "application/json")
+                    .field("idPiatto", idPiatto)
+                    .field("piattoCounter", piattoCounter)
+                    .asJson();
+        } catch (UnirestException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

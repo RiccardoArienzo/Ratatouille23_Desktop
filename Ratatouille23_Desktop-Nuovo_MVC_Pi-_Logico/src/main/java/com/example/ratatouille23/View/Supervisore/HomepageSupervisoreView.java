@@ -1,6 +1,5 @@
 package com.example.ratatouille23.View.Supervisore;
 
-import com.example.ratatouille23.Controller.Amministratore.HomepageAdminController;
 import com.example.ratatouille23.Controller.Supervisore.HomepageSupervisoreController;
 import com.example.ratatouille23.Homepage;
 import com.example.ratatouille23.Model.Utente;

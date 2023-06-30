@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class DialogEliminaCategoriaView {
-
     @FXML
     private Button btnConferma;
     @FXML
@@ -33,27 +32,7 @@ public class DialogEliminaCategoriaView {
 
         btnConferma.setDisable(true);
 
-      popolaListView();
-
-
-    }
-
-    public void clickBtnConferma(){
-        dialogEliminaCategoriaController.onBtnConfermaClicked();
-    }
-
-    public ListView getListaCategorie() {
-        return listaCat;
-    }
-
-
-    public void popolaListView(){
-
-        ArrayList<Categoria> lista = (ArrayList<Categoria>) dialogEliminaCategoriaController.ottieniCategorie();
-
-        for (Categoria cat: lista){
-            listaCat.getItems().add(cat);
-        }
+        popolaListView();
 
         // Aggiungi la cell factory alla ListView
         AtomicInteger counter = new AtomicInteger();
@@ -79,4 +58,26 @@ public class DialogEliminaCategoriaView {
         }));
     }
 
+    public void popolaListView() {
+
+        listaCat.getItems().clear();
+
+        //TODO stesso discorso del piatto, forse va fatta una chiamata al DAO?
+
+        ArrayList<Categoria> lista = (ArrayList<Categoria>) dialogEliminaCategoriaController.getCategorie();
+
+        for (Categoria cat: lista){
+            listaCat.getItems().add(cat);
+        }
+
+    }
+
+    public void clickBtnConferma(){
+        dialogEliminaCategoriaController.onBtnConfermaClicked();
+    }
+
+
+    public ListView getListaCategorie() {
+        return listaCat;
+    }
 }

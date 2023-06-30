@@ -1,19 +1,9 @@
 package com.example.ratatouille23;
 
-import com.example.ratatouille23.Controller.Amministratore.CreaUtenteController;
-import com.example.ratatouille23.Controller.Amministratore.HomepageAdminController;
-import com.example.ratatouille23.View.Admin.CreaUtenteView;
-import com.example.ratatouille23.View.GestisciAvvisiView;
-import com.example.ratatouille23.View.InserisciAvvisiView;
-import com.example.ratatouille23.View.NuovoPiattoView;
-import com.example.ratatouille23.View.PersonalizzaMenuView;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-
-import java.io.IOException;
 
 public abstract class Homepage {
 

@@ -1,6 +1,9 @@
 package com.example.ratatouille23.Model;
 
-public class Piatto {
+import java.io.Serializable;
+import java.util.Objects;
+
+public class Piatto implements Serializable {
 
     private Long idPiatto;
     private String nome;
@@ -11,12 +14,12 @@ public class Piatto {
     private Categoria categoria;
 
 
-    public Piatto(Long idPiatto, String nomePiatto, String costoPiatto, String allergeni, String descrizione) {
+    public Piatto(Long idPiatto, String nomePiatto, String costoPiatto, String allergeni, String descrizione, Categoria categoria) {
         this.idPiatto = idPiatto;
         this.nome = nomePiatto;
         this.costo = costoPiatto;
         this.allergeni = allergeni;
-//        this.categoria = categoria;
+        this.categoria = categoria;
         this.descrizione = descrizione;
     }
 
@@ -84,14 +87,24 @@ public class Piatto {
 
     @Override
     public String toString() {
-        return "[nome='" + nome + '\'' +
-                ", costo='" + costo + '\'' +
-                ", allergeni='" + allergeni + '\'' +
-                ", descrizione='" + descrizione + '\'' +
-                ", categoria=" + categoria + "]";
+        return nome + " , €" + costo;
     }
 
-    //    public Categoria getCategoria() {
-//        return categoria;
-//    }
+        public Categoria getCategoria() {
+        return categoria;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Piatto piatto)) return false;
+        return Objects.equals(nome, piatto.nome) && Objects.equals(costo, piatto.costo) && Objects.equals(allergeni, piatto.allergeni) && Objects.equals(descrizione, piatto.descrizione);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, costo, allergeni, descrizione);
+    }
+
+
 }

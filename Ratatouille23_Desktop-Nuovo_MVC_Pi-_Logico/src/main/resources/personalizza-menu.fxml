@@ -15,16 +15,39 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="129.0" prefWidth="500.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#clickBtnAggiungiCategoria" styleClass="signout" stylesheets="@homepage.css" text="+ Aggiungi Categoria" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="btnEliminaCategoria" mnemonicParsing="false" onAction="#clickBtnEliminaCategoria" styleClass="signout" text="- Elimina categoria" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma" size="13.0" />
-               </font></Button>
-            <Button fx:id="btnEliminaPiatto" mnemonicParsing="false" onAction="#clickBtnEliminaPiatto" styleClass="signout" text="- Elimina piatto" textFill="WHITE" />
+            <VBox alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#clickBtnAggiungiCategoria" styleClass="signout" stylesheets="@homepage.css" text="+ Aggiungi Categoria" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <Button fx:id="btnEliminaPiatto" mnemonicParsing="false" onAction="#clickBtnEliminaPiatto" styleClass="signout" text="- Elimina piatto" textFill="WHITE" />
+                  <Button fx:id="btnEliminaCategoria" mnemonicParsing="false" onAction="#clickBtnEliminaCategoria" styleClass="signout" text="- Elimina categoria" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="129.0" prefWidth="120.0" spacing="20.0">
+               <children>
+                  <Button fx:id="btnOrdinaCategorie" mnemonicParsing="false" onAction="#clickBtnOrdinaCategorie" prefHeight="24.0" prefWidth="114.0" styleClass="signout" text="Ordina categoria" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnOrdinaPiatti" mnemonicParsing="false" onAction="#clickBtnOrdinaPiatti" prefHeight="24.0" prefWidth="114.0" styleClass="signout" text="Ordina piatti" textFill="WHITE">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
          </children>
       </HBox>
    </bottom>

@@ -1,22 +1,17 @@
 package com.example.ratatouille23.Controller.Amministratore;
 
 import com.example.ratatouille23.Controller.Supervisore.HomepageSupervisoreController;
-import com.example.ratatouille23.Homepage;
-import com.example.ratatouille23.HomepageController;
 import com.example.ratatouille23.View.Admin.CreaUtenteView;
 import com.example.ratatouille23.View.Admin.HomepageAdminView;
-import com.example.ratatouille23.View.GestisciAvvisiView;
-import com.example.ratatouille23.View.InserisciAvvisiView;
-import com.example.ratatouille23.View.NuovoPiattoView;
-import com.example.ratatouille23.View.PersonalizzaMenuView;
+import com.example.ratatouille23.View.Admin.StatisticheView;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 
 import java.io.IOException;
 
 public class HomepageAdminController extends HomepageSupervisoreController {
 
     protected CreaUtenteView creaUtente;
+    protected StatisticheView statisticheView;
 
 
 
@@ -27,6 +22,7 @@ public class HomepageAdminController extends HomepageSupervisoreController {
     public HomepageAdminController(HomepageAdminView view){
         super(view);
         loadCreaUtente();
+        loadStatistiche();
     };
 
 
@@ -39,6 +35,13 @@ public class HomepageAdminController extends HomepageSupervisoreController {
         homepage.updateCenterView(creaUtente.getNode());
     }
 
+    public void onStatisticheClicked(){
+        homepage.removeRightView();
+        homepage.updateCenterView(statisticheView.getNode());
+    }
+
+
+
 
     //**************************
 
@@ -50,6 +53,17 @@ public class HomepageAdminController extends HomepageSupervisoreController {
             loader.load();
             this.creaUtente = loader.getController();
             this.creaUtente.setNode(loader.getRoot());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void loadStatistiche() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/statistiche.fxml"));
+            loader.load();
+            this.statisticheView = loader.getController();
+            this.statisticheView.setNode(loader.getRoot());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

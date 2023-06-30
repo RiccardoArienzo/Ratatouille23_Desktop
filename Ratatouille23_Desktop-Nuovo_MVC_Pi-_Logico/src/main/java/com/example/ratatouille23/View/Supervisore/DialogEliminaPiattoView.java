@@ -31,26 +31,7 @@ public class DialogEliminaPiattoView {
 
         btnConferma.setDisable(true);
 
-        popolaListView();
-
-    }
-
-    public void clickBtnConferma(){
-        dialogEliminaPiattoController.onBtnConfermaClicked();
-    }
-
-
-    public ListView getListaPiatti() {
-        return listaPiatti;
-    }
-
-    public void popolaListView(){
-
-        ArrayList<Piatto> lista = (ArrayList<Piatto>) dialogEliminaPiattoController.ottieniPiatti();
-
-        for (Piatto piatto: lista){
-            listaPiatti.getItems().add(piatto);
-        }
+       popolaListView();
 
         // Aggiungi la cell factory alla ListView
         AtomicInteger counter = new AtomicInteger();
@@ -76,4 +57,28 @@ public class DialogEliminaPiattoView {
         }));
     }
 
+    private void popolaListView() {
+
+        listaPiatti.getItems().clear();
+
+
+        //TODO la chiamata deve essere a getPiattiDaEliminare o una chiamata al DAO?
+
+        ArrayList<Piatto> lista = (ArrayList<Piatto>) dialogEliminaPiattoController.getPiatti();
+
+
+        for (Piatto piatto: lista){
+            listaPiatti.getItems().add(piatto);
+        }
+
+    }
+
+    public void clickBtnConferma(){
+        dialogEliminaPiattoController.onBtnConfermaClicked();
+    }
+
+
+    public ListView getListaPiatti() {
+        return listaPiatti;
+    }
 }

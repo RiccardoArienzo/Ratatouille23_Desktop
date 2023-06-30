@@ -3,11 +3,8 @@ import com.example.ratatouille23.Controller.Amministratore.CreaUtenteController;
 import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
-
-import java.io.IOException;
 
 
 public class CreaUtenteView implements ViewInterface {

@@ -15,6 +15,7 @@ public interface CategoriaDAO {
 
     public void addCategoria(Categoria categoria);
 
-    public void deleteCategoria(Categoria categoria);
+    public int deleteCategoria(Long idCategoria);
 
+    void updatePosizioneCategoria(Long idCategoria, Long categoriaCounter);
 }

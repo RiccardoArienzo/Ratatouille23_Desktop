@@ -44,15 +44,22 @@ public class PersonalizzaMenuView implements ViewInterface {
     public void popolaMenuAccordion(){
        ArrayList<Categoria> listaCat = (ArrayList<Categoria>) personalizzaMenuController.ottieniCategorie();
 
+//       long categoriaCounter = 0;
+//       long piattoCounter = 0;
+
        for (Categoria cat : listaCat) {
             TitledPane titledPane = new TitledPane();
             titledPane.setText(cat.getNome()); // imposto il titolo del TitledPane con il nome della cat
+//            categoriaCounter++;
+//            personalizzaMenuController.aggiornaContatoreCategoria(cat.getIdCategoria(), categoriaCounter);
 
             Accordion accordion = new Accordion();
 
             for (Piatto piatto : cat.getPiatti()){
                 TitledPane TPPiatto = new TitledPane();
                 TPPiatto.setText(piatto.getNomePiatto());
+//                piattoCounter++;
+//                personalizzaMenuController.aggiornaContatorePiatto(piatto.getIdPiatto() ,piattoCounter);
 
                 // Piatti
 
@@ -133,11 +140,20 @@ public class PersonalizzaMenuView implements ViewInterface {
         return personalizzaMenuController;
     }
 
-    public void clickBtnEliminaCategoria() {
-
+    public void clickBtnEliminaCategoria(){
+        personalizzaMenuController.onPulsanteEliminaCategoriaClicked();
     }
 
-    public void clickBtnEliminaPiatto() {
+    public void clickBtnEliminaPiatto(){
+        personalizzaMenuController.onPulsanteEliminaPiattoClicked();
+    }
+
+    public void clickBtnOrdinaCategorie() {
+        personalizzaMenuController.onBtnOrdinaCategorieClicked();
+    }
+
+    public void clickBtnOrdinaPiatti() {
+        personalizzaMenuController.onBtnOrdinaPiattiClicked();
     }
 }
 

@@ -22,8 +22,8 @@ public class Main extends Application {
 
         Main.primaryStage = stage;
 
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gestisci-ordinazioni.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/login.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gestisci-ordinazioni.fxml"));
 
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/registra-ordinazioni.fxml"));
 

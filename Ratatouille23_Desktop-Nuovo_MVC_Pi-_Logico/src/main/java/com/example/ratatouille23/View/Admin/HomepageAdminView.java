@@ -2,7 +2,6 @@ package com.example.ratatouille23.View.Admin;
 
 import com.example.ratatouille23.Controller.Amministratore.HomepageAdminController;
 import com.example.ratatouille23.Homepage;
-import com.example.ratatouille23.HomepageController;
 import com.example.ratatouille23.Model.Utente;
 import com.example.ratatouille23.ViewInterface;
 import javafx.fxml.FXML;
@@ -12,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -73,6 +71,8 @@ public class HomepageAdminView extends Homepage implements ViewInterface {
     }
 
     public void clickBtnGestisciAvvisi() {homepageController.onGestisciAvvisiClicked();}
+
+    public void clickBtnStatistiche() {homepageController.onStatisticheClicked();}
 
 
     public void apriSchermataHome() throws IOException {

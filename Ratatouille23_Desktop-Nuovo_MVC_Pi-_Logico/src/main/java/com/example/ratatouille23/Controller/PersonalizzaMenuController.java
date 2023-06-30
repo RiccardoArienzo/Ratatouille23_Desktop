@@ -1,19 +1,15 @@
 package com.example.ratatouille23.Controller;
 
-import com.example.ratatouille23.Controller.Supervisore.HomepageSupervisoreController;
-import com.example.ratatouille23.Homepage;
+import com.example.ratatouille23.Main;
 import com.example.ratatouille23.Model.Categoria;
 import com.example.ratatouille23.Model.DAO.DAOImplUnirest.CategoriaDAOImplUnirest;
+import com.example.ratatouille23.Model.DAO.DAOImplUnirest.PiattoDAOImplUnirest;
 import com.example.ratatouille23.Model.DAO.DAOInterface.CategoriaDAO;
-import com.example.ratatouille23.View.Admin.HomepageAdminView;
-import com.example.ratatouille23.View.NuovoPiattoView;
+import com.example.ratatouille23.Model.DAO.DAOInterface.PiattoDAO;
 import com.example.ratatouille23.View.PersonalizzaMenuView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -25,11 +21,13 @@ public class PersonalizzaMenuController {
 
     private PersonalizzaMenuView personalizzaMenu;
     private CategoriaDAO categoriaDAO;
+    private PiattoDAO piattoDAO;
 
 
     public PersonalizzaMenuController(PersonalizzaMenuView view){
         this.personalizzaMenu = view;
         categoriaDAO = new CategoriaDAOImplUnirest();
+        piattoDAO = new PiattoDAOImplUnirest();
     };
 
 
@@ -53,36 +51,70 @@ public class PersonalizzaMenuController {
     }
 
     public void onPulsanteEliminaCategoriaClicked() {
-        // Carica il file fxml per la nuova finestra
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/elimina-categoria.fxml"));
-
-        // Crea un nuovo stage per la finestra
-        Stage newStage = new Stage();
-        newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/elimina-categoria.fxml"));
+            Stage newStage = new Stage();
+            newStage.initOwner(Main.getPrimaryStage());
+            newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
             newStage.setScene(new Scene(loader.load()));
+            newStage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        newStage.show();
     }
-    public void onPulsanteEliminaPiattoClicked() {
-        // Carica il file fxml per la nuova finestra
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/elimina-piatto.fxml"));
 
-// Crea un nuovo stage per la finestra
-        Stage newStage = new Stage();
-        newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
+
+
+    public void onPulsanteEliminaPiattoClicked() {
         try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/elimina-piatto.fxml"));
+            Stage newStage = new Stage();
+            newStage.initOwner(Main.getPrimaryStage());
+            newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
             newStage.setScene(new Scene(loader.load()));
+            newStage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        newStage.show();
+    }
+
+    public void onBtnOrdinaCategorieClicked() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ordina-categorie.fxml"));
+            Stage newStage = new Stage();
+            newStage.initOwner(Main.getPrimaryStage());
+            newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
+            newStage.setScene(new Scene(loader.load()));
+            newStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void onBtnOrdinaPiattiClicked() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ordina-piatti.fxml"));
+            Stage newStage = new Stage();
+            newStage.initOwner(Main.getPrimaryStage());
+            newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
+            newStage.setScene(new Scene(loader.load()));
+            newStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
     public List<Categoria> ottieniCategorie() {
        return categoriaDAO.getCategorie();
     }
+
+//    public void aggiornaContatorePiatto(Long idPiatto, Long piattoCounter) {
+//        piattoDAO.updateCounter(idPiatto, piattoCounter);
+//
+//    }
+
+//    public void aggiornaContatoreCategoria(Long idCategoria, Long categoriaCounter) {
+//        categoriaDAO.updateCounter(idCategoria, categoriaCounter);
+//    }
 }
