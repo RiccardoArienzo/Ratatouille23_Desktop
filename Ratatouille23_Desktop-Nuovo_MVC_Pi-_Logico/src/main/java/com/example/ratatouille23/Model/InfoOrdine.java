@@ -10,6 +10,8 @@ public class InfoOrdine {
 
         private int quantity;
 
+        private String username;
+
         public InfoOrdine(int quantity, StatoOrdine stato) {
             this.quantity = quantity;
             this.stato = stato;
@@ -54,6 +56,14 @@ public class InfoOrdine {
         public void setStato(StatoOrdine stato) {
             this.stato = stato;
         }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @Override
     public String toString() {

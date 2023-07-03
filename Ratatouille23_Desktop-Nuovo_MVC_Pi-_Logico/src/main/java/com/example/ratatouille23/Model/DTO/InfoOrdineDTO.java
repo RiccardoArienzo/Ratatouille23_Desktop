@@ -9,12 +9,15 @@ public class InfoOrdineDTO {
     private Long piatto;
     private Long ordinazione;
 
+    private String username;
+
     private InfoOrdine.StatoOrdine stato;
 
-    public InfoOrdineDTO(Long piatto, Long ordinazione, InfoOrdine.StatoOrdine stato) {
+    public InfoOrdineDTO(Long piatto, Long ordinazione, InfoOrdine.StatoOrdine stato, String username) {
         this.piatto = piatto;
         this.ordinazione = ordinazione;
         this.stato = stato;
+        this.username = username;
     }
 
     public InfoOrdineDTO(){}
@@ -43,12 +46,21 @@ public class InfoOrdineDTO {
         this.stato = stato;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     @Override
     public String toString() {
         return "InfoOrdineDTO{" +
                 "piatto=" + piatto +
                 ", ordinazione=" + ordinazione +
                 ", stato=" + stato +
+                ", username=" + username +
                 '}';
     }
 

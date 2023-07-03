@@ -13,12 +13,18 @@ public class Ordinazione {
 
     private boolean evasa;
 
+    private String dataInvio;
+
+    private String orarioInvio;
+
     private Map<Piatto, InfoOrdine> infoPiatto;
 
-    public Ordinazione(String idTavolo){
+    public Ordinazione(String idTavolo, String dataInvio, String orarioInvio){
         this.idTavolo = idTavolo;
         this.infoPiatto = new HashMap<>();
         this.evasa = false;
+        this.dataInvio = dataInvio;
+        this.orarioInvio = orarioInvio;
     }
 
     public Ordinazione(){
@@ -56,15 +62,17 @@ public class Ordinazione {
         infoPiatto.put(piatto, info);
     }
 
-    public void setStatoInPreparazione(Piatto piatto){
+    public void setStatoInPreparazione(Piatto piatto, String username){
         InfoOrdine info = this.infoPiatto.get(piatto);
         info.setStato(InfoOrdine.StatoOrdine.IN_PREPARAZIONE);
+        info.setUsername(username);
         this.infoPiatto.put(piatto, info);
     }
 
-    public void setStatoCompletato(Piatto piatto){
+    public void setStatoCompletato(Piatto piatto, String username){
         InfoOrdine info = this.infoPiatto.get(piatto);
         info.setStato(InfoOrdine.StatoOrdine.COMPLETATO);
+        info.setUsername(username);
         this.infoPiatto.put(piatto, info);
     }
 
@@ -90,6 +98,22 @@ public class Ordinazione {
         return idOrdinazione;
     }
 
+    public String getDataInvio() {
+        return dataInvio;
+    }
+
+    public void setDataInvio(String dataInvio) {
+        this.dataInvio = dataInvio;
+    }
+
+    public String getOrarioInvio() {
+        return orarioInvio;
+    }
+
+    public void setOrarioInvio(String orarioInvio) {
+        this.orarioInvio = orarioInvio;
+    }
+
     public void setIdOrdinazione(Long idOrdinazione) {
         this.idOrdinazione = idOrdinazione;
     }
@@ -105,7 +129,9 @@ public class Ordinazione {
     @Override
     public String toString() {
         return "idTavolo: " + idTavolo +
-                ", infoPiatto: " + infoPiatto;
+                ", infoPiatto: " + infoPiatto +
+                ", dataInvio: " + dataInvio +
+                ", orarioInvio: " + orarioInvio;
     }
 
 }

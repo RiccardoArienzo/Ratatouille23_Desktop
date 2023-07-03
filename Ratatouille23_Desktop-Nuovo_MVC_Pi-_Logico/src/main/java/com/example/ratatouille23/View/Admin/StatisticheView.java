@@ -2,6 +2,9 @@ package com.example.ratatouille23.View.Admin;
 
 import com.example.ratatouille23.Controller.Amministratore.CreaUtenteController;
 import com.example.ratatouille23.Controller.Amministratore.StatisticheController;
+import com.example.ratatouille23.Model.MediaOrdinazioniPerGiornate;
+import com.example.ratatouille23.Model.NumeroOrdinazioniPerAddetto;
+import com.example.ratatouille23.Model.ValoreTotalePerAddetto;
 import com.example.ratatouille23.ViewInterface;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -30,6 +33,8 @@ public class StatisticheView implements ViewInterface {
 
     private StatisticheController statController;
 
+
+
     @FXML
     private VBox vbox;
 
@@ -39,10 +44,6 @@ public class StatisticheView implements ViewInterface {
     @FXML
     public void initialize() {
         this.statController = new StatisticheController(this);
-
-
-
-
 
     }
 
@@ -61,21 +62,24 @@ public class StatisticheView implements ViewInterface {
 
         vbox.getChildren().clear();
 
+        ArrayList<NumeroOrdinazioniPerAddetto> numeroOrdinazioniPerAddetto = (ArrayList<NumeroOrdinazioniPerAddetto>) statController.getNumeroOrdinazioni();
+        ArrayList<MediaOrdinazioniPerGiornate> mediaOrdinazioniPerGiornate = (ArrayList<MediaOrdinazioniPerGiornate>) statController.getMediaOrdinazioniPerGiornate();
+
         // INIZIO DATI FARLOCCHI
 
-        ArrayList<String> addetti = new ArrayList<>();
-        addetti.add("Carlo");
-        addetti.add("Riccardo");
-        addetti.add("Leon Scott Kennedy");
-        addetti.add("Franco Ricciardi");
+//        ArrayList<String> addetti = new ArrayList<>();
+//        addetti.add("Carlo");
+//        addetti.add("Riccardo");
+//        addetti.add("Leon Scott Kennedy");
+//        addetti.add("Franco Ricciardi");
 
         // questa è una count
 
-        ArrayList<Double> ordinazioni = new ArrayList<>();
-        ordinazioni.add(Double.valueOf(12));
-        ordinazioni.add(Double.valueOf(45));
-        ordinazioni.add(Double.valueOf(6));
-        ordinazioni.add(Double.valueOf(20));
+//        ArrayList<Double> ordinazioni = new ArrayList<>();
+//        ordinazioni.add(Double.valueOf(12));
+//        ordinazioni.add(Double.valueOf(45));
+//        ordinazioni.add(Double.valueOf(6));
+//        ordinazioni.add(Double.valueOf(20));
 
 
         CategoryAxis xAxis = new CategoryAxis();
@@ -93,8 +97,12 @@ public class StatisticheView implements ViewInterface {
 
         // Aggiungo i dati dalla lista al dataseries
 
-        for (int i = 0; i<4; i++) {
-            dataSeries1.getData().add(new XYChart.Data<>(addetti.get(i), ordinazioni.get(i)));
+//        for (int i = 0; i<4; i++) {
+//            dataSeries1.getData().add(new XYChart.Data<>(addetti.get(i), ordinazioni.get(i)));
+//        }
+
+        for(NumeroOrdinazioniPerAddetto val : numeroOrdinazioniPerAddetto){
+            dataSeries1.getData().add(new XYChart.Data<>(val.getUsername(), val.getnumeroOrdinazioni()));
         }
 
         // Aggiungo il dataseries al chart
@@ -105,11 +113,11 @@ public class StatisticheView implements ViewInterface {
 
         // NUOVO SERIES
 
-        ArrayList<Double> ordinazioniMediePerGiorno = new ArrayList<>();
-        ordinazioniMediePerGiorno.add(Double.valueOf(7));
-        ordinazioniMediePerGiorno.add(Double.valueOf(14));
-        ordinazioniMediePerGiorno.add(Double.valueOf(5));
-        ordinazioniMediePerGiorno.add(Double.valueOf(18));
+//        ArrayList<Double> ordinazioniMediePerGiorno = new ArrayList<>();
+//        ordinazioniMediePerGiorno.add(Double.valueOf(7));
+//        ordinazioniMediePerGiorno.add(Double.valueOf(14));
+//        ordinazioniMediePerGiorno.add(Double.valueOf(5));
+//        ordinazioniMediePerGiorno.add(Double.valueOf(18));
 
         // Creo una series di statistiche
 
@@ -118,8 +126,11 @@ public class StatisticheView implements ViewInterface {
 
         // Aggiungo i dati dalla lista al dataseries
 
-        for (int i = 0; i<4; i++) {
-            dataSeries2.getData().add(new XYChart.Data<>(addetti.get(i), ordinazioniMediePerGiorno.get(i)));
+//        for (int i = 0; i<4; i++) {
+//            dataSeries2.getData().add(new XYChart.Data<>(addetti.get(i), ordinazioniMediePerGiorno.get(i)));
+//        }
+        for(MediaOrdinazioniPerGiornate val : mediaOrdinazioniPerGiornate){
+            dataSeries2.getData().add(new XYChart.Data<>(val.getUsername(), val.getmediaOrdinazioniCompletate()));
         }
 
         // Aggiungo il dataseries al chart
@@ -134,20 +145,22 @@ public class StatisticheView implements ViewInterface {
 
         vbox.getChildren().clear();
 
+        ArrayList<ValoreTotalePerAddetto> valoreTotalePerAddetto = (ArrayList<ValoreTotalePerAddetto>) statController.getValoriTotaliPerAddetto();
+
         // INIZIO DATI FARLOCCHI
 
-        ArrayList<String> addetti = new ArrayList<>();
-        addetti.add("Carlo");
-        addetti.add("Riccardo");
-        addetti.add("Leon Scott Kennedy");
-        addetti.add("Franco Ricciardi");
+//        ArrayList<String> addetti = new ArrayList<>();
+//        1addetti.add("Carlo");
+//        addetti.add("Riccardo");
+//        addetti.add("Leon Scott Kennedy");
+//        addetti.add("Franco Ricciardi");
 
 
-        ArrayList<Double> valoreTotOrd = new ArrayList<>();
-        valoreTotOrd.add(Double.valueOf(567));
-        valoreTotOrd.add(Double.valueOf(154));
-        valoreTotOrd.add(Double.valueOf(25));
-        valoreTotOrd.add(Double.valueOf(890));
+//        ArrayList<Double> valoreTotOrd = new ArrayList<>();
+//        valoreTotOrd.add(Double.valueOf(567));
+//        valoreTotOrd.add(Double.valueOf(154));
+//        valoreTotOrd.add(Double.valueOf(25));
+//        valoreTotOrd.add(Double.valueOf(890));
 
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Addetti");
@@ -167,8 +180,11 @@ public class StatisticheView implements ViewInterface {
 
         // Aggiungo i dati dalla lista al dataseries
 
-        for (int i = 0; i<4; i++) {
-            dataSeries3.getData().add(new XYChart.Data<>(addetti.get(i), valoreTotOrd.get(i)));
+//        for (int i = 0; i<4; i++) {
+//            dataSeries3.getData().add(new XYChart.Data<>(addetti.get(i), valoreTotOrd.get(i)));
+//        }
+        for(ValoreTotalePerAddetto val : valoreTotalePerAddetto){
+            dataSeries3.getData().add(new XYChart.Data<>(val.getUsername(), val.getSum()));
         }
 
         // Aggiungo il dataseries al chart

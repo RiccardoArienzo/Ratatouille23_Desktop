@@ -1,6 +1,8 @@
 package com.example.ratatouille23.Controller.AddettoCucina;
 
+import com.example.ratatouille23.Model.DAO.DAOImplUnirest.InfoOrdineDAOImplUnirest;
 import com.example.ratatouille23.Model.DAO.DAOImplUnirest.OrdinazioneDAOImplUnirest;
+import com.example.ratatouille23.Model.DAO.DAOInterface.InfoOrdineDAO;
 import com.example.ratatouille23.Model.DAO.DAOInterface.OrdinazioneDAO;
 import com.example.ratatouille23.Model.DTO.InfoOrdineDTO;
 import com.example.ratatouille23.Model.InfoOrdine;
@@ -18,11 +20,13 @@ public class GestisciOrdinazioniController {
 
     //TODO inserire anche HomepageCucinaView?
     private OrdinazioneDAO ordinazioneDAO;
+    private InfoOrdineDAO infoOrdineDAO;
 
 
     public GestisciOrdinazioniController(GestisciOrdinazioniView view){
         this.gestisciOrdinazioni = view;
         ordinazioneDAO = new OrdinazioneDAOImplUnirest();
+        infoOrdineDAO = new InfoOrdineDAOImplUnirest();
     }
 
 
@@ -39,7 +43,16 @@ public class GestisciOrdinazioniController {
         InfoOrdineDTO infoOrdineDTO = new InfoOrdineDTO();
         infoOrdineDTO.setOrdinazione(ordinazione.getIdOrdinazione());
         infoOrdineDTO.setPiatto(piatto.getIdPiatto());
-        ordinazioneDAO.modificaStatoOrdinazioneInPreparazione(infoOrdineDTO);
+//        infoOrdineDTO.setUsername(username);
+        infoOrdineDAO.modificaStatoOrdinazioneInPreparazione(infoOrdineDTO);
         System.out.println("Ho oltrepassato la chiamata al DAO PUT in GestisciOrdinazioniController");
+    }
+
+    public void setUsernameAddettoAllaCucina(String username, Ordinazione ordinazione, Piatto piatto) {
+        InfoOrdineDTO infoOrdineDTO = new InfoOrdineDTO();
+        infoOrdineDTO.setOrdinazione(ordinazione.getIdOrdinazione());
+        infoOrdineDTO.setPiatto(piatto.getIdPiatto());
+        infoOrdineDTO.setUsername(username);
+        infoOrdineDAO.setUsernameAdettoAllaCucina(infoOrdineDTO);
     }
 }

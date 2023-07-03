@@ -1,10 +1,8 @@
 package com.example.ratatouille23.View.AddettoCucina;
 
 import com.example.ratatouille23.Controller.AddettoCucina.GestisciOrdinazioniController;
-import com.example.ratatouille23.Model.Categoria;
-import com.example.ratatouille23.Model.InfoOrdine;
-import com.example.ratatouille23.Model.Ordinazione;
-import com.example.ratatouille23.Model.Piatto;
+import com.example.ratatouille23.Model.*;
+import com.example.ratatouille23.Model.DAO.DAOInterface.InfoOrdineDAO;
 import com.example.ratatouille23.ViewInterface;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -113,10 +111,36 @@ public class GestisciOrdinazioniView implements ViewInterface {
                             if (result.get() == ButtonType.OK){
                                 // Manda al database
                                 //TODO metodo PUT in DAO
+
+                                // con questa istruzione, vado a segnare l'utente che ha premuto il pulsante
+//                                map.getValue().setUsername(Utente.getUsername());
+
+                                // TODO DAO PER AGGIORNARE USERNAME IN INFOORDINE
+
+                                gestisciOrdinazioniController.setUsernameAddettoAllaCucina(Utente.getUsername(), map.getValue().getOrdinazione(), map.getValue().getPiatto());
+
+
                                 gestisciOrdinazioniController.modificaStatoOrdinazioneInPreparazione(map.getValue().getOrdinazione(), map.getValue().getPiatto());
                             }
                         }
                     });
+                } else if ((map.getValue().getStato().equals(InfoOrdine.StatoOrdine.IN_PREPARAZIONE)) || (map.getValue().getStato().equals(InfoOrdine.StatoOrdine.COMPLETATO))){
+
+                    TextFlow addetto = new TextFlow();
+
+                    Text boldAddetto = new Text("Presa in carico da: ");
+                    boldAddetto.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+
+                    Text plainAddetto = new Text(map.getValue().getUsername());
+                    plainAddetto.setFont(Font.font("Tahoma", 16));
+
+                    //La versione vera deve prendere l'utente che ha preso in carico la comanda
+                    //Text plainAddetto = new Text(map.getValue().getStato().toString());
+                    //plainStato.setFont(Font.font("Tahoma", 16));
+
+                    addetto.getChildren().addAll(boldAddetto, plainAddetto);
+                    content.getChildren().add(addetto);
+
                 }
 
                 TPPiatto.setContent(content);

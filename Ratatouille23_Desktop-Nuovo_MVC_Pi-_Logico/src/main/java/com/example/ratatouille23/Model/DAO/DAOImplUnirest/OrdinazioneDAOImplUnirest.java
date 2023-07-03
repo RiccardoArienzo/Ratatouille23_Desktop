@@ -100,6 +100,8 @@ public class OrdinazioneDAOImplUnirest implements OrdinazioneDAO {
                     // SE USO IL .body DEVO UTILIZZARE @RequestBody NEL CONTROLLER
                     .field("idTavolo", ordinazione.getIdTavolo())
                     .field("evasa", ordinazione.isEvasa())
+                    .field("dataInvio", ordinazione.getDataInvio())
+                    .field("orarioInvio", ordinazione.getOrarioInvio())
                     .field("infoPiatto", json)
                     .asJson();
             System.out.println("Stu sfaccimm è ugual a chest: " + ordinazione.getInfoPiatto());
@@ -108,23 +110,6 @@ public class OrdinazioneDAOImplUnirest implements OrdinazioneDAO {
         }
 
     }
-
-    @Override
-    public void modificaStatoOrdinazioneInPreparazione(InfoOrdineDTO infoOrdine) {
-            infoOrdine.setStato(InfoOrdine.StatoOrdine.IN_PREPARAZIONE);
-        System.out.println("Sono entrato nel DAO. Il valore del DTO è: " + infoOrdine);
-        try {
-            HttpResponse<JsonNode> response = Unirest.put("http://localhost:8080/api/v1/ordinazione/aggiornaStatoInPreparazione")
-                    .header("accept", "application/json")
-                    .field("piatto", infoOrdine.getPiatto())
-                    .field("ordinazione", infoOrdine.getOrdinazione())
-                    .field("stato", infoOrdine.getStato())
-                    .asJson();
-        } catch (UnirestException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 
 
     /* VERSIONE CHE INVIA L'OGGETTO SERIALIZZATO */

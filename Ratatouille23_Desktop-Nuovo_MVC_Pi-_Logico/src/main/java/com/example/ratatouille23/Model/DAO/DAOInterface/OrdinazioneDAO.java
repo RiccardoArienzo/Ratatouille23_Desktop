@@ -22,8 +22,6 @@ public interface OrdinazioneDAO {
 
     public void sendOrdinazione(Ordinazione ordinazione);
 
-    public void modificaStatoOrdinazioneInPreparazione(InfoOrdineDTO infoOrdine);
-
     public void setOrdinazioneEvasa(Ordinazione ordinazione);
 
     public List<InfoOrdine> getInfoOrdine();
