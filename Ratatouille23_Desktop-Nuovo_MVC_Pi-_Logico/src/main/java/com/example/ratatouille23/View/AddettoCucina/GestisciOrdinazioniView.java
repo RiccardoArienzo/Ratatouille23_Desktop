@@ -54,9 +54,10 @@ public class GestisciOrdinazioniView implements ViewInterface {
         ArrayList<Ordinazione> ordini = (ArrayList<Ordinazione>) gestisciOrdinazioniController.ottieniOrdinazioni();
         ArrayList<InfoOrdine> io = (ArrayList<InfoOrdine>) gestisciOrdinazioniController.ottieniInfoOrdini();
         InfoOrdine infoOrdine = new InfoOrdine();
-        Map<Piatto, InfoOrdine> infopiatto = new HashMap<>();
 
         for(Ordinazione ordinazione : ordini){
+            Map<Piatto, InfoOrdine> infopiatto = new HashMap<>();
+
             for (InfoOrdine infoOrdini : io){
                 if(ordinazione.getIdOrdinazione() == infoOrdini.getOrdinazione().getIdOrdinazione()){
                     infopiatto.put(infoOrdini.getPiatto(), infoOrdini);
@@ -70,7 +71,7 @@ public class GestisciOrdinazioniView implements ViewInterface {
 
         for (Ordinazione ord : ordini) {
             TitledPane titledPane = new TitledPane();
-            titledPane.setText("Tavolo " + ord.getIdTavolo()); // imposto il titolo del TitledPane con il numero tavolo
+            titledPane.setText("Tavolo " + ord.getIdTavolo() + " - " + ord.getOrarioInvio() + " - " + ord.getDataInvio()); // imposto il titolo del TitledPane con il numero tavolo
 
             Accordion accordion = new Accordion();
 
@@ -116,19 +117,51 @@ public class GestisciOrdinazioniView implements ViewInterface {
 //                                map.getValue().setUsername(Utente.getUsername());
 
                                 // TODO DAO PER AGGIORNARE USERNAME IN INFOORDINE
-
                                 gestisciOrdinazioniController.setUsernameAddettoAllaCucina(Utente.getUsername(), map.getValue().getOrdinazione(), map.getValue().getPiatto());
-
-
                                 gestisciOrdinazioniController.modificaStatoOrdinazioneInPreparazione(map.getValue().getOrdinazione(), map.getValue().getPiatto());
+                                popolaOrdinazioniAccordion();
                             }
                         }
                     });
-                } else if ((map.getValue().getStato().equals(InfoOrdine.StatoOrdine.IN_PREPARAZIONE)) || (map.getValue().getStato().equals(InfoOrdine.StatoOrdine.COMPLETATO))){
+                } else if ((map.getValue().getStato().equals(InfoOrdine.StatoOrdine.IN_PREPARAZIONE))){
 
                     TextFlow addetto = new TextFlow();
 
                     Text boldAddetto = new Text("Presa in carico da: ");
+                    boldAddetto.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+
+                    Text plainAddetto = new Text(map.getValue().getUsername());
+                    plainAddetto.setFont(Font.font("Tahoma", 16));
+
+                        if(map.getValue().getUsername().equals(Utente.getUsername())){
+//                    if(map.getValue().getUsername() == Utente.getUsername()){
+                        System.out.println("QUESTO UTENTE E' LUUUIIIIIIIIIIIIUIUIUI");
+                            Button btnConfermaComanda = new Button("COMPLETA ORDINAZIONE");
+                        content.getChildren().add(btnConfermaComanda);
+                        btnConfermaComanda.setOnAction(event ->{
+                                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                        alert.setTitle("Conferma");
+                                        alert.setHeaderText("Sei sicuro di voler completare questa ordinazione?");
+                                        alert.setContentText("Una volta completata la comanda, non potrai annullare.");
+                                        Optional<ButtonType> result = alert.showAndWait();
+                                        if (result.get() == ButtonType.OK){
+                                            gestisciOrdinazioniController.modificaStatoOrdinazioneCompletato(map.getValue().getOrdinazione(), map.getValue().getPiatto());
+                                            popolaOrdinazioniAccordion();
+                                        }
+                            });
+
+                        }
+
+
+                        addetto.getChildren().addAll(boldAddetto, plainAddetto);
+                    content.getChildren().add(addetto);
+
+                } else if((map.getValue().getStato().equals(InfoOrdine.StatoOrdine.COMPLETATO))){
+
+
+                    TextFlow addetto = new TextFlow();
+
+                    Text boldAddetto = new Text("Completato da: ");
                     boldAddetto.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
 
                     Text plainAddetto = new Text(map.getValue().getUsername());
@@ -149,6 +182,11 @@ public class GestisciOrdinazioniView implements ViewInterface {
             titledPane.setContent(accordion);
             listaOrdinazioni.getPanes().add(titledPane);
         }
+    }
+
+
+    public void clickBtnOrdinazioniEvase(){
+        gestisciOrdinazioniController.onBtnOrdinazioniEvaseClicked();
     }
 
 

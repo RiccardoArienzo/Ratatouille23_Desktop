@@ -55,7 +55,7 @@ public class LoginController {
                         stage.setScene(scene);
                         stage.show();
                         break;
-                    case "Addetti_Alla_Sala":
+                    case "Addetti_alla_Sala":
                         FXMLLoader loaderSala = new FXMLLoader(getClass().getResource("/homepage-sala.fxml"));
                         scene = new Scene(loaderSala.load());
                         stage.setTitle("Ratatouille23");

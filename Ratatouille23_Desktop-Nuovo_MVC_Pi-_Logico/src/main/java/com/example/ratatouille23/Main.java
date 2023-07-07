@@ -26,6 +26,8 @@ public class Main extends Application {
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gestisci-ordinazioni.fxml"));
 
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/registra-ordinazioni.fxml"));
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/crea-utente.fxml"));
+
 
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Ratatouille23");

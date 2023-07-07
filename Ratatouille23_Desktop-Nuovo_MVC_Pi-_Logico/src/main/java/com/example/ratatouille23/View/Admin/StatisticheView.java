@@ -20,6 +20,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -42,6 +43,12 @@ public class StatisticheView implements ViewInterface {
     private Button btnOrdinazioniPerAddetto;
 
     @FXML
+    private DatePicker datePickerInizio;
+
+    @FXML
+    private DatePicker datePickerFine;
+
+    @FXML
     public void initialize() {
         this.statController = new StatisticheController(this);
 
@@ -62,25 +69,8 @@ public class StatisticheView implements ViewInterface {
 
         vbox.getChildren().clear();
 
-        ArrayList<NumeroOrdinazioniPerAddetto> numeroOrdinazioniPerAddetto = (ArrayList<NumeroOrdinazioniPerAddetto>) statController.getNumeroOrdinazioni();
-        ArrayList<MediaOrdinazioniPerGiornate> mediaOrdinazioniPerGiornate = (ArrayList<MediaOrdinazioniPerGiornate>) statController.getMediaOrdinazioniPerGiornate();
-
-        // INIZIO DATI FARLOCCHI
-
-//        ArrayList<String> addetti = new ArrayList<>();
-//        addetti.add("Carlo");
-//        addetti.add("Riccardo");
-//        addetti.add("Leon Scott Kennedy");
-//        addetti.add("Franco Ricciardi");
-
-        // questa è una count
-
-//        ArrayList<Double> ordinazioni = new ArrayList<>();
-//        ordinazioni.add(Double.valueOf(12));
-//        ordinazioni.add(Double.valueOf(45));
-//        ordinazioni.add(Double.valueOf(6));
-//        ordinazioni.add(Double.valueOf(20));
-
+        ArrayList<NumeroOrdinazioniPerAddetto> numeroOrdinazioniPerAddetto = (ArrayList<NumeroOrdinazioniPerAddetto>) statController.getNumeroOrdinazioni(datePickerInizio.getValue(), datePickerFine.getValue());
+        ArrayList<MediaOrdinazioniPerGiornate> mediaOrdinazioniPerGiornate = (ArrayList<MediaOrdinazioniPerGiornate>) statController.getMediaOrdinazioniPerGiornate(datePickerInizio.getValue() ,datePickerFine.getValue());
 
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Addetti");
@@ -97,10 +87,6 @@ public class StatisticheView implements ViewInterface {
 
         // Aggiungo i dati dalla lista al dataseries
 
-//        for (int i = 0; i<4; i++) {
-//            dataSeries1.getData().add(new XYChart.Data<>(addetti.get(i), ordinazioni.get(i)));
-//        }
-
         for(NumeroOrdinazioniPerAddetto val : numeroOrdinazioniPerAddetto){
             dataSeries1.getData().add(new XYChart.Data<>(val.getUsername(), val.getnumeroOrdinazioni()));
         }
@@ -113,12 +99,6 @@ public class StatisticheView implements ViewInterface {
 
         // NUOVO SERIES
 
-//        ArrayList<Double> ordinazioniMediePerGiorno = new ArrayList<>();
-//        ordinazioniMediePerGiorno.add(Double.valueOf(7));
-//        ordinazioniMediePerGiorno.add(Double.valueOf(14));
-//        ordinazioniMediePerGiorno.add(Double.valueOf(5));
-//        ordinazioniMediePerGiorno.add(Double.valueOf(18));
-
         // Creo una series di statistiche
 
         XYChart.Series dataSeries2 = new XYChart.Series();
@@ -126,9 +106,6 @@ public class StatisticheView implements ViewInterface {
 
         // Aggiungo i dati dalla lista al dataseries
 
-//        for (int i = 0; i<4; i++) {
-//            dataSeries2.getData().add(new XYChart.Data<>(addetti.get(i), ordinazioniMediePerGiorno.get(i)));
-//        }
         for(MediaOrdinazioniPerGiornate val : mediaOrdinazioniPerGiornate){
             dataSeries2.getData().add(new XYChart.Data<>(val.getUsername(), val.getmediaOrdinazioniCompletate()));
         }
@@ -145,22 +122,7 @@ public class StatisticheView implements ViewInterface {
 
         vbox.getChildren().clear();
 
-        ArrayList<ValoreTotalePerAddetto> valoreTotalePerAddetto = (ArrayList<ValoreTotalePerAddetto>) statController.getValoriTotaliPerAddetto();
-
-        // INIZIO DATI FARLOCCHI
-
-//        ArrayList<String> addetti = new ArrayList<>();
-//        1addetti.add("Carlo");
-//        addetti.add("Riccardo");
-//        addetti.add("Leon Scott Kennedy");
-//        addetti.add("Franco Ricciardi");
-
-
-//        ArrayList<Double> valoreTotOrd = new ArrayList<>();
-//        valoreTotOrd.add(Double.valueOf(567));
-//        valoreTotOrd.add(Double.valueOf(154));
-//        valoreTotOrd.add(Double.valueOf(25));
-//        valoreTotOrd.add(Double.valueOf(890));
+        ArrayList<ValoreTotalePerAddetto> valoreTotalePerAddetto = (ArrayList<ValoreTotalePerAddetto>) statController.getValoriTotaliPerAddetto(datePickerInizio.getValue(), datePickerFine.getValue());
 
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Addetti");
@@ -180,9 +142,6 @@ public class StatisticheView implements ViewInterface {
 
         // Aggiungo i dati dalla lista al dataseries
 
-//        for (int i = 0; i<4; i++) {
-//            dataSeries3.getData().add(new XYChart.Data<>(addetti.get(i), valoreTotOrd.get(i)));
-//        }
         for(ValoreTotalePerAddetto val : valoreTotalePerAddetto){
             dataSeries3.getData().add(new XYChart.Data<>(val.getUsername(), val.getSum()));
         }
@@ -194,9 +153,6 @@ public class StatisticheView implements ViewInterface {
         vbox.getChildren().add(ordAddChart);
 
     }
-
-
-
 
     // Metodi di ViewInterface
 

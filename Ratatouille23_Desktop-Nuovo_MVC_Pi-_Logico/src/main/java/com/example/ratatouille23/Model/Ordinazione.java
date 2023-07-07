@@ -107,7 +107,7 @@ public class Ordinazione {
     }
 
     public String getOrarioInvio() {
-        return orarioInvio;
+        return orarioInvio.substring(0, 5);
     }
 
     public void setOrarioInvio(String orarioInvio) {

@@ -9,10 +9,9 @@ import com.example.ratatouille23.Model.DAO.DAOInterface.ValoreTotalePerAddettoDA
 import com.example.ratatouille23.Model.MediaOrdinazioniPerGiornate;
 import com.example.ratatouille23.Model.NumeroOrdinazioniPerAddetto;
 import com.example.ratatouille23.Model.ValoreTotalePerAddetto;
-import com.example.ratatouille23.View.Admin.CreaUtenteView;
 import com.example.ratatouille23.View.Admin.StatisticheView;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 public class StatisticheController {
@@ -30,15 +29,15 @@ public class StatisticheController {
     }
 
 
-    public List<ValoreTotalePerAddetto> getValoriTotaliPerAddetto() {
-        return valoreTotalePerAddettoDAO.getValore();
+    public List<ValoreTotalePerAddetto> getValoriTotaliPerAddetto(LocalDate datePickerInizioValue, LocalDate datePickerFineValue) {
+        return valoreTotalePerAddettoDAO.getValore(datePickerInizioValue, datePickerFineValue);
     }
 
-    public List<NumeroOrdinazioniPerAddetto> getNumeroOrdinazioni() {
-        return numeroOrdinazioniPerAddettoDAO.getValore();
+    public List<NumeroOrdinazioniPerAddetto> getNumeroOrdinazioni(LocalDate datePickerInizioValue, LocalDate datePickerFineValue) {
+        return numeroOrdinazioniPerAddettoDAO.getValore(datePickerInizioValue, datePickerFineValue);
     }
 
-    public List<MediaOrdinazioniPerGiornate> getMediaOrdinazioniPerGiornate() {
-        return mediaOrdinazioniPerGiornateDAO.getValore();
+    public List<MediaOrdinazioniPerGiornate> getMediaOrdinazioniPerGiornate(LocalDate datePickerInizioValue, LocalDate datePickerFineValue) {
+        return mediaOrdinazioniPerGiornateDAO.getValore(datePickerInizioValue, datePickerFineValue);
     }
 }

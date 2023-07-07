@@ -30,11 +30,10 @@ public class InfoOrdineDAOImplUnirest implements InfoOrdineDAO {
     }
 
     @Override
-    public void modificaStatoOrdinazioneInPreparazione(InfoOrdineDTO infoOrdine) {
-        infoOrdine.setStato(InfoOrdine.StatoOrdine.IN_PREPARAZIONE);
+    public void modificaStatoOrdinazione(InfoOrdineDTO infoOrdine) {
         System.out.println("Sono entrato nel DAO. Il valore del DTO è: " + infoOrdine);
         try {
-            HttpResponse<JsonNode> response = Unirest.put("http://localhost:8080/api/v1/infoordine/aggiornaStatoInPreparazione")
+            HttpResponse<JsonNode> response = Unirest.put("http://localhost:8080/api/v1/infoordine/aggiornaStato")
                     .header("accept", "application/json")
                     .field("piatto", infoOrdine.getPiatto())
                     .field("ordinazione", infoOrdine.getOrdinazione())

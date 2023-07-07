@@ -11,6 +11,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +19,15 @@ public class MediaOrdinazioniPerGiornateDAOImplUnirest implements MediaOrdinazio
 
 
     @Override
-    public List<MediaOrdinazioniPerGiornate> getValore() {
+    public List<MediaOrdinazioniPerGiornate> getValore(LocalDate inizio, LocalDate fine) {
         try {
 
             System.out.println("Sono dentro a getValore di AvgOrd.");
 
-            HttpResponse<JsonNode> apiResponse = Unirest.get("http://localhost:8080/api/v1/mediaOrdinazioni/getValori").asJson();
+            HttpResponse<JsonNode> apiResponse = Unirest.get("http://localhost:8080/api/v1/mediaOrdinazioni/getValori")
+                    .queryString("inizio", inizio.toString())
+                    .queryString("fine", fine.toString())
+                    .asJson();
 
             Type mediaOrdinazioni = new TypeToken<ArrayList<MediaOrdinazioniPerGiornate>>(){}.getType();
 

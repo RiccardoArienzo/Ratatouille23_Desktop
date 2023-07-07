@@ -15,7 +15,7 @@ public interface OrdinazioneDAO {
     public List<Ordinazione> getOrdinazioneOrderByTavolo();
 
 
-    public Optional<List<Ordinazione>> getOrdinazioniEvase();
+    public List<Ordinazione> getOrdinazioniEvase();
 
 
 //    public void sendOrdinazione(OrdinazioneDTO ordinazione);

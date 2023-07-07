@@ -39,16 +39,16 @@ public class OrdinazioneDAOImplUnirest implements OrdinazioneDAO {
     }
 
     @Override
-    public Optional<List<Ordinazione>> getOrdinazioniEvase() {
+    public List<Ordinazione> getOrdinazioniEvase() {
         try {
 
-            HttpResponse<JsonNode> apiResponse = Unirest.get("http://localhost:8080/api/v1/ordinazione/getOrdinazioni").asJson();
+            HttpResponse<JsonNode> apiResponse = Unirest.get("http://localhost:8080/api/v1/ordinazione/getOrdinazioniEvase").asJson();
 
             Type ordinazioneListType = new TypeToken<ArrayList<Ordinazione>>(){}.getType();
 
             ArrayList<Ordinazione> ord = new Gson().fromJson(apiResponse.getBody().toString(), ordinazioneListType);
 
-            return Optional.ofNullable(ord);
+            return ord;
         } catch (UnirestException e) {
             throw new RuntimeException(e);
         }

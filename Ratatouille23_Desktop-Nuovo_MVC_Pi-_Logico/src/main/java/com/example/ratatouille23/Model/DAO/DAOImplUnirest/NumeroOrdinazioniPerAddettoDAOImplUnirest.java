@@ -11,17 +11,21 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NumeroOrdinazioniPerAddettoDAOImplUnirest implements NumeroOrdinazioniPerAddettoDAO {
     @Override
-    public List<NumeroOrdinazioniPerAddetto> getValore() {
+    public List<NumeroOrdinazioniPerAddetto> getValore(LocalDate inizio, LocalDate fine) {
         try {
 
             System.out.println("Sono dentro a getValore di NumOrd.");
 
-            HttpResponse<JsonNode> apiResponse = Unirest.get("http://localhost:8080/api/v1/numeroOrdinazioni/getValori").asJson();
+            HttpResponse<JsonNode> apiResponse = Unirest.get("http://localhost:8080/api/v1/numeroOrdinazioni/getValori")
+                    .queryString("inizio", inizio.toString())
+                    .queryString("fine", fine.toString())
+                    .asJson();
 
             Type numeroOrdinazioni = new TypeToken<ArrayList<NumeroOrdinazioniPerAddetto>>(){}.getType();
 

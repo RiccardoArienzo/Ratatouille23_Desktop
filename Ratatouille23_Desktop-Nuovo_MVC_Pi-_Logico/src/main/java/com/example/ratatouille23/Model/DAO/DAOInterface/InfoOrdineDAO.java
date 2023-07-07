@@ -10,6 +10,5 @@ public interface InfoOrdineDAO {
 
     public void setUsernameAdettoAllaCucina(InfoOrdineDTO infoOrdineDTO);
 
-    public void modificaStatoOrdinazioneInPreparazione(InfoOrdineDTO infoOrdine);
-
+    public void modificaStatoOrdinazione(InfoOrdineDTO infoOrdine);
 }
