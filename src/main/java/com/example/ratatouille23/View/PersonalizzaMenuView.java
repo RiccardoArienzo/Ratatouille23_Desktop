@@ -171,6 +171,11 @@ public class PersonalizzaMenuView implements ViewInterface {
         personalizzaMenuController.onBtnOrdinaCategorieClicked();
     }
 
+    public void clickBtnOrdinaPiatti() {
+        personalizzaMenuController.onBtnOrdinaPiattiClicked();
+    }
+
+
     public PersonalizzaMenuController getPersonalizzaMenuController() {
         return personalizzaMenuController;
     }

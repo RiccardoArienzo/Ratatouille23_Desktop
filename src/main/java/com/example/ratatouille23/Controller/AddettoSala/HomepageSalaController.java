@@ -19,6 +19,7 @@ public class HomepageSalaController extends HomepageController {
 
     public HomepageSalaController(HomepageSalaView view){
         super(view);
+        loadGestisciAvvisi();
         loadRegistraOrdinazioni();
     };
 

@@ -84,4 +84,17 @@ public class PersonalizzaMenuController {
             throw new RuntimeException(e);
         }
     }
+
+    public void onBtnOrdinaPiattiClicked() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ordina-piatti.fxml"));
+            Stage newStage = new Stage();
+            newStage.initOwner(Main.getPrimaryStage());
+            newStage.initModality(Modality.APPLICATION_MODAL); // Questa riga rende la nuova finestra modale rispetto alla finestra principale
+            newStage.setScene(new Scene(loader.load()));
+            newStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

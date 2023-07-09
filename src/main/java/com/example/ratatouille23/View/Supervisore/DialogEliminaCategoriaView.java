@@ -58,7 +58,7 @@ public class DialogEliminaCategoriaView {
         }));
     }
 
-    private void popolaListView() {
+    public void popolaListView() {
 
         listaCat.getItems().clear();
 

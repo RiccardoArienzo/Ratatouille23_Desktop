@@ -42,7 +42,7 @@
                            <FontIcon iconLiteral="mdi-account-plus" iconSize="20" />
                         </graphic>
                         </Button>
-                        <Button fx:id="btnStatistiche" layoutX="10.0" layoutY="220.0" mnemonicParsing="false" onAction="#clickPulsanteCreaUtente" prefHeight="40.0" prefWidth="240.0" styleClass="nav-btn" stylesheets="@homepage.css" text="Statistiche     ">
+                        <Button fx:id="btnStatistiche" layoutX="10.0" layoutY="220.0" mnemonicParsing="false" onAction="#clickBtnStatistiche" prefHeight="40.0" prefWidth="240.0" styleClass="nav-btn" stylesheets="@homepage.css" text="Statistiche     ">
                            <graphic>
                               <FontIcon iconLiteral="mdi-chart-pie" iconSize="20" />
                            </graphic>

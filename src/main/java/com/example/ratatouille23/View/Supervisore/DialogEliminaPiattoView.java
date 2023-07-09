@@ -21,8 +21,6 @@ public class DialogEliminaPiattoView {
     @FXML
     private ListView<Piatto> listaPiatti;
 
-
-
     private DialogEliminaPiattoController dialogEliminaPiattoController;
 
     @FXML

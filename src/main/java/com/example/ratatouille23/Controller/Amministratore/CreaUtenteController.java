@@ -1,25 +1,34 @@
 package com.example.ratatouille23.Controller.Amministratore;
 
 import com.example.ratatouille23.View.Admin.CreaUtenteView;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.cognitoidentityprovider.CognitoIdentityProviderClient;
 import software.amazon.awssdk.services.cognitoidentityprovider.model.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreaUtenteController {
 
     CreaUtenteView creaUtente;
+    private CognitoIdentityProviderClient cognitoClient;
 
     public CreaUtenteController(CreaUtenteView view){
         this.creaUtente = view;
+        cognitoClient = CognitoIdentityProviderClient.builder().region(Region.EU_CENTRAL_1).build();
+
     }
 
 
     // Event Handler
 
-    public void onBtnRegistraUtenteClicked(){
-        registraUtente();
+    public void onBtnRegistraUtenteClicked(String username, String mail, String group){
+        registraUtente(username, mail, group);
     }
 
     // Logic
@@ -32,61 +41,116 @@ public class CreaUtenteController {
         }
     }
 
-    public void registraUtente() {
+    public boolean registraUtente(String username, String mail, String gruppo){
 
-        // Creazione di un'istanza del client CognitoIdentityProvider
-        CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder().region(Region.EU_CENTRAL_1).build();
+        try {
+            if (!(verificaCorrettezzaEmail(mail))) {
+                throw new IllegalArgumentException("Mail non valida.");
+            }
 
-        AdminCreateUserRequest richiestaCreazioneUtente = AdminCreateUserRequest.builder()
-                .username(creaUtente.getUsernameText())
-                .desiredDeliveryMediums(DeliveryMediumType.EMAIL)
-                .userAttributes(AttributeType.builder()
-                        .name("email")
-                        .value(creaUtente.getEmailText())
-                        .build())
-                .userPoolId("eu-central-1_aseBjh2cw")
-                .build();
+            if(!(verificaUsername(username))){
+                throw new IllegalArgumentException("Username non valido. Inserisci uno username non vuoto.");
+            }
 
-        // Invio della richiesta di registrazione
-        AdminCreateUserResponse rispostaCreazioneUtente = cognitoClient.adminCreateUser(richiestaCreazioneUtente);
+            if (!(verificaGruppoCorretto(gruppo))) {
+                throw new IllegalArgumentException("Gruppo non valido.");
+            }
 
-        // Salviamo in una variabile il nome del gruppo selezionato dalla combobox
-        String nomeGruppo = (String) creaUtente.getTipoDipendenteComboBox().getValue();
+                // Creazione di un'istanza del client CognitoIdentityProvider
+                CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder().region(Region.EU_CENTRAL_1).build();
 
-        UserType nuovoUtente = rispostaCreazioneUtente.user();
-        GroupType group = GroupType.builder().groupName(nomeGruppo).build();
+                AdminCreateUserRequest richiestaCreazioneUtente = AdminCreateUserRequest.builder()
+                        .username(username)
+                        .desiredDeliveryMediums(DeliveryMediumType.EMAIL)
+                        .userAttributes(AttributeType.builder()
+                                .name("email")
+                                .value(mail)
+                                .build())
+                        .userPoolId("eu-central-1_aseBjh2cw")
+                        .build();
 
-        AdminAddUserToGroupRequest addUserToGroupRequest = AdminAddUserToGroupRequest.builder()
-                .userPoolId("eu-central-1_aseBjh2cw")
-                .username(nuovoUtente.username())
-                .groupName(nomeGruppo)
-                .build();
+                // Invio della richiesta di registrazione
+                AdminCreateUserResponse rispostaCreazioneUtente = cognitoClient.adminCreateUser(richiestaCreazioneUtente);
 
-        AdminAddUserToGroupResponse addUserToGroupResult = cognitoClient.adminAddUserToGroup(addUserToGroupRequest);
-        //TODO aggiungere un dialog che conferma se la registrazione sia andata a buon fine o eventualmente che errore c'è stato
-        //System.out.println("Registration successful. Confirmation code: " + rispostaCreazioneUtente.user());
+                // Salviamo in una variabile il nome del gruppo selezionato dalla combobox
+                String nomeGruppo = gruppo;
+
+
+                    UserType nuovoUtente = rispostaCreazioneUtente.user();
+                    GroupType group = GroupType.builder().groupName(nomeGruppo).build();
+
+                    AdminAddUserToGroupRequest addUserToGroupRequest = AdminAddUserToGroupRequest.builder()
+                            .userPoolId("eu-central-1_aseBjh2cw")
+                            .username(nuovoUtente.username())
+                            .groupName(nomeGruppo)
+                            .build();
+
+                    AdminAddUserToGroupResponse addUserToGroupResult = cognitoClient.adminAddUserToGroup(addUserToGroupRequest);
+
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Operazione corretta");
+            alert.setHeaderText("L'operazione è andata a buon fine.");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                return true;
+            }
+
+
+
+        } catch (IllegalArgumentException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Errore durante l'inserimento");
+            alert.setContentText(e.getMessage());
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                return false;
+            }
+
+        }
+        return false;
     }
+
 
 
 
         // Utility
 
-    public void fillGroupsCombobox(){
+    public void riempiComboboxGruppi(){
         // Creazione di un'istanza del client CognitoIdentityProvider
-        CognitoIdentityProviderClient cognitoClient = CognitoIdentityProviderClient.builder().region(Region.EU_CENTRAL_1).build();
 
-        ListGroupsRequest listGroupsRequest = ListGroupsRequest.builder()
-                .userPoolId("eu-central-1_aseBjh2cw")
-                .build();
 
-        ListGroupsResponse listGroupsResponse = cognitoClient.listGroups(listGroupsRequest);
-
+        ListGroupsResponse listGroupsResponse = ottieniGruppiCognito();
 
         // Popola la combobox con la lista dei gruppi ottenuta dalla risposta
         List<GroupType> groups = listGroupsResponse.groups();
         for (GroupType group : groups) {
             creaUtente.getTipoDipendenteComboBox().getItems().add(group.groupName());
         }
+    }
+
+    public boolean verificaCorrettezzaEmail(String email) throws IllegalArgumentException {
+        if(email==null)
+            throw new IllegalArgumentException();
+        Pattern path = Pattern.compile("[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})");
+        Matcher m = path.matcher(email);
+        return m.matches();
+    }
+
+    public ListGroupsResponse ottieniGruppiCognito(){
+        ListGroupsRequest listGroupsRequest = ListGroupsRequest.builder()
+                .userPoolId("eu-central-1_aseBjh2cw")
+                .build();
+        return cognitoClient.listGroups(listGroupsRequest);
+    }
+    public boolean verificaGruppoCorretto(String gruppo){
+        ObservableList<String> items = creaUtente.getTipoDipendenteComboBox().getItems();
+        return items.contains(gruppo);
+    }
+
+    public boolean verificaUsername(String user) {
+        return user != null && !user.isEmpty();
     }
 
 }

@@ -13,6 +13,9 @@ module com.example.ratatouille23 {
     requires org.kordamp.ikonli.devicons;
     requires org.kordamp.ikonli.material;
     requires org.kordamp.ikonli.materialdesign;
+    requires org.controlsfx.controls;
+    requires unirest.java;
+    requires com.google.gson;
 
     exports com.example.ratatouille23.Controller;
     opens com.example.ratatouille23.Controller to javafx.fxml;
@@ -36,5 +39,7 @@ module com.example.ratatouille23 {
     opens com.example.ratatouille23.View.Login to javafx.fxml;
     exports com.example.ratatouille23.View.Supervisore;
     opens com.example.ratatouille23.View.Supervisore to javafx.fxml;
+    exports com.example.ratatouille23.Utils;
+    opens com.example.ratatouille23.Utils to com.google.gson;
 
 }

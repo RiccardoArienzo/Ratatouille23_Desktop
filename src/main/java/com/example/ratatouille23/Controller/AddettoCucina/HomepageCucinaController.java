@@ -3,13 +3,12 @@ package com.example.ratatouille23.Controller.AddettoCucina;
 import com.example.ratatouille23.HomepageController;
 import com.example.ratatouille23.View.AddettoCucina.GestisciOrdinazioniView;
 import com.example.ratatouille23.View.AddettoCucina.HomepageCucinaView;
-import com.example.ratatouille23.View.GestisciAvvisiView;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
 public class HomepageCucinaController extends HomepageController {
-    GestisciOrdinazioniView gestisciOrdinazioni;
+    protected GestisciOrdinazioniView gestisciOrdinazioni;
 
     //**************************
 

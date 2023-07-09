@@ -3,13 +3,11 @@ package com.example.ratatouille23.View;
 import com.example.ratatouille23.Controller.InserisciAvvisiController;
 import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-
-import java.io.IOException;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class InserisciAvvisiView implements ViewInterface {
 
@@ -59,13 +57,6 @@ public class InserisciAvvisiView implements ViewInterface {
 
     // Event handler
 
-    public boolean verificaCampiVuoti(){
-        if (corpoAvviso.getText().isEmpty() && oggettoAvviso.getText().isEmpty()){
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 
     public void setInserisciAvvisiController(InserisciAvvisiController inserisciAvvisiController) {

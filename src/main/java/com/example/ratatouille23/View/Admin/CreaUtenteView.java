@@ -1,13 +1,13 @@
 package com.example.ratatouille23.View.Admin;
+
 import com.example.ratatouille23.Controller.Amministratore.CreaUtenteController;
 import com.example.ratatouille23.ViewInterface;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.*;
-
-import java.io.IOException;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 
 public class CreaUtenteView implements ViewInterface {
@@ -40,7 +40,7 @@ public class CreaUtenteView implements ViewInterface {
                 )
         );
 
-        creaUtenteController.fillGroupsCombobox();
+        creaUtenteController.riempiComboboxGruppi();
     }
 
     // Metodi di ViewInterface
@@ -64,7 +64,9 @@ public class CreaUtenteView implements ViewInterface {
 
 
     public void clickBtnRegistraUtente(){
-        creaUtenteController.onBtnRegistraUtenteClicked();
+        creaUtenteController.onBtnRegistraUtenteClicked(getUsernameText(),
+                                                        getEmailText(),
+                                                        getGruppoTextFromCombobox());
     }
 
 
@@ -79,10 +81,17 @@ public class CreaUtenteView implements ViewInterface {
         return this.usernameTextField.getText();
     }
 
-    // Getter e Setter
+    public String getGruppoTextFromCombobox() {
+        return (String) this.tipoDipendenteComboBox.getValue();
+    }
 
+    // Getter e Setter
 
     public ComboBox getTipoDipendenteComboBox() {
         return tipoDipendenteComboBox;
+    }
+
+    public CreaUtenteController getCreaUtenteController() {
+        return creaUtenteController;
     }
 }

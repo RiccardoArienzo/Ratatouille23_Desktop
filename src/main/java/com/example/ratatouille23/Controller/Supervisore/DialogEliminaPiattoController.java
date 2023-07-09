@@ -40,6 +40,13 @@ public class DialogEliminaPiattoController {
             System.out.println("I piatti da eliminare sono:");
             for (Piatto piatto : piattiDaEliminare){
                 System.out.println(piatto);
+
+                //TODO aggiungere chiamata al dao per eliminare piatti
+
+                // Qui va richiamato il metodo del dao che dovrà essere del tipo:
+                // deletePiatto(Piatto piatto);
+                // da richiamare così:
+                // piattoDAO.deletePiatto(piatto);
             }
         } else {
         }

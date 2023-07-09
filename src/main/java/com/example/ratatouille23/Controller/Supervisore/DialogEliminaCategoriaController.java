@@ -34,9 +34,16 @@ public class DialogEliminaCategoriaController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == ButtonType.OK){
-            System.out.println("I piatti da eliminare sono:");
+            System.out.println("Le categorie da eliminare sono:");
             for (Categoria cat : categorieDaEliminare){
                 System.out.println(cat);
+                //TODO aggiungere chiamata al dao per eliminare categoria
+
+                // Qui va richiamato il metodo del dao che dovrà essere del tipo:
+                // deleteCategoria(Categoria cat)
+                // da richiamare così:
+                // categoriaDAO.deleteCategoria(cat);
+
             }
         } else {
         }
